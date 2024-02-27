@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/read-journey/static/css/main.7acaea2f.css",
-    "main.js": "/read-journey/static/js/main.07d3183d.js",
+    "main.js": "/read-journey/static/js/main.4716880d.js",
     "index.html": "/read-journey/index.html",
     "main.7acaea2f.css.map": "/read-journey/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/read-journey/static/js/main.07d3183d.js.map"
+    "main.4716880d.js.map": "/read-journey/static/js/main.4716880d.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/js/main.4716880d.js"
   ]
 }
