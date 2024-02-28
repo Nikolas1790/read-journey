@@ -41,10 +41,10 @@ body {
   font-family: "Gilroy", -apple-system, BlinkMacSystemFont, "SF Pro Text", 
 			"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
 			"Helvetica Neue", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   font-style: normal;
-  line-height: 1.5;
+  line-height: 1.29;
   color: ${color.whitePrimary};
   background-color: ${color.black};
   width: 100%;

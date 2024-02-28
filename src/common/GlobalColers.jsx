@@ -3,7 +3,7 @@ const color = {
   gryeLight: '#686868',
   gryeDark: 'rgba(#E3E3E3 /30%)',
   gryeBlack: '#262626',
-  blackLight: '#1F1F1F', 
+  blackLight: 'rgb(31, 31, 31)', 
   black: '#141414', 
   green: '#30B94D',
   blue: '#4F92F7',

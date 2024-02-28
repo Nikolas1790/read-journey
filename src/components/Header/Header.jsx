@@ -1,17 +1,23 @@
 import Logo from "components/Logo/Logo";
-import { NavLink } from "react-router-dom";
-import { HeaderContainer } from "./Header.styled";
+import { BlockMainInf, HeaderContainer, PagesNav } from "./Header.styled";
 
 export default function Header() {
   return (
     <HeaderContainer>
+      <BlockMainInf>
         <Logo />
 
         <nav>
-            <NavLink to="/recommended" >Home</NavLink>
-            <NavLink to="/library" >My library</NavLink>
-        
+            <PagesNav to="/recommended" >Home</PagesNav>
+            <PagesNav to="/library" >My library</PagesNav>        
         </nav>
+
+        <div>
+          <div></div>
+          <p></p>
+          <button></button>
+        </div>
+      </BlockMainInf>
     </HeaderContainer>
   );
 };
