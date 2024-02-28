@@ -45,7 +45,8 @@ body {
   font-weight: 400;
   font-style: normal;
   line-height: 1.5;
-  color: ${color.blackPrimary};
+  color: ${color.whitePrimary};
+  background-color: ${color.black};
   width: 100%;
   height: 100vh;
   margin: 0;  

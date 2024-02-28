@@ -1,9 +1,10 @@
 import Logo from "components/Logo/Logo";
 import { NavLink } from "react-router-dom";
+import { HeaderContainer } from "./Header.styled";
 
 export default function Header() {
   return (
-    <div>
+    <HeaderContainer>
         <Logo />
 
         <nav>
@@ -11,6 +12,6 @@ export default function Header() {
             <NavLink to="/library" >My library</NavLink>
         
         </nav>
-    </div>
+    </HeaderContainer>
   );
 };
