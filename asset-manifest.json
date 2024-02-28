@@ -1,13 +1,23 @@
 {
   "files": {
     "main.css": "/read-journey/static/css/main.7acaea2f.css",
-    "main.js": "/read-journey/static/js/main.4716880d.js",
+    "main.js": "/read-journey/static/js/main.b0c565ee.js",
+    "static/js/410.b957f410.chunk.js": "/read-journey/static/js/410.b957f410.chunk.js",
+    "static/js/256.91ebec09.chunk.js": "/read-journey/static/js/256.91ebec09.chunk.js",
+    "static/js/768.38f817a5.chunk.js": "/read-journey/static/js/768.38f817a5.chunk.js",
+    "static/js/996.e252ed2a.chunk.js": "/read-journey/static/js/996.e252ed2a.chunk.js",
+    "static/js/705.1d05db26.chunk.js": "/read-journey/static/js/705.1d05db26.chunk.js",
     "index.html": "/read-journey/index.html",
     "main.7acaea2f.css.map": "/read-journey/static/css/main.7acaea2f.css.map",
-    "main.4716880d.js.map": "/read-journey/static/js/main.4716880d.js.map"
+    "main.b0c565ee.js.map": "/read-journey/static/js/main.b0c565ee.js.map",
+    "410.b957f410.chunk.js.map": "/read-journey/static/js/410.b957f410.chunk.js.map",
+    "256.91ebec09.chunk.js.map": "/read-journey/static/js/256.91ebec09.chunk.js.map",
+    "768.38f817a5.chunk.js.map": "/read-journey/static/js/768.38f817a5.chunk.js.map",
+    "996.e252ed2a.chunk.js.map": "/read-journey/static/js/996.e252ed2a.chunk.js.map",
+    "705.1d05db26.chunk.js.map": "/read-journey/static/js/705.1d05db26.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.4716880d.js"
+    "static/js/main.b0c565ee.js"
   ]
 }
