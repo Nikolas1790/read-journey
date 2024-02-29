@@ -1,5 +1,5 @@
 import Logo from "components/Logo/Logo";
-import { BlockMainInf, HeaderContainer, PagesNav } from "./Header.styled";
+import { BlockLogout, BlockMainInf, BtnLogOut, HeaderContainer, Initials, PagesNav, UserName } from "./Header.styled";
 
 export default function Header() {
   return (
@@ -12,11 +12,12 @@ export default function Header() {
             <PagesNav to="/library" >My library</PagesNav>        
         </nav>
 
-        <div>
-          <div></div>
-          <p></p>
-          <button></button>
-        </div>
+        <BlockLogout>
+          <Initials>V</Initials>
+          <UserName>Nik</UserName>
+          <BtnLogOut>Log out</BtnLogOut>
+        </BlockLogout>
+
       </BlockMainInf>
     </HeaderContainer>
   );

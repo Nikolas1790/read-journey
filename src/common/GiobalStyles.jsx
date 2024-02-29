@@ -76,6 +76,7 @@ img {
   height: auto;
 }
 button {
+  color: ${color.whitePrimary};
   cursor: pointer;
   padding: 0;
   border: 0;

@@ -1,5 +1,11 @@
+import { Container, FormBlock, Img } from "./Register.styled";
+import desctopImg from '../../img/fon/desctop-block.jpg';
 export default function Register() {
   return (
-    <div>Register</div>
+    <Container>
+      <FormBlock></FormBlock>
+      
+      <Img src={desctopImg} alt="register img" />
+    </Container>
   );
 }
