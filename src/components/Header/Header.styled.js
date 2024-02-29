@@ -21,6 +21,13 @@ export const BlockMainInf = styled.div`
   height: 74px;
   background: ${color.blackLight};
   border-radius: 15px;
+
+  padding: 16px;
+  
+`
+
+export const BlockNav = styled.nav`
+margin-left: 332px
   
 `
 
@@ -102,5 +109,4 @@ export const BtnLogOut = styled.button`
   border-radius: 30px;
 
   background: transparent;
-  margin-right: 16px;
 `

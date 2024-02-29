@@ -7,7 +7,9 @@ const color = {
   black: '#141414', 
   green: '#30B94D',
   blue: '#4F92F7',
-focusColor: 'red',
+  focusColor: 'red',
+
+  whiteTranslucent: 'rgba(227, 227, 227, 0.5)',
 
   greyDivider: 'rgba(18, 20, 23, 0.2)', 
 };

@@ -1,16 +1,20 @@
 import Logo from "components/Logo/Logo";
-import { BlockLogout, BlockMainInf, BtnLogOut, HeaderContainer, Initials, PagesNav, UserName } from "./Header.styled";
+import { BlockLogout, BlockMainInf, BlockNav, BtnLogOut, HeaderContainer, Initials, PagesNav, UserName } from "./Header.styled";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     <HeaderContainer>
       <BlockMainInf>
-        <Logo />
+        <Link to="/recommended">
+          <Logo />
+        </Link>
+        
 
-        <nav>
+        <BlockNav>
             <PagesNav to="/recommended" >Home</PagesNav>
             <PagesNav to="/library" >My library</PagesNav>        
-        </nav>
+        </BlockNav>
 
         <BlockLogout>
           <Initials>V</Initials>
