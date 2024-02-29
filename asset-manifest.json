@@ -1,25 +1,27 @@
 {
   "files": {
     "main.css": "/read-journey/static/css/main.7acaea2f.css",
-    "main.js": "/read-journey/static/js/main.0ff83799.js",
-    "static/js/548.62208e99.chunk.js": "/read-journey/static/js/548.62208e99.chunk.js",
-    "static/js/256.91ebec09.chunk.js": "/read-journey/static/js/256.91ebec09.chunk.js",
-    "static/js/768.38f817a5.chunk.js": "/read-journey/static/js/768.38f817a5.chunk.js",
-    "static/js/996.e252ed2a.chunk.js": "/read-journey/static/js/996.e252ed2a.chunk.js",
-    "static/js/705.1d05db26.chunk.js": "/read-journey/static/js/705.1d05db26.chunk.js",
-    "static/media/desctop-block.jpg": "/read-journey/static/media/desctop-block.0f27c3812fb54f11162b.jpg",
+    "main.js": "/read-journey/static/js/main.a3354020.js",
+    "static/js/299.0009a339.chunk.js": "/read-journey/static/js/299.0009a339.chunk.js",
+    "static/js/842.70c3a743.chunk.js": "/read-journey/static/js/842.70c3a743.chunk.js",
+    "static/js/768.1313996a.chunk.js": "/read-journey/static/js/768.1313996a.chunk.js",
+    "static/js/996.0a9797f7.chunk.js": "/read-journey/static/js/996.0a9797f7.chunk.js",
+    "static/js/705.b5352858.chunk.js": "/read-journey/static/js/705.b5352858.chunk.js",
+    "static/js/568.f8fc3486.chunk.js": "/read-journey/static/js/568.f8fc3486.chunk.js",
+    "static/media/desctop-block.jpg": "/read-journey/static/media/desctop-block.52cadf9d6f10bd5455ca.jpg",
     "static/media/sprite.svg": "/read-journey/static/media/sprite.3442e1e90e1d60d08c6013680ff4d557.svg",
     "index.html": "/read-journey/index.html",
     "main.7acaea2f.css.map": "/read-journey/static/css/main.7acaea2f.css.map",
-    "main.0ff83799.js.map": "/read-journey/static/js/main.0ff83799.js.map",
-    "548.62208e99.chunk.js.map": "/read-journey/static/js/548.62208e99.chunk.js.map",
-    "256.91ebec09.chunk.js.map": "/read-journey/static/js/256.91ebec09.chunk.js.map",
-    "768.38f817a5.chunk.js.map": "/read-journey/static/js/768.38f817a5.chunk.js.map",
-    "996.e252ed2a.chunk.js.map": "/read-journey/static/js/996.e252ed2a.chunk.js.map",
-    "705.1d05db26.chunk.js.map": "/read-journey/static/js/705.1d05db26.chunk.js.map"
+    "main.a3354020.js.map": "/read-journey/static/js/main.a3354020.js.map",
+    "299.0009a339.chunk.js.map": "/read-journey/static/js/299.0009a339.chunk.js.map",
+    "842.70c3a743.chunk.js.map": "/read-journey/static/js/842.70c3a743.chunk.js.map",
+    "768.1313996a.chunk.js.map": "/read-journey/static/js/768.1313996a.chunk.js.map",
+    "996.0a9797f7.chunk.js.map": "/read-journey/static/js/996.0a9797f7.chunk.js.map",
+    "705.b5352858.chunk.js.map": "/read-journey/static/js/705.b5352858.chunk.js.map",
+    "568.f8fc3486.chunk.js.map": "/read-journey/static/js/568.f8fc3486.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.0ff83799.js"
+    "static/js/main.a3354020.js"
   ]
 }
