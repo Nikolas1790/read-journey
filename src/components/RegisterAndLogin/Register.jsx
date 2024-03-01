@@ -2,7 +2,7 @@ import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import sprite from '../../img/sprite.svg';
-import { Container, ErrorMessagePassword, ErrorMessageStyled, EyeSvg, FormBlock, FormBtn, FormField, FormFieldPassvord, FormFieldPassvordConteiner, FormFields, Img, LinkTo, LogoConteiner, SubmitBlock, Title, TitleSpan } from "./RegisterAndLogin.styled";
+import { Container, ErrorMessagePassword, ErrorMessageStyled, EyeSvg, FormBlock, FormBtn, FormField, FormFieldConteiner, FormFieldLabel, FormFieldPassvord, FormFieldPassvordConteiner, FormFields, Img, LinkTo, LogoConteiner, SubmitBlock, Title, TitleSpan } from "./RegisterAndLogin.styled";
 import desctopImg from '../../img/fon/desctop-block.jpg';
 import Logo from "components/Logo/Logo";
 
@@ -46,18 +46,27 @@ console.log("submit")
 
 {({ errors, touched }) => (
   <Form>
-    <FormFields>              
+    <FormFields>  
+      <div>  
 
-      <FormField name="name" type="name" placeholder="Name" error={errors.name && touched.name ? "true" : "false" }/>
+
+<FormFieldConteiner>
+      <FormFieldLabel htmlFor="name">Name:</FormFieldLabel>
+      <FormField name="name" type="name" placeholder="Nik Ovson" error={errors.name && touched.name ? "true" : "false" } />
       <ErrorMessageStyled name="name" component='div' />
+</FormFieldConteiner>
 
-      <FormField name="email" type="email" placeholder="Email" error={errors.email && touched.email ? "true" : "false" }/>
+
+<FormFieldConteiner>
+      <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
+      <FormField name="email" type="email" placeholder="nik@google.com" error={errors.email && touched.email ? "true" : "false" } email="true" />
       <ErrorMessageStyled name="email" component='div' />
-
+</FormFieldConteiner>
       {/* {emailError && <EmailErrorMessage >{emailError}</EmailErrorMessage> } */}
 
       <FormFieldPassvordConteiner>
-        <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" error={errors.password && touched.password ? "true" : "false"} />
+        <FormFieldLabel htmlFor="password">Password:</FormFieldLabel>
+        <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="********" error={errors.password && touched.password ? "true" : "false"}  />
 
         {showPassword ? (
         <EyeSvg
@@ -78,30 +87,21 @@ console.log("submit")
         )}
       <ErrorMessagePassword name="password" component='div' />
       </FormFieldPassvordConteiner>
-
-      
-
-    </FormFields>
-    <SubmitBlock>
+    </div>     
+      <SubmitBlock>
         <FormBtn type="submit">Registration</FormBtn>
         <LinkTo to="/login" >
           Already have an account?
         </LinkTo>
       </SubmitBlock>
+
+    </FormFields>
+
   </Form>
 )}
 </Formik>
-
-
       </FormBlock>
       
-
-
-
-
-
-
-
 
 
 
