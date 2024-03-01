@@ -1,6 +1,5 @@
 import color from 'common/GlobalColers'
 import { ErrorMessage, Field } from 'formik';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -17,28 +16,6 @@ export const FormBlock = styled.div`
   padding: 40px 64px;
 `
 
-export const LogoConteiner = styled.div`
-margin-bottom: 108px;
-`
-
-export const Title = styled.h2`
-  font-size: 64px;
-  font-weight: 700;  
-  line-height: 0.94;
-  margin-bottom: 40px;
-`;
-
-export const TitleSpan = styled.span`
-  color: ${color.whiteTranslucent};
-`;
-
-////////////////////////////////////////////////////////////////////////////////////////
-export const Img = styled.img`
-  width:600px;
-  height: 736px; 
-  background: green;
-  border-radius: 30px;
-`
 ///////////////////////////////////////////////////////////
 
 export const FormFields = styled.div`
@@ -95,53 +72,6 @@ export const EyeSvg = styled.svg`
   cursor: pointer;
   stroke: ${color.blackPrimary};
   fill: none;
-`;
-
-export const SubmitBlock = styled.div`
-  /* margin-top: auto; */
-`;
-
-
-export const FormBtn = styled.button`
-  width: 225px;
-  height: 52px;
-  border-radius: 30px;
-  background: ${color.darkGgeen};
-  color: ${color.blackLight};
-  font-size: 20px;
-  font-weight: 700;
-
-  margin-right: 20px;
-
-  transition: background 0.25s linear;
-  &:hover,
-  &:focus {    
-    background: ${color.whitePrimary}; 
-  }
-`;
-
-export const LinkTo = styled(NavLink)`
-  color: ${color.gryeLight}; 
-  font-weight: 500;
-
-  position: relative; 
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -3px; 
-    height: 1px; 
-    background: ${color.gryeLight}; 
-    transform: scaleX(1); 
-    transition: transform 0.25s ease-in-out; 
-  }
-
-  &:hover::after,
-  &:focus::after {
-    transform: scaleX(0); 
-  }
 `;
 
 

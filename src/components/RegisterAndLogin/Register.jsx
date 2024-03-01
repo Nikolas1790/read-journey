@@ -2,9 +2,11 @@ import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import sprite from '../../img/sprite.svg';
-import { Container, ErrorMessagePassword, ErrorMessageStyled, EyeSvg, FormBlock, FormBtn, FormField, FormFieldConteiner, FormFieldLabel, FormFieldPassvord, FormFieldPassvordConteiner, FormFields, Img, LinkTo, LogoConteiner, SubmitBlock, Title, TitleSpan } from "./RegisterAndLogin.styled";
-import desctopImg from '../../img/fon/desctop-block.jpg';
-import Logo from "components/Logo/Logo";
+import { Container, ErrorMessagePassword, ErrorMessageStyled, EyeSvg, FormBlock, FormField, FormFieldConteiner, FormFieldLabel, FormFieldPassvord, FormFieldPassvordConteiner, FormFields} from "./RegisterAndLogin.styled";
+
+import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
+import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
+import SubmitBlockRegister from 'components/SubmitBlockAutorization/SubmitBlockRegister';
 
 
 const initialValues = {
@@ -32,80 +34,61 @@ console.log("submit")
   }
   return (
     <Container>
-
-      <FormBlock>
-        <LogoConteiner>
-          <Logo />
-        </LogoConteiner>
-
-        <Title>Expand your mind, reading <TitleSpan>a book</TitleSpan></Title>
-
-
-
+      <FormBlock>        
+        <LogoTitleBlock />
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
 
-{({ errors, touched }) => (
-  <Form>
-    <FormFields>  
-      <div>  
+          {({ errors, touched }) => (
+            <Form>
+              <FormFields>  
+                <div>  
 
-
-<FormFieldConteiner>
-      <FormFieldLabel htmlFor="name">Name:</FormFieldLabel>
-      <FormField name="name" type="name" placeholder="Nik Ovson" error={errors.name && touched.name ? "true" : "false" } />
-      <ErrorMessageStyled name="name" component='div' />
-</FormFieldConteiner>
-
-
-<FormFieldConteiner>
-      <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
-      <FormField name="email" type="email" placeholder="nik@google.com" error={errors.email && touched.email ? "true" : "false" } email="true" />
-      <ErrorMessageStyled name="email" component='div' />
-</FormFieldConteiner>
-      {/* {emailError && <EmailErrorMessage >{emailError}</EmailErrorMessage> } */}
-
-      <FormFieldPassvordConteiner>
-        <FormFieldLabel htmlFor="password">Password:</FormFieldLabel>
-        <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="********" error={errors.password && touched.password ? "true" : "false"}  />
-
-        {showPassword ? (
-        <EyeSvg
-          width={20}
-          height={20}
-          onClick={togglePasswordVisibility}
-        >
-          <use href={`${sprite}#icon-eye`} />
-        </EyeSvg>
-          ) : (
-        <EyeSvg
-          width={20}
-          height={20}
-          onClick={togglePasswordVisibility}
-        >
-          <use href={`${sprite}#icon-eye-off`} />
-        </EyeSvg>
-        )}
-      <ErrorMessagePassword name="password" component='div' />
-      </FormFieldPassvordConteiner>
-    </div>     
-      <SubmitBlock>
-        <FormBtn type="submit">Registration</FormBtn>
-        <LinkTo to="/login" >
-          Already have an account?
-        </LinkTo>
-      </SubmitBlock>
-
-    </FormFields>
-
-  </Form>
-)}
-</Formik>
+          <FormFieldConteiner>
+                <FormFieldLabel htmlFor="name">Name:</FormFieldLabel>
+                <FormField id="name" name="name" type="name" placeholder="Nik Ovson" error={errors.name && touched.name ? "true" : "false" } />
+                <ErrorMessageStyled name="name" component='div' />
+          </FormFieldConteiner>
+          
+          
+          <FormFieldConteiner>
+                <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
+                <FormField id="email" name="email" type="email" placeholder="nik@google.com" error={errors.email && touched.email ? "true" : "false" } email="true" />
+                <ErrorMessageStyled name="email" component='div' />
+          </FormFieldConteiner>
+                {/* {emailError && <EmailErrorMessage >{emailError}</EmailErrorMessage> } */}
+          
+                <FormFieldPassvordConteiner>
+                  <FormFieldLabel htmlFor="password">Password:</FormFieldLabel>
+                  <FormFieldPassvord id="password" name="password" type={showPassword ? "text" : "password"} placeholder="********" error={errors.password && touched.password ? "true" : "false"}  />
+          
+                  {showPassword ? (
+                  <EyeSvg
+                    width={20}
+                    height={20}
+                    onClick={togglePasswordVisibility}
+                  >
+                    <use href={`${sprite}#icon-eye`} />
+                  </EyeSvg>
+                    ) : (
+                  <EyeSvg
+                    width={20}
+                    height={20}
+                    onClick={togglePasswordVisibility}
+                  >
+                    <use href={`${sprite}#icon-eye-off`} />
+                  </EyeSvg>
+                  )}
+                <ErrorMessagePassword name="password" component='div' />
+                </FormFieldPassvordConteiner>
+              </div>     
+   
+                <SubmitBlockRegister />
+              </FormFields>                    
+            </Form>
+          )}
+        </Formik>
       </FormBlock>
-      
-
-
-
-      <Img src={desctopImg} alt="register img" />
+      <ImgAutorization />
     </Container>
   );
 }
