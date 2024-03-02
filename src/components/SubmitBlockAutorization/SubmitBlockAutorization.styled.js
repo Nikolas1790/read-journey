@@ -2,15 +2,11 @@ import color from 'common/GlobalColers'
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components'
 
-
 export const SubmitBlock = styled.div`
   /* margin-top: auto; */
 `;
 
-
 export const FormBtn = styled.button`
-  /* width: 225px;
-  height: 52px; */
   border-radius: 30px;
   background: ${color.darkGgeen};
   color: ${color.blackLight};
@@ -49,4 +45,5 @@ export const LinkTo = styled(NavLink)`
   &:focus::after {
     transform: scaleX(0); 
   }
+  
 `;

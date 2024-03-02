@@ -17,7 +17,6 @@ export const FormBlock = styled.div`
 `
 
 ///////////////////////////////////////////////////////////
-
 export const FormFields = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,8 +49,7 @@ export const FormField = styled(Field)`
 `;
 
 export const FormFieldPassvordConteiner = styled.div`
-  position: relative;
-  
+  position: relative;  
 `;
 
 export const FormFieldPassvord = styled(Field)`
@@ -73,8 +71,6 @@ export const EyeSvg = styled.svg`
   stroke: ${color.blackPrimary};
   fill: none;
 `;
-
-
 
 //////////////////////////////////////////////////////////////////////
 export const ErrorMessageStyled = styled(ErrorMessage)`

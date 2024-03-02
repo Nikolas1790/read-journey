@@ -3,14 +3,10 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.div`
-  /* position: relative; */
   display: flex;
   justify-content: center ;
   align-items: center;
-  /* flex-wrap: wrap; */
   padding-top: 32px; 
-  /* margin: 0 auto;  */
-  /* max-width: 1184px; */
 `
 
 export const BlockMainInf = styled.div`
@@ -27,7 +23,7 @@ export const BlockMainInf = styled.div`
 `
 
 export const BlockNav = styled.nav`
-margin-left: 332px
+margin-left: 332px;
   
 `
 
@@ -71,7 +67,7 @@ export const PagesNav = styled(NavLink)`
 `
 ///////////////////////////////////////////////////
 
-export const BlockLogout = styled.div`
+export const UserBar = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;

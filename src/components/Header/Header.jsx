@@ -1,8 +1,12 @@
 import Logo from "components/Logo/Logo";
-import { BlockLogout, BlockMainInf, BlockNav, BtnLogOut, HeaderContainer, Initials, PagesNav, UserName } from "./Header.styled";
+import {BlockMainInf, BlockNav, HeaderContainer, Initials, PagesNav, UserBar, UserName } from "./Header.styled";
 import { Link } from "react-router-dom";
+import CustomButton from "components/CustomButton/CustomButton";
 
 export default function Header() {
+  const handleButtonClick = () => {
+    console.log('Button 1 clicked');
+  };
   return (
     <HeaderContainer>
       <BlockMainInf>
@@ -16,11 +20,11 @@ export default function Header() {
             <PagesNav to="/library" >My library</PagesNav>        
         </BlockNav>
 
-        <BlockLogout>
+        <UserBar>
           <Initials>V</Initials>
           <UserName>Nik</UserName>
-          <BtnLogOut>Log out</BtnLogOut>
-        </BlockLogout>
+          <CustomButton label="Log out" onClick={handleButtonClick} width="114px" />
+        </UserBar>
 
       </BlockMainInf>
     </HeaderContainer>
