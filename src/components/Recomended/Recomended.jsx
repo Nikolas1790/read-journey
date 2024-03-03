@@ -1,11 +1,14 @@
 import { HeaderAndPaginationBlock, PaginationBtn,RecomendedBlock, RecommendedBooksBlock, RecommendedTitle} from "./Recomended.styled"
 import sprite from '../../img/sprite.svg';
+import RecomendedDashboard from "components/RecomendedDashboard/RecomendedDashboard";
 import Dashboard from "components/Dashboard/Dashboard";
 
 export default function Recomended() {
   return (
     <RecomendedBlock>
-      <Dashboard />
+      <Dashboard>
+        <RecomendedDashboard/>
+      </Dashboard>
 
       <RecommendedBooksBlock>
         <HeaderAndPaginationBlock>
@@ -23,8 +26,6 @@ export default function Recomended() {
             </PaginationBtn>
           </div>
         </HeaderAndPaginationBlock>
-
-
       </RecommendedBooksBlock>
     </RecomendedBlock>
   );

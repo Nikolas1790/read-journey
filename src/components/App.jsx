@@ -4,7 +4,7 @@ import { lazy } from 'react';
 const Register = lazy(() => import("../pages/RegisterPage"));
 const Login = lazy(() => import("../pages/LoginPage"));
 const Recommended = lazy(() => import("../pages/RecomendedPage"));
-const Library = lazy(() => import("../pages/LibraruPage"));
+const Library = lazy(() => import("../pages/LibraryPage"));
 const Reading = lazy(() => import("../pages/ReadingPage"));
 const Layout = lazy(() => import('./Layout/Layout'));
 const NotFoundPage = lazy(() => import('./NotFoundPage/NotFoundPage'));
