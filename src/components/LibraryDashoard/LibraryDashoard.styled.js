@@ -1,18 +1,15 @@
 import color from 'common/GlobalColers'
-import { Field } from 'formik'
+import { ErrorMessage, Field } from 'formik'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
+export const MainBlockLibraryDashboard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 
-// export const DashboardBlock = styled.div`
-//   width: 353px;
-// height: 651px;
-// border-radius: 30px;
-
-// background: ${color.blackLight};
-// padding: 40px 20px 20px 20px;
-// ;`
-
+`
 
 export const Filters = styled.div`
   margin-bottom: 20px;
@@ -56,33 +53,40 @@ export const FormField = styled(Field)`
   color: ${color.whitePrimary};
   background: ${color.gryeBlack};
   padding-left: ${(props) => props.paddindleft || '86px'};
+  border: 1px solid	${(props) => (props.error === "true" ? "red" : "rgba(18, 20, 23, 0.1)")};
 `;
 
+export const ErrorMessageStyled = styled(ErrorMessage)`
+  color: red;
+  font-size: 14px;
+  margin-top: -5px; 
+  padding:  5px 10px 10px;
+`;
 
-
-
+//////////////////////////////////////////////
 
 export const StartWorkoutBlock = styled.div`
   width: 313px;
-  height: 272px;
+  height: 259px;
   border-radius: 12px;
 
   background: ${color.gryeBlack};
 
   padding: 20px;
-  margin-bottom: 20px;
 `
-export const StartWorkoutTitle = styled.p`
+export const StartWorkoutTitle = styled.h2`
   font-size: 20px;
 font-weight: 700;
 line-height: 1;
 
-margin-bottom: 40px;
+margin-bottom: 20px;
 `
+
+
 export const Arguments = styled.div`
   display: flex;
   gap: 12px;
-  margin-bottom: ${(props) => props.maginbottom || 'auto'};
+  margin-bottom: 20px;
 `
 export const SeriaNumber = styled.div`
   display: flex;
@@ -97,33 +101,26 @@ export const SeriaNumber = styled.div`
   background: ${color.whitePrimary};
   
 `
-export const TextOne = styled.p`
-  width: 190px;  
-`
-export const TextTwo = styled.p`
-  width: 200px;  
-`
 
-export const TextSpan = styled.span`
- color: ${color.gryeLight};
-  
-`
 
-export const LinkToLibrary = styled(NavLink)`
+
+
+export const LinkToHome = styled(NavLink)`
   display: flex;
   align-items: center;
-  justify-content: space-between;  color: ${color.gryeLight}; 
-  
+  justify-content: space-between;
+  color: ${color.gryeLight}; 
+
+  margin: auto 0;
   
   &:hover::after,
   &:focus::after {
     color:red; 
   }
 `;
-export const LinkTextToLibrary = styled.p`
 
-  /* font-weight: 500; */
 
+export const LinkTextToHome = styled.p`
   position: relative; 
 
   &::after {
@@ -145,31 +142,4 @@ export const LinkTextToLibrary = styled.p`
 `;
 
 
-export const QuoteBlock = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  width: 313px;
-  height: 83px;
-  border-radius: 12px;
 
-  background: ${color.gryeBlack};
-
-  padding: 14px 20PX;
-`
-export const BlackBlock = styled.div`
-  width: 40px;
-  height: 40px;
-  background: ${color.black};
-`
-
-export const Quote = styled.p`
-  width: 219px;
-  color: ${color.gryeLight};
- 
-`
-
-export const QuoteSpan = styled.span`  
-  color: ${color.whitePrimary};
- 
-`
