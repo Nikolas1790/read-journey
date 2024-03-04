@@ -5,7 +5,7 @@ export default function SubmitBlockLogin() {
     <SubmitBlock>
       <FormBtn type="submit">Log In</FormBtn>
       <LinkTo to="/register" >
-        Don’t have an account?  
+        Don't have an account?  
       </LinkTo>
     </SubmitBlock>
   );

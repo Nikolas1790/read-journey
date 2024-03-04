@@ -7,7 +7,11 @@ import { Container, ErrorMessagePassword, ErrorMessageStyled, EyeSvg, FormBlock,
 import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
 import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
 import SubmitBlockRegister from 'components/SubmitBlockAutorization/SubmitBlockRegister';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/auth/operations';
+import { toast } from 'react-toastify';
 
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   name: '',
@@ -22,15 +26,26 @@ const schema = Yup.object({
 });
 
 export default function Register() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   // const [emailError, setEmailError] = useState('');
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };  
-  const handleSubmit = () => {
-    
-console.log("submit")
+  
+  const handleSubmit = async (values) => {
+    try {
+      await dispatch(register(values)).unwrap();
+      navigate('/recommended');
+    } catch (error) {
+      if (error === "Request failed with status code 409") {
+        toast.error("User with this email already exists.");
+      } else {
+        toast.error("Registration failed. Please try again later.");
+      }
+    }
   }
   return (
     <Container>
@@ -43,44 +58,44 @@ console.log("submit")
               <FormFields>  
                 <div>  
 
-          <FormFieldConteiner>
-                <FormFieldLabel htmlFor="name">Name:</FormFieldLabel>
-                <FormField id="name" name="name" type="name" placeholder="Nik Ovson" error={errors.name && touched.name ? "true" : "false" } />
-                <ErrorMessageStyled name="name" component='div' />
-          </FormFieldConteiner>
+                  <FormFieldConteiner>
+                    <FormFieldLabel htmlFor="name">Name:</FormFieldLabel>
+                    <FormField id="name" name="name" type="name" placeholder="Nik Ovson" error={errors.name && touched.name ? "true" : "false" } />
+                    <ErrorMessageStyled name="name" component='div' />
+                  </FormFieldConteiner>
           
           
-          <FormFieldConteiner>
-                <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
-                <FormField id="email" name="email" type="email" placeholder="nik@google.com" error={errors.email && touched.email ? "true" : "false" } email="true" />
-                <ErrorMessageStyled name="email" component='div' />
-          </FormFieldConteiner>
-                {/* {emailError && <EmailErrorMessage >{emailError}</EmailErrorMessage> } */}
+                  <FormFieldConteiner>
+                    <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
+                    <FormField id="email" name="email" type="email" placeholder="nik@google.com" error={errors.email && touched.email ? "true" : "false" } email="true" />
+                    <ErrorMessageStyled name="email" component='div' />
+                  </FormFieldConteiner>
+                  {/* {emailError && <EmailErrorMessage >{emailError}</EmailErrorMessage> } */}
           
-                <FormFieldPassvordConteiner>
-                  <FormFieldLabel htmlFor="password">Password:</FormFieldLabel>
-                  <FormFieldPassvord id="password" name="password" type={showPassword ? "text" : "password"} placeholder="********" error={errors.password && touched.password ? "true" : "false"}  />
+                  <FormFieldPassvordConteiner>
+                    <FormFieldLabel htmlFor="password">Password:</FormFieldLabel>
+                    <FormFieldPassvord id="password" name="password" type={showPassword ? "text" : "password"} placeholder="********" error={errors.password && touched.password ? "true" : "false"}  />
           
-                  {showPassword ? (
-                  <EyeSvg
-                    width={20}
-                    height={20}
-                    onClick={togglePasswordVisibility}
-                  >
-                    <use href={`${sprite}#icon-eye`} />
-                  </EyeSvg>
-                    ) : (
-                  <EyeSvg
-                    width={20}
-                    height={20}
-                    onClick={togglePasswordVisibility}
-                  >
-                    <use href={`${sprite}#icon-eye-off`} />
-                  </EyeSvg>
-                  )}
-                <ErrorMessagePassword name="password" component='div' />
-                </FormFieldPassvordConteiner>
-              </div>     
+                    {showPassword ? (
+                    <EyeSvg
+                      width={20}
+                      height={20}
+                     onClick={togglePasswordVisibility}
+                    >
+                      <use href={`${sprite}#icon-eye`} />
+                    </EyeSvg>
+                      ) : (
+                    <EyeSvg
+                      width={20}
+                      height={20}
+                      onClick={togglePasswordVisibility}
+                    >
+                      <use href={`${sprite}#icon-eye-off`} />
+                    </EyeSvg>
+                    )}
+                    <ErrorMessagePassword name="password" component='div' />
+                  </FormFieldPassvordConteiner>
+                </div>     
    
                 <SubmitBlockRegister />
               </FormFields>                    

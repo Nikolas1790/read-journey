@@ -7,6 +7,8 @@ import { Container, ErrorMessagePassword, ErrorMessageStyled, EyeSvg, FormBlock,
 import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
 import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
 import SubmitBlockLogin from 'components/SubmitBlockAutorization/SubmitBlockLogin';
+import { logIn } from '../../redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
 
 const initialValues = {
@@ -19,16 +21,19 @@ const schema = Yup.object({
   password: Yup.string().required('Required').min(7, "Password must be at least 7 characters"),
 });
 
-export default function Login() {
+export default function Login() {  
   const [showPassword, setShowPassword] = useState(false);
   // const [emailError, setEmailError] = useState('');
+
+  const dispatch = useDispatch();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };  
-  const handleSubmit = () => {
+  const handleSubmit = (values) => {
+    dispatch(logIn(values));
     
-console.log("submit")
+    console.log("submit")
   }
   return (
     <Container>

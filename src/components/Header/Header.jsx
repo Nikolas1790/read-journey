@@ -1,12 +1,29 @@
 import Logo from "components/Logo/Logo";
 import {BlockMainInf, BlockNav, HeaderContainer, Initials, PagesNav, UserBar, UserName } from "./Header.styled";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomButton from "components/CustomButton/CustomButton";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../redux/auth/operations";
+import { toast } from "react-toastify";
 
 export default function Header() {
-  const handleButtonClick = () => {
-    console.log('Button 1 clicked');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleButtonClick = async () => {
+    // console.log('Button 1 clicked');
+    // dispatch(logOut());
+    // navigate('/register');
+
+    try {
+      console.log('Button 1 clicked');
+      await dispatch(logOut()).unwrap();
+      navigate('/register');
+    } catch (error) {
+      toast.error("Log out failed. Something went wrong.");
+    }
   };
+
   return (
     <HeaderContainer>
       <BlockMainInf>
