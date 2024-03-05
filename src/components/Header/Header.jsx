@@ -2,13 +2,16 @@ import Logo from "components/Logo/Logo";
 import {BlockMainInf, BlockNav, HeaderContainer, Initials, PagesNav, UserBar, UserName } from "./Header.styled";
 import { Link, useNavigate } from "react-router-dom";
 import CustomButton from "components/CustomButton/CustomButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/auth/operations";
 import { toast } from "react-toastify";
+import {  selectUser } from "../../redux/auth/selector";
 
 export default function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const {name} = useSelector(selectUser);  
+  const firstLetterAvatar =  name?.slice(0, 1).toUpperCase();
 
   const handleButtonClick = async () => {
     try {
@@ -17,15 +20,14 @@ export default function Header() {
     } catch (error) {
       toast.error("Log out failed. Something went wrong.");
     }
-  };
+  };  
 
   return (
     <HeaderContainer>
       <BlockMainInf>
         <Link to="/recommended">
           <Logo />
-        </Link>
-        
+        </Link>        
 
         <BlockNav>
             <PagesNav to="/recommended" >Home</PagesNav>
@@ -33,8 +35,8 @@ export default function Header() {
         </BlockNav>
 
         <UserBar>
-          <Initials>V</Initials>
-          <UserName>Nik</UserName>
+          <Initials>{firstLetterAvatar}</Initials>
+          <UserName>{name}</UserName>
           <CustomButton label="Log out" onClick={handleButtonClick} width="114px" />
         </UserBar>
 

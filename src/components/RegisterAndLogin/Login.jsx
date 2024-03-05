@@ -30,26 +30,13 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
-
-
-
-
-
-
-
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };  
   const handleSubmit = async (values) => {
-    // await dispatch(logIn(values)).unwrap();
-    // navigate('/recommended');
-    // console.log("submit")
-
     try {
       await dispatch(logIn(values)).unwrap();
       navigate('/recommended');
-      console.log("submit")
     } catch (error) {
       toast.error("Please check the Mail and Password.");
     }

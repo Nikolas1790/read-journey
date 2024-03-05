@@ -4,16 +4,6 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 
-// export const DashboardBlock = styled.div`
-//   width: 353px;
-// height: 651px;
-// border-radius: 30px;
-
-// background: ${color.blackLight};
-// padding: 40px 20px 20px 20px;
-// ;`
-
-
 export const Filters = styled.div`
   margin-bottom: 20px;
 `
@@ -157,11 +147,11 @@ export const QuoteBlock = styled.div`
 
   padding: 14px 20PX;
 `
-export const BlackBlock = styled.div`
-  width: 40px;
-  height: 40px;
-  background: ${color.black};
-`
+// export const BlackBlock = styled.div`
+//   width: 40px;
+//   height: 40px;
+//   background: ${color.black};
+// `
 
 export const Quote = styled.p`
   width: 219px;
