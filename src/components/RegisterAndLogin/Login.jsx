@@ -9,6 +9,8 @@ import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
 import SubmitBlockLogin from 'components/SubmitBlockAutorization/SubmitBlockLogin';
 import { logIn } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const initialValues = {
@@ -26,14 +28,31 @@ export default function Login() {
   // const [emailError, setEmailError] = useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+
+
+
+
+
+
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };  
-  const handleSubmit = (values) => {
-    dispatch(logIn(values));
-    
-    console.log("submit")
+  const handleSubmit = async (values) => {
+    // await dispatch(logIn(values)).unwrap();
+    // navigate('/recommended');
+    // console.log("submit")
+
+    try {
+      await dispatch(logIn(values)).unwrap();
+      navigate('/recommended');
+      console.log("submit")
+    } catch (error) {
+      toast.error("Please check the Mail and Password.");
+    }
   }
   return (
     <Container>

@@ -11,12 +11,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   const handleButtonClick = async () => {
-    // console.log('Button 1 clicked');
-    // dispatch(logOut());
-    // navigate('/register');
-
     try {
-      console.log('Button 1 clicked');
       await dispatch(logOut()).unwrap();
       navigate('/register');
     } catch (error) {

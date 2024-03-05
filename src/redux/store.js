@@ -27,10 +27,8 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
- const store = configureStore({
-  
-  reducer: {
-    
+ const store = configureStore({  
+  reducer: {    
     auth: persistReducer(authPersistConfig, authReducer),
     // contacts: contactList.reducer,  
     // filter: filterList.reducer,
@@ -43,6 +41,10 @@ const authPersistConfig = {
     }),
   devTools: process.env.NODE_ENV === 'development',
 });
+
+// store.subscribe(() => {
+//   console.log('State after dispatch: ', store.getState());
+// });
 
 export const persistor = persistStore(store);
 export default store;

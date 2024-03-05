@@ -26,10 +26,12 @@ const schema = Yup.object({
 });
 
 export default function Register() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   // const [emailError, setEmailError] = useState('');
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
