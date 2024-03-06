@@ -1,8 +1,8 @@
 export const selectBookData = (state) => state.book.data;
 
-// export const selectTakeWaterHistory = (state) => state.water.history;
+export const selectTotalPage = (state) => state.book.totalPages;
 
-// export const selectStageWater = (state) => state.water;
+// export const selectCurrentPage = (state) => state.book.currentPage;
 
 // export const selectMounthWater = (state) => state.water.mounthHistory;
 

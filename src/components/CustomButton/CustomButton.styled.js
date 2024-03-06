@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const CustomBtn = styled.button`
   width: ${(props) => props.width || 'auto'};
-  height: 42px;
+  height: ${(props) => props.height || '42px'};
   font-size: 16px;
   font-weight: 700;
   line-height: 18px;

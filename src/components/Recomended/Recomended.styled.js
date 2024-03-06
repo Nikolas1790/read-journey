@@ -11,6 +11,8 @@ export const RecomendedBlock = styled.div`
 `
 
 //////////////////////////////////////////
+
+
 export const RecommendedBooksBlock = styled.div`
   width: 847px;
   height: 651px;
@@ -45,7 +47,13 @@ export const PaginationBtn = styled.button`
   }
 `
 
-////////////////
+export const PaginationSvg = styled.svg`
+  width: 20px;
+  height: 20px;
+  stroke: ${(props) => (props.stoke === "true" ? color.whiteLightTranslucent : color.whitePrimary)};
+`
+
+///////////////////////////////////////////////////////////////////////////
 
 export const BooksTen = styled.ul`
   /* width: 137px;
@@ -73,9 +81,23 @@ export const BookImg = styled.img`
   height: 208px;
 
   border-radius: 8px; 
+  margin-bottom: 8px;
 `
 
 export const BookTitle = styled.h3`
-  font-size: 14px !important;
+  font-size: 14px ;
   font-weight: 700;
+  margin-bottom: 2px;
+
+   /* Ограничиваем текст одной строкой */
+   white-space: nowrap;
+
+     /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+
+export const BookAutor = styled.p`
+  font-size: 10px ;
+  color: ${color.gryeLight};
 `

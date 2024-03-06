@@ -4,10 +4,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 axios.defaults.baseURL = 'https://readjourney.b.goit.study/api';
 
 export const fetchBooks = createAsyncThunk("/books/recommend",
-   async (_, thunkAPI) => {
+   async ({ page = 1, limit = 10 }, thunkAPI) => {
 
       try {
-        const response = await axios.get("/books/recommend");
+        const response = await axios.get(`/books/recommend?page=${page}&limit=${limit}`);
         return response.data;
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
