@@ -86,10 +86,3 @@ export const ErrorMessagePassword = styled(ErrorMessage)`
   margin-top: -5px; 
   padding:  5px 10px 10px;
 `;
-
-// export const EmailErrorMessage = styled.div`
-//   color: red;
-//   font-size: 14px;
-//   margin-top: -20px  ; 
-//   padding:  5px 10px 10px;
-// `;

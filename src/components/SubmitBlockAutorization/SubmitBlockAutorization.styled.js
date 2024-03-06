@@ -8,26 +8,31 @@ export const SubmitBlock = styled.div`
 
 export const FormBtn = styled.button`
   border-radius: 30px;
-  background: ${color.darkGgeen};
   color: ${color.blackLight};
+  background: ${color.darkGgeen};
   font-size: 20px;
   font-weight: 700;
   line-height: 1;
-
   margin-right: 20px;
   padding: 16px 54px;
-  transition: background 0.25s linear;
-  &:hover,
-  &:focus {    
-    background: ${color.whitePrimary}; 
-  }
+
+  transition: color 0.3s linear, background 0.3s linear; 
+
+&:hover,
+&:focus {
+  color: ${color.whitePrimary};
+  background: ${color.blackLight};
+  box-shadow: 0 0 0 2px ${color.whiteLightTranslucent};
+}
+
 `;
 
 export const LinkTo = styled(NavLink)`
+  position: relative;
   color: ${color.gryeLight}; 
   font-weight: 500;
 
-  position: relative; 
+  transition: color 0.3s linear; 
 
   &::after {
     content: '';
@@ -37,13 +42,16 @@ export const LinkTo = styled(NavLink)`
     bottom: -3px; 
     height: 1px; 
     background: ${color.gryeLight}; 
-    transform: scaleX(1); 
-    transition: transform 0.25s ease-in-out; 
+    transition: background 0.3s linear; 
   }
 
-  &:hover::after,
-  &:focus::after {
-    transform: scaleX(0); 
+  &:hover,
+  &:focus {
+    color: ${color.whitePrimary};
+    
+    &::after {
+      background: ${color.whitePrimary};  
+    }
   }
   
 `;

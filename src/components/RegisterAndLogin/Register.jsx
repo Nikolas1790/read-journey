@@ -26,7 +26,6 @@ const schema = Yup.object({
 });
 
 export default function Register() {
-
   const [showPassword, setShowPassword] = useState(false);
   // const [emailError, setEmailError] = useState('');
 
@@ -78,6 +77,8 @@ export default function Register() {
                     <FormFieldLabel htmlFor="password">Password:</FormFieldLabel>
                     <FormFieldPassvord id="password" name="password" type={showPassword ? "text" : "password"} placeholder="********" error={errors.password && touched.password ? "true" : "false"}  />
           
+
+          
                     {showPassword ? (
                     <EyeSvg
                       width={20}
@@ -95,7 +96,24 @@ export default function Register() {
                       <use href={`${sprite}#icon-eye-off`} />
                     </EyeSvg>
                     )}
-                    <ErrorMessagePassword name="password" component='div' />
+
+                   <ErrorMessagePassword name="password" component='div' />
+                    {errors.password && touched.password && <EyeSvg
+                      width={20}
+                      height={20}
+                    >
+                      <use href={`${sprite}#icon-pajamas_error`} />
+                    </EyeSvg> }
+
+                    {!errors.password && touched.password && <EyeSvg
+                      width={20}
+                      height={20}
+                    >
+                      <use href={`${sprite}#icon-check-ok`} />
+                    </EyeSvg> }
+
+
+
                   </FormFieldPassvordConteiner>
                 </div>     
    

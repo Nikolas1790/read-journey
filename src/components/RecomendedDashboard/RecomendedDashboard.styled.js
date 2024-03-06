@@ -111,10 +111,9 @@ export const LinkToLibrary = styled(NavLink)`
   }
 `;
 export const LinkTextToLibrary = styled.p`
-
-  /* font-weight: 500; */
-
   position: relative; 
+
+  transition: color 0.3s linear; 
 
   &::after {
     content: '';
@@ -124,13 +123,16 @@ export const LinkTextToLibrary = styled.p`
     bottom: -3px; 
     height: 1px; 
     background: ${color.gryeLight}; 
-    transform: scaleX(1); 
-    transition: transform 0.25s ease-in-out; 
+    transition: background 0.3s linear; 
   }
 
-  &:hover::after,
-  &:focus::after {
-    transform: scaleX(0); 
+  &:hover,
+  &:focus {
+    color: ${color.whitePrimary};
+    
+    &::after {
+      background: ${color.whitePrimary};  
+    }
   }
 `;
 
