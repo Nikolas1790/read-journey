@@ -120,7 +120,7 @@ export const LinkTextToLibrary = styled.p`
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -3px; 
+    bottom: 0px; 
     height: 1px; 
     background: ${color.gryeLight}; 
     transition: background 0.3s linear; 

@@ -2,7 +2,9 @@ import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
 import sprite from '../../img/sprite.svg';
-import { Arguments, ErrorMessageStyled, FilterTitle, Filters, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTextToHome, LinkToHome, MainBlockLibraryDashboard, SeriaNumber, StartWorkoutBlock, StartWorkoutTitle } from './LibraryDashoard.styled';
+import { Arguments, CardAutor, CardImg, CardRecomended, CardTitle, ErrorMessageStyled, FilterTitle, Filters, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTextToHome, LinkToHome, MainBlockLibraryDashboard, StartWorkoutBlock, StartWorkoutTitle } from './LibraryDashoard.styled';
+import { useSelector } from 'react-redux';
+import { selectBookData } from '../../redux/books/selector';
 
 const initialValues = {
   title: '',
@@ -18,6 +20,8 @@ const schema = Yup.object({
 });
 
 export default function LibraryDashboard() {
+  const results = useSelector(selectBookData);
+
   const handleSubmit = () => {    
     console.log("submit")
   }
@@ -58,7 +62,13 @@ export default function LibraryDashboard() {
 
 
         <Arguments >
-          <SeriaNumber>1</SeriaNumber>         
+          {results?.slice(0, 3).map((book) => (
+            <CardRecomended key={book._id}>
+              <CardImg src={book.imageUrl} alt="book title"  />
+              <CardTitle>{book.title}</CardTitle>
+              <CardAutor>{book.author}</CardAutor>
+            </CardRecomended>
+          ))}     
         </Arguments>
 
 

@@ -69,40 +69,63 @@ export const StartWorkoutBlock = styled.div`
   width: 313px;
   height: 259px;
   border-radius: 12px;
-
   background: ${color.gryeBlack};
 
   padding: 20px;
 `
 export const StartWorkoutTitle = styled.h2`
   font-size: 20px;
-font-weight: 700;
-line-height: 1;
+  font-weight: 700;
+  line-height: 1;
 
-margin-bottom: 20px;
-`
-
-
-export const Arguments = styled.div`
-  display: flex;
-  gap: 12px;
   margin-bottom: 20px;
 `
-export const SeriaNumber = styled.div`
+/////   
+
+export const Arguments = styled.ul`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  font-size: 20px;
-  font-weight: 700;  
-  color: ${color.blackLight};
-  background: ${color.whitePrimary};
-  
+  gap: 20px;
+  margin-bottom: 20px;
+`
+export const CardRecomended = styled.li`
+  width: 71px;
+  height: 141px;  
 `
 
+export const CardImg = styled.img`
+  width: 71px;
+  height: 107px;
+  border-radius: 8px;  
 
+  margin-bottom: 8px;
+`
+
+export const CardTitle = styled.h4`
+  font-size: 10px;
+  font-weight: 700;
+
+   /* Ограничиваем текст одной строкой */
+   white-space: nowrap;
+
+  /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  margin-bottom: 2px;
+`
+
+export const CardAutor = styled.p`
+  font-size: 10px;
+  color: ${color.gryeLight};
+
+   /* Ограничиваем текст одной строкой */
+   white-space: nowrap;
+
+  /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+//////////////////////////////////////////////////////////////
 
 
 export const LinkToHome = styled(NavLink)`
@@ -122,7 +145,6 @@ export const LinkToHome = styled(NavLink)`
 
 export const LinkTextToHome = styled.p`
   position: relative; 
-
   transition: color 0.3s linear; 
 
   &::after {
@@ -130,7 +152,7 @@ export const LinkTextToHome = styled.p`
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -3px; 
+    bottom: 0px; 
     height: 1px; 
     background: ${color.gryeLight}; 
     transition: background 0.3s linear; 

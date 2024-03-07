@@ -1,4 +1,4 @@
-import { BookAutor, BookCard, BookImg, BookTitle, BooksTen, HeaderAndPaginationBlock, PaginationBtn,PaginationSvg,RecomendedBlock, RecommendedBooksBlock, RecommendedTitle} from "./Recomended.styled"
+import { BooksTen, HeaderAndPaginationBlock, PaginationBtn,PaginationSvg,RecomendedBlock, RecommendedBooksBlock, RecommendedTitle} from "./Recomended.styled"
 import sprite from '../../img/sprite.svg';
 import RecomendedDashboard from "components/RecomendedDashboard/RecomendedDashboard";
 import Dashboard from "components/Dashboard/Dashboard";
@@ -8,6 +8,7 @@ import { fetchBooks } from "../../redux/books/operations";
 import { selectBookData, selectTotalPage } from "../../redux/books/selector";
 import PortalModal from "components/PortalModal/PortalModal";
 import DetailedInformationBook from "components/DetailedInformationBook/DetailedInformationBook";
+import CardBook from "components/CardBook/CardBook";
 
 export default function Recomended() {
   const dispatch = useDispatch();
@@ -59,11 +60,12 @@ export default function Recomended() {
 
         <BooksTen>
           {results?.map((book) => (
-            <BookCard key={book._id}>
-              <BookImg src={book.imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
-              <BookTitle>{book.title}</BookTitle>
-              <BookAutor>{book.author}</BookAutor>
-            </BookCard>
+            // <BookCard key={book._id}>
+            //   <BookImg src={book.imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
+            //   <BookTitle>{book.title}</BookTitle>
+            //   <BookAutor>{book.author}</BookAutor>
+            // </BookCard>
+            <CardBook  key={book._id} book={book} openLoginModal={openLoginModal} />
           ))}
         </BooksTen>   
 
@@ -74,7 +76,7 @@ export default function Recomended() {
 
 
       <PortalModal active={modalOpen} setActive={setModalOpen}>
-        <DetailedInformationBook bookData={bookData} closeModals={() => setModalOpen()} />
+        <DetailedInformationBook bookData={bookData} closeModals={() => setModalOpen()} btnLabel="Add to library"/>
       </PortalModal>
 
     </RecomendedBlock>

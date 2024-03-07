@@ -1,10 +1,15 @@
 import CustomButton from "components/CustomButton/CustomButton";
 import { AuthorBook, ClosingSymbol, Conteiner, CoverBook, PagesBook, TitleBook } from "./DetailedInformationBook.styled";
 import sprite from '../../img/sprite.svg';
+import { useDispatch } from "react-redux";
+import { addBookById } from "../../redux/books/operations";
 
-export default function DetailedInformationBook({ closeModals, bookData }) {
-  const handleButtonClick = async () => {
-    console.log(bookData)
+export default function DetailedInformationBook({ closeModals, bookData, btnLabel }) {
+  const dispatch = useDispatch();
+
+  const handleButtonClick = async () => {    
+    console.log(bookData._id)
+    dispatch(addBookById(bookData._id))
     // try {
     //   await dispatch(logOut()).unwrap();
     //   navigate('/register');
@@ -24,7 +29,7 @@ export default function DetailedInformationBook({ closeModals, bookData }) {
       <TitleBook>{bookData.title}</TitleBook>
       <AuthorBook>{bookData.author}</AuthorBook>
       <PagesBook>{bookData.totalPages} pages</PagesBook>
-      <CustomButton label="Add to library" onClick={handleButtonClick} width="162px" height="46px" />
+      <CustomButton label={btnLabel} onClick={handleButtonClick} width="162px" height="46px" />
     </Conteiner>
   );
 }
