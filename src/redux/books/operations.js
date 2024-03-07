@@ -5,7 +5,6 @@ axios.defaults.baseURL = 'https://readjourney.b.goit.study/api';
 
 export const fetchBooks = createAsyncThunk("/books/recommend",
   async ({ page = 1, limit = 10 }, thunkAPI) => {
-
     try {
       const response = await axios.get(`/books/recommend?page=${page}&limit=${limit}`);
       return response.data;
@@ -34,3 +33,14 @@ export const ownBooks = createAsyncThunk("/books/own",
       return thunkAPI.rejectWithValue(e.message);
     }
 });
+
+export const deleteBook = createAsyncThunk("/books/remove",
+  async (id, thunkAPI) => {
+    try {      
+      const response = await axios.delete(`/books/remove/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

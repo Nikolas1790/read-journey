@@ -81,8 +81,15 @@ export const DropdownItem = styled.li`
 
 
 export const BooksTen = styled.ul`
-
   display: flex;
   flex-wrap: wrap;
   gap: 27px 20px;
+
+  height: 523px;
+  overflow: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `

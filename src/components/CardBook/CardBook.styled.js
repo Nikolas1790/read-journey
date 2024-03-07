@@ -45,6 +45,7 @@ export const BookTitle = styled.h3`
 export const BookAutor = styled.p`
   font-size: 10px ;
   color: ${color.gryeLight};
+  white-space: nowrap;
 `
 ///////////////////////////////////////////////////////////
 export const DellBtn = styled.button`

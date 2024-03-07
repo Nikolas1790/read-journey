@@ -1,22 +1,25 @@
 import CustomButton from "components/CustomButton/CustomButton";
 import { AuthorBook, ClosingSymbol, Conteiner, CoverBook, PagesBook, TitleBook } from "./DetailedInformationBook.styled";
 import sprite from '../../img/sprite.svg';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addBookById } from "../../redux/books/operations";
+import { selectOwnBooks } from "../../redux/books/selector";
+import { useNavigate } from 'react-router-dom';
 
 export default function DetailedInformationBook({ closeModals, bookData, btnLabel }) {
+  const ownLibrary = useSelector(selectOwnBooks); 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // console.log(ownLibrary)
 
-  const handleButtonClick = async () => {    
-    console.log(bookData._id)
-    dispatch(addBookById(bookData._id))
-    // try {
-    //   await dispatch(logOut()).unwrap();
-    //   navigate('/register');
-    // } catch (error) {
-    //   toast.error("Log out failed. Something went wrong.");
-    // }
+  const handleButtonClick =  () => {   
+    if(btnLabel === "Add to library") dispatch(addBookById(bookData._id));  
+    if(btnLabel === "Start reading") navigate('/reading');
+
+    closeModals();
   }; 
+
+
   return (
     <Conteiner>
       <ClosingSymbol onClick={closeModals}>

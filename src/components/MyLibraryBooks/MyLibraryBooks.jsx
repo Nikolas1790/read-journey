@@ -45,8 +45,9 @@ export default function MyLibraryBooks() {
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
-    console.log("selectedBooks")
+    // console.log("selectedBooks")
   };
+
 
   return (
       <MyLibraryBlock >
@@ -80,7 +81,7 @@ export default function MyLibraryBooks() {
 
 
           <BooksTen>
-            {ownLibrary?.map((book) => (  
+            {Array.isArray(ownLibrary) && ownLibrary.map((book) => (  
               <CardBook  key={book._id} book={book} openLoginModal={openLoginModal} currentPage=" MyLibrary"  />
             ))}
           </BooksTen> 

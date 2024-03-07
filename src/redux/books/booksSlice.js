@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addBookById, fetchBooks, ownBooks } from "./operations";
+import { addBookById, deleteBook, fetchBooks, ownBooks } from "./operations";
 
 
 const bookSlice = createSlice({
   name: "book",
   initialState: {
     data: [],
-    favorite: [], 
-    ownBooks: [],
+    myBooks: [],
     loading: false,
     error: null,
     totalPages: 1, // Добавлено поле общего количества страниц
@@ -35,8 +34,8 @@ const bookSlice = createSlice({
       })
       .addCase(addBookById.fulfilled, (state, action) => {
         state.loading = false;
-        state.favorite = action.payload;
-        state.totalPages = action.payload.totalPages;
+        // console.log(state)
+        state.myBooks = [...state.myBooks, action.payload];
       })
       .addCase(addBookById.rejected, (state, action) => {
         state.loading = false;
@@ -50,10 +49,23 @@ const bookSlice = createSlice({
       .addCase(ownBooks.fulfilled, (state, action) => {
         state.loading = false;
         // console.log(action.payload)
-        state.ownBooks = action.payload;
-        state.totalPages = action.payload.totalPages;
+        state.myBooks = action.payload;
       })
       .addCase(ownBooks.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+
+      .addCase(deleteBook.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteBook.fulfilled, (state, action) => {
+        state.loading = false;
+        console.log(state.myBooks);
+        state.myBooks = state.myBooks.filter(book => book._id !== action.payload.id);
+      })
+      .addCase(deleteBook.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

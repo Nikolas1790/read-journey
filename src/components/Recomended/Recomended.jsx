@@ -5,7 +5,7 @@ import Dashboard from "components/Dashboard/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchBooks } from "../../redux/books/operations";
-import { selectBookData, selectTotalPage } from "../../redux/books/selector";
+import { selectBookData, selectOwnBooks, selectTotalPage } from "../../redux/books/selector";
 import PortalModal from "components/PortalModal/PortalModal";
 import DetailedInformationBook from "components/DetailedInformationBook/DetailedInformationBook";
 import CardBook from "components/CardBook/CardBook";
@@ -15,9 +15,9 @@ export default function Recomended() {
   const results = useSelector(selectBookData)
   const totalPages = useSelector(selectTotalPage);
   const [modalOpen, setModalOpen] = useState(false);
-  const [bookData, setBookData] = useState(false);
- 
+  const [bookData, setBookData] = useState(false); 
   const [page, setPage] = useState(1);
+  const ownLibrary = useSelector(selectOwnBooks); 
 
   useEffect(()=> {
     dispatch(fetchBooks({ page, limit: 10  }))
@@ -28,7 +28,7 @@ export default function Recomended() {
       setPage(newPage);
     }
   };
-
+  // console.log(ownLibrary)
   const openLoginModal = (book) => {
     setModalOpen(true);
     setBookData(book); // Передаем данные о книге
@@ -60,11 +60,6 @@ export default function Recomended() {
 
         <BooksTen>
           {results?.map((book) => (
-            // <BookCard key={book._id}>
-            //   <BookImg src={book.imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
-            //   <BookTitle>{book.title}</BookTitle>
-            //   <BookAutor>{book.author}</BookAutor>
-            // </BookCard>
             <CardBook  key={book._id} book={book} openLoginModal={openLoginModal} />
           ))}
         </BooksTen>   
