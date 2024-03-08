@@ -5,7 +5,7 @@ import Dashboard from "components/Dashboard/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchBooks } from "../../redux/books/operations";
-import { selectBookData, selectOwnBooks, selectTotalPage } from "../../redux/books/selector";
+import { selectBookData, selectTotalPage } from "../../redux/books/selector";
 import PortalModal from "components/PortalModal/PortalModal";
 import DetailedInformationBook from "components/DetailedInformationBook/DetailedInformationBook";
 import CardBook from "components/CardBook/CardBook";
@@ -17,7 +17,7 @@ export default function Recomended() {
   const [modalOpen, setModalOpen] = useState(false);
   const [bookData, setBookData] = useState(false); 
   const [page, setPage] = useState(1);
-  const ownLibrary = useSelector(selectOwnBooks); 
+  // const ownLibrary = useSelector(selectOwnBooks); 
 
   useEffect(()=> {
     dispatch(fetchBooks({ page, limit: 10  }))
