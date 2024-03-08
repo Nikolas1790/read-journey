@@ -1,12 +1,14 @@
 import sprite from '../../img/sprite.svg';
 import { useEffect, useRef, useState } from "react";
-import { BooksTen, Dropdown, DropdownButton, DropdownItem, DropdownList, DropdownSvg, HeaderAndPaginationBlock, MyLibraryBlock, MyLibraryTitle } from './MyLibraryBooks.styled';
+import { BooksTen, Dropdown, DropdownButton, DropdownItem, DropdownList, DropdownSvg, HeaderAndPaginationBlock } from './MyLibraryBooks.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { ownBooks } from '../../redux/books/operations';
 import { selectOwnBooks } from '../../redux/books/selector';
 import CardBook from 'components/CardBook/CardBook';
 import PortalModal from 'components/PortalModal/PortalModal';
 import DetailedInformationBook from 'components/DetailedInformationBook/DetailedInformationBook';
+import UnivesalMainConteainer from 'components/UniversalMainContainer/UniversalMainContainer';
+import { MainBlockTitle } from 'components/UniversalMainContainer/UniversalMainContainer.styled';
 
 const options = ["Unread", "In progress", "Done", "All books" ]
 
@@ -50,9 +52,9 @@ export default function MyLibraryBooks() {
 
 
   return (
-      <MyLibraryBlock >
+    <UnivesalMainConteainer>
         <HeaderAndPaginationBlock>
-          <MyLibraryTitle>My library</MyLibraryTitle>
+          <MainBlockTitle>My library</MainBlockTitle>
 
           <Dropdown onClick={toggleDropdown} ref={selecctRef}>
             {!isOpen ? (<DropdownSvg width={16} height={16} >
@@ -91,7 +93,7 @@ export default function MyLibraryBooks() {
         <PortalModal active={modalOpen} setActive={setModalOpen}>
           <DetailedInformationBook bookData={bookData} closeModals={() => setModalOpen()} btnLabel="Start reading" />
         </PortalModal>
-      </MyLibraryBlock>
+      </UnivesalMainConteainer>
   );
 }
   

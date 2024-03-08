@@ -1,14 +1,14 @@
 // import color from 'common/GlobalColers'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
-export const LibraryBlock = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
+// export const LibraryBlock = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 16px;
 
-  padding:  16px 0;
-`
+//   padding:  16px 0;
+// `
 
 // export const MyLibraryBlock = styled.div`
 //   width: 847px;

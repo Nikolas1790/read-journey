@@ -14,7 +14,7 @@ export default function DetailedInformationBook({ closeModals, bookData, btnLabe
 
   const handleButtonClick =  () => {   
     if(btnLabel === "Add to library") dispatch(addBookById(bookData._id));  
-    if(btnLabel === "Start reading") navigate('/reading');
+    if(btnLabel === "Start reading") navigate(`/reading/${bookData._id}`);
 
     closeModals();
   }; 

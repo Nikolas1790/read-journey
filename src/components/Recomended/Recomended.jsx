@@ -1,4 +1,4 @@
-import { BooksTen, HeaderAndPaginationBlock, PaginationBtn,PaginationSvg,RecomendedBlock, RecommendedBooksBlock, RecommendedTitle} from "./Recomended.styled"
+import { BooksTen, HeaderAndPaginationBlock, PaginationBtn,PaginationSvg} from "./Recomended.styled"
 import sprite from '../../img/sprite.svg';
 import RecomendedDashboard from "components/RecomendedDashboard/RecomendedDashboard";
 import Dashboard from "components/Dashboard/Dashboard";
@@ -9,6 +9,9 @@ import { selectBookData, selectTotalPage } from "../../redux/books/selector";
 import PortalModal from "components/PortalModal/PortalModal";
 import DetailedInformationBook from "components/DetailedInformationBook/DetailedInformationBook";
 import CardBook from "components/CardBook/CardBook";
+import UnivesalMainConteainer from "components/UniversalMainContainer/UniversalMainContainer";
+import UnivesalGeneralBlock from "components/UniversalGeneralBlock/UniversalGeneralBlock";
+import { MainBlockTitle } from "components/UniversalMainContainer/UniversalMainContainer.styled";
 
 export default function Recomended() {
   const dispatch = useDispatch();
@@ -34,14 +37,14 @@ export default function Recomended() {
     setBookData(book); // Передаем данные о книге
   };
   return (
-    <RecomendedBlock>
+    <UnivesalGeneralBlock >
       <Dashboard>
         <RecomendedDashboard/>
       </Dashboard>
 
-      <RecommendedBooksBlock>
+      <UnivesalMainConteainer >
         <HeaderAndPaginationBlock>
-          <RecommendedTitle>Recommended</RecommendedTitle>
+          <MainBlockTitle>Recommended</MainBlockTitle>
           <div>
             <PaginationBtn onClick={() => handlePageChange(page - 1)} >
               <PaginationSvg stoke={page === 1 ? "true" : ''}>
@@ -64,9 +67,7 @@ export default function Recomended() {
           ))}
         </BooksTen>   
 
-      </RecommendedBooksBlock>
-
-
+      </UnivesalMainConteainer>
 
 
 
@@ -74,7 +75,7 @@ export default function Recomended() {
         <DetailedInformationBook bookData={bookData} closeModals={() => setModalOpen()} btnLabel="Add to library"/>
       </PortalModal>
 
-    </RecomendedBlock>
+    </UnivesalGeneralBlock>
   );
 }
   

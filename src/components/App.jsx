@@ -36,7 +36,7 @@ export const App = () => {
            <Route path="/login" element={<RestrictedRoute redirectTo='/recommended' component={<Login />} />} />
            <Route path="/recommended" element={<PrivateRoute redirectTo="/register" component={<Recommended />} />} />
            <Route path="/library" element={<PrivateRoute redirectTo="/register" component={<Library />} />} />
-           <Route path="/reading" element={<PrivateRoute redirectTo="/register" component={<Reading />} />} />
+           <Route path="/reading/:bookId" element={<PrivateRoute redirectTo="/register" component={<Reading />} />} />
            <Route path="*" element={<NotFoundPage />} />
          </Route>
        </Routes>
