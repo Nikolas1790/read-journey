@@ -9,3 +9,10 @@ export const DashboardBlock = styled.div`
   background: ${color.blackLight};
   padding: 40px 20px 20px 20px;
 ;`
+
+export const FilterTitle = styled.h3`
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  margin-left: 14px;
+`

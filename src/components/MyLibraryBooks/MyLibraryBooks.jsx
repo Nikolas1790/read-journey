@@ -9,6 +9,7 @@ import PortalModal from 'components/PortalModal/PortalModal';
 import DetailedInformationBook from 'components/DetailedInformationBook/DetailedInformationBook';
 import UnivesalMainConteainer from 'components/UniversalMainContainer/UniversalMainContainer';
 import { MainBlockTitle } from 'components/UniversalMainContainer/UniversalMainContainer.styled';
+import EmptyLibraryScreensaver from 'components/EmptyLibraryScreensaver/EmptyLibraryScreensaver';
 
 const options = ["Unread", "In progress", "Done", "All books" ]
 
@@ -76,17 +77,18 @@ export default function MyLibraryBooks() {
 
 
 
-
-
-
-
-
-
+        {ownLibrary.length === 0 ? ( 
+          <EmptyLibraryScreensaver />
+        ) : (
           <BooksTen>
             {Array.isArray(ownLibrary) && ownLibrary.map((book) => (  
               <CardBook  key={book._id} book={book} openLoginModal={openLoginModal} currentPage=" MyLibrary"  />
             ))}
           </BooksTen> 
+        )}
+
+
+
 
 
 

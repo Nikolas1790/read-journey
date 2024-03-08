@@ -1,4 +1,3 @@
-import Dashboard from "components/Dashboard/Dashboard";
 import UnivesalGeneralBlock from "components/UniversalGeneralBlock/UniversalGeneralBlock";
 import UnivesalMainConteainer from "components/UniversalMainContainer/UniversalMainContainer";
 import { MainBlockTitle } from "components/UniversalMainContainer/UniversalMainContainer.styled";
@@ -16,13 +15,11 @@ export default function Reading() {
 
   const selectedBook = books.find(book => book._id === bookId);
 
-  console.log(selectedBook)
+  // console.log(selectedBook)
   return (
     <UnivesalGeneralBlock >
-
-      <Dashboard>
-        <ReadingDashboard />
-      </Dashboard>
+      
+      <ReadingDashboard  selectedBook={selectedBook._id}/>     
 
 
       <UnivesalMainConteainer>

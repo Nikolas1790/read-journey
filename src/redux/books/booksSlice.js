@@ -10,6 +10,8 @@ const bookSlice = createSlice({
     loading: false,
     error: null,
     totalPages: 1, // Добавлено поле общего количества страниц
+    readBook: [],
+    
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -76,8 +78,9 @@ const bookSlice = createSlice({
         state.error = null;
       })
       .addCase(readingStart.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.loading = false;
-        // eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+        state.readBook = action.payload;
       })
       .addCase(readingStart.rejected, (state, action) => {
         state.loading = false;

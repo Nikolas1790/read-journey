@@ -2,9 +2,11 @@ import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
 import sprite from '../../img/sprite.svg';
-import { Arguments, CardAutor, CardImg, CardRecomended, CardTitle, ErrorMessageStyled, FilterTitle, Filters, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTextToHome, LinkToHome, MainBlockLibraryDashboard, StartWorkoutBlock, StartWorkoutTitle } from './LibraryDashoard.styled';
+import { Arguments, CardAutor, CardImg, CardRecomended, CardTitle, ErrorMessageStyled, Filters, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTextToHome, LinkToHome, MainBlockLibraryDashboard, StartWorkoutBlock, StartWorkoutTitle } from './LibraryDashoard.styled';
 import { useSelector } from 'react-redux';
 import { selectBookData } from '../../redux/books/selector';
+import Dashboard from 'components/Dashboard/Dashboard';
+import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
 
 const initialValues = {
   title: '',
@@ -26,6 +28,7 @@ export default function LibraryDashboard() {
     console.log("submit")
   }
   return (
+    <Dashboard>
     <MainBlockLibraryDashboard>      
       <Filters>
         <FilterTitle>Create your library:</FilterTitle>
@@ -83,6 +86,7 @@ export default function LibraryDashboard() {
 
 
     </MainBlockLibraryDashboard>
+    </Dashboard>
   );
 }
   

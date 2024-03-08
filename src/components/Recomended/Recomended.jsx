@@ -1,7 +1,6 @@
 import { BooksTen, HeaderAndPaginationBlock, PaginationBtn,PaginationSvg} from "./Recomended.styled"
 import sprite from '../../img/sprite.svg';
 import RecomendedDashboard from "components/RecomendedDashboard/RecomendedDashboard";
-import Dashboard from "components/Dashboard/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchBooks } from "../../redux/books/operations";
@@ -38,9 +37,9 @@ export default function Recomended() {
   };
   return (
     <UnivesalGeneralBlock >
-      <Dashboard>
+      
         <RecomendedDashboard/>
-      </Dashboard>
+      
 
       <UnivesalMainConteainer >
         <HeaderAndPaginationBlock>

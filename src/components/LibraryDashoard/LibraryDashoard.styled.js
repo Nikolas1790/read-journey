@@ -15,12 +15,12 @@ export const Filters = styled.div`
   margin-bottom: 20px;
 `
 
-export const FilterTitle = styled.h3`
-font-size: 14px;
-font-weight: 500;
-  margin-bottom: 8px;
-  margin-left: 14px;
-`
+// export const FilterTitle = styled.h3`
+// font-size: 14px;
+// font-weight: 500;
+//   margin-bottom: 8px;
+//   margin-left: 14px;
+// `
 
 export const FormFields = styled.div`
   display: flex;

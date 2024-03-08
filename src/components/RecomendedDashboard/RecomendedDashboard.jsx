@@ -2,10 +2,12 @@ import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
 import sprite from '../../img/sprite.svg';
-import { Arguments, FilterTitle, Filters, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTextToLibrary, LinkToLibrary, Quote, QuoteBlock, QuoteSpan, SeriaNumber, StartWorkoutBlock, StartWorkoutTitle, TextOne, TextSpan, TextTwo } from './RecomendedDashboard.styled';
+import { Arguments, Filters, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTextToLibrary, LinkToLibrary, Quote, QuoteBlock, QuoteSpan, SeriaNumber, StartWorkoutBlock, StartWorkoutTitle, TextOne, TextSpan, TextTwo } from './RecomendedDashboard.styled';
 
 import imgBooksDesc from '../../img/stackBooksAndLike/books-desc.png';
 import imgBooksDesc2x from '../../img/stackBooksAndLike/books-desc@2.png';
+import Dashboard from 'components/Dashboard/Dashboard';
+import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
 
 const initialValues = {
   title: '',
@@ -22,7 +24,7 @@ export default function RecomendedDashboard() {
     console.log("submit")
   }
   return (
-    <>
+    <Dashboard>
       
       <Filters>
         <FilterTitle>Filters:</FilterTitle>
@@ -76,7 +78,7 @@ export default function RecomendedDashboard() {
         <Quote>"Books are <QuoteSpan>windows</QuoteSpan> to the world, and reading is a journey into the unknown."</Quote>
       </QuoteBlock>
 
-    </>
+    </Dashboard>
   );
 }
   

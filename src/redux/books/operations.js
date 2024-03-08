@@ -49,9 +49,11 @@ export const deleteBook = createAsyncThunk("/books/remove",
 export const readingStart = createAsyncThunk("/books/reading/start",
   async (data, thunkAPI) => {
     try {
-      const response = await axios.post(`/books/reading/start`, { page: data.page });
+      console.log(data)
+      const response = await axios.post(`/books/reading/start`, data);
       return response.data;
     } catch (e) {
+      console.error(e.response.data);
       return thunkAPI.rejectWithValue(e.message);
     }
 });

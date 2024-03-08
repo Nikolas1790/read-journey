@@ -5,6 +5,7 @@ const color = {
   gryeBlack: ' rgb(38, 38, 38)',
   blackLight: 'rgb(31, 31, 31)', 
   black: 'rgb(0, 0, 0)', 
+  blackWhite: '#262626',
   green: 'rgb(48, 185, 77)',
   blue: 'rgb(79, 146, 247)',
   focusColor: 'red',
