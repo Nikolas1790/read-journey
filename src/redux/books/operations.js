@@ -16,7 +16,7 @@ export const fetchBooks = createAsyncThunk("/books/recommend",
 export const addNewBook = createAsyncThunk("/books/addNew",
   async (data, thunkAPI) => {
     try {
-      console.log(data)
+      // console.log(data)
       const response = await axios.post(`/books/add`, data);
       return response.data;
     } catch (e) {

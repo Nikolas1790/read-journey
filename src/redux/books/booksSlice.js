@@ -114,7 +114,7 @@ const bookSlice = createSlice({
         state.error = null;
       })
       .addCase(readingStart.fulfilled, (state, action) => {
-        console.log(action.payload)
+        // console.log(action.payload)
         state.loading = false;
         state.readBook = action.payload;
       })

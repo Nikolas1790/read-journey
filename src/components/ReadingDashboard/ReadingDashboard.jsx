@@ -10,33 +10,34 @@ import star from '../../img/star/star.png';
 import star2x from '../../img/star/srar@2x.png';
 import { useDispatch } from 'react-redux';
 import { readingStart } from '../../redux/books/operations';
-// import { useState } from 'react';
+
 
 
 const initialValues = {
-  page: '',
+  page: '1',
 };
-// const schema = Yup.object({
-//   page: Yup.string().required('Required').matches(/^[0-9]+$/, 'Must be only digits')
-//   .transform((value, originalValue) => originalValue.replace(/\s/g, '')),
-// });
+
 const schema = Yup.object({
   page: Yup.string().required('Required').matches(/^[0-9]+$/, 'Must be only digits')
   .transform((value, originalValue) => originalValue.replace(/\s/g, '')),
 });
 
 export default function ReadingDashboard(selectedBook) {
-  
+
   const dispatch = useDispatch();
 
 
   const handleSubmit = (e) => {   
-console.log(e)
-      const requestData = {
-        id: selectedBook.selectedBook,
-        page: e.page
-      }; 
-      dispatch(readingStart(requestData));
+    // console.log(e)
+    const requestData = {
+      id: selectedBook.selectedBook,
+      page: e.page
+    }; 
+
+    if (e.page) {
+      dispatch(readingStart(requestData))
+    };
+      
 
   }
   return (  
@@ -50,8 +51,8 @@ console.log(e)
               <FormFields>  
                  <FormFieldConteiner>
                   <FormFieldLabel htmlFor="page">Pages number:</FormFieldLabel>
-                  <FormField id="page" name="page" type="page" placeholder="0" paddindleft="111px" error={errors.page && touched.page ? "true" : "false" } />  
-                    {console.log(errors)}           
+                  <FormField id="page" name="page" type="page" placeholder="1" paddindleft="111px" error={errors.page && touched.page ? "true" : "false" } />  
+                    {/* {console.log(errors)}            */}
                   <ErrorMessageStyled name="page" component='div' />   
                 </FormFieldConteiner>            
               </FormFields>       
@@ -71,6 +72,8 @@ console.log(e)
           </StarPicture> 
         </div>
       </div>
+
+
     </Dashboard> 
   );
 }

@@ -8,6 +8,9 @@ import { selectBookData } from '../../redux/books/selector';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
 import { addNewBook } from '../../redux/books/operations';
+import PortalModal from 'components/PortalModal/PortalModal';
+import ModalAddBookSuccessfully from 'components/ModalAddBookSuccessfully/ModalAddBookSuccessfully';
+import { useState } from 'react';
 
 const initialValues = {
   title: '',
@@ -23,20 +26,20 @@ const schema = Yup.object({
 });
 
 export default function LibraryDashboard() {
+  const [modalOpen, setModalOpen] = useState(false);
   const results = useSelector(selectBookData);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {  
+  const handleSubmit = (e, { resetForm }) => {  
     const title= e.title
     const author= e.author
     const page= parseInt(e.page)
 
-
-    if(page) dispatch(addNewBook({ title, author, totalPages:page}))  
-    // console.log(e.title)
-    // console.log(e.author)
-    // console.log(e.page)
-
+    if(page) {
+      dispatch(addNewBook({ title, author, totalPages: page }));
+      setModalOpen(true)
+      resetForm();  // Сбрасываем форму после успешного сабмита
+    }
   }
   return (
     <Dashboard>
@@ -45,7 +48,7 @@ export default function LibraryDashboard() {
         <FilterTitle>Create your library:</FilterTitle>
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
 
-          {({  errors,touched }) => (
+          {({  errors, touched, resetForm  }) => (
             <Form>
               <FormFields>  
                 <FormFieldConteiner>
@@ -64,7 +67,7 @@ export default function LibraryDashboard() {
                   <ErrorMessageStyled name="page" component='div' />   
                 </FormFieldConteiner>            
               </FormFields>       
-              <CustomButton label="Add book" onClick={handleSubmit} width="131px" />             
+              <CustomButton label="Add book" width="131px" />             
             </Form>
           )}
         </Formik>
@@ -95,7 +98,9 @@ export default function LibraryDashboard() {
         </LinkToHome>
       </StartWorkoutBlock>
 
-
+      <PortalModal active={modalOpen} setActive={setModalOpen}>
+        <ModalAddBookSuccessfully  closeModals={() => setModalOpen()} />
+      </PortalModal>
     </MainBlockLibraryDashboard>
     </Dashboard>
   );
