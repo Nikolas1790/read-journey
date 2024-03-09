@@ -7,7 +7,8 @@ import { selectOwnBooks } from "../../redux/books/selector";
 import { AuthorBook, BasicImg, BasicInfBook, TitleBook } from "./Reading.styled";
 import sprite from '../../img/sprite.svg';
 import ReadingDashboard from "components/ReadingDashboard/ReadingDashboard";
-
+import notFoundImg2x from '../../img/notFoundImg/open-book@2x.jpg';
+import notFoundImg from '../../img/notFoundImg/open-book.jpg';
 
 export default function Reading() {
   const { bookId } = useParams();
@@ -15,7 +16,18 @@ export default function Reading() {
 
   const selectedBook = books.find(book => book._id === bookId);
 
-  // console.log(selectedBook)
+  const getImageUrl = () => {
+    const img = new Image();
+    img.src = notFoundImg;
+
+    // Check if the device has a higher pixel density (retina display)
+    if (window.devicePixelRatio && window.devicePixelRatio > 1) {
+      return notFoundImg2x;
+    } else {
+      return notFoundImg;
+    }
+  };
+  const imageUrl = selectedBook.imageUrl || getImageUrl();
   return (
     <UnivesalGeneralBlock >
       
@@ -25,7 +37,7 @@ export default function Reading() {
       <UnivesalMainConteainer>
         <MainBlockTitle>My reading</MainBlockTitle>
         <BasicInfBook>
-          <BasicImg src={selectedBook.imageUrl} alt='title'/>
+          <BasicImg src={imageUrl} alt='title'/>
           <TitleBook>{selectedBook.title}</TitleBook>
           <AuthorBook>{selectedBook.author}</AuthorBook>
 
