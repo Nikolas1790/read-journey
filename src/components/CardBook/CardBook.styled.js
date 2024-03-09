@@ -47,6 +47,13 @@ export const BookAutor = styled.p`
   font-size: 10px ;
   color: ${color.gryeLight};
   white-space: nowrap;
+
+  /* Ограничиваем текст одной строкой */
+  white-space: nowrap;
+
+  /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 ///////////////////////////////////////////////////////////
 export const DellBtn = styled.button`

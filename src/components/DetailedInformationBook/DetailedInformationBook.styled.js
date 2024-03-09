@@ -44,8 +44,14 @@ export const TitleBook = styled.h2`
 `;
 
 export const AuthorBook = styled.p`
+  max-width: 400px;
   color: ${color.gryeLight};
   margin-bottom: 4px;
+
+       /* Ограничиваем текст одной строкой */
+     white-space: nowrap;
+     overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const PagesBook = styled.p`
