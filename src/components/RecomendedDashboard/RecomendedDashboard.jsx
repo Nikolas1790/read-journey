@@ -8,6 +8,8 @@ import imgBooksDesc from '../../img/stackBooksAndLike/books-desc.png';
 import imgBooksDesc2x from '../../img/stackBooksAndLike/books-desc@2.png';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
+import { fetchBooks } from '../../redux/books/operations';
+import { useDispatch } from 'react-redux';
 
 const initialValues = {
   title: '',
@@ -20,8 +22,12 @@ const schema = Yup.object({
 });
 
 export default function RecomendedDashboard() {
-  const handleSubmit = () => {    
-    console.log("submit")
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {  
+    const title= e.title
+    const author= e.author
+
+    dispatch(fetchBooks({ title, author  }))
   }
   return (
     <Dashboard>

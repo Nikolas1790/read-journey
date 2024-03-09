@@ -38,7 +38,7 @@ export default function Recomended() {
   return (
     <UnivesalGeneralBlock >
       
-        <RecomendedDashboard/>
+        <RecomendedDashboard />
       
 
       <UnivesalMainConteainer >

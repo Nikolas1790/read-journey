@@ -3,10 +3,11 @@ import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
 import sprite from '../../img/sprite.svg';
 import { Arguments, CardAutor, CardImg, CardRecomended, CardTitle, ErrorMessageStyled, Filters, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTextToHome, LinkToHome, MainBlockLibraryDashboard, StartWorkoutBlock, StartWorkoutTitle } from './LibraryDashoard.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectBookData } from '../../redux/books/selector';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
+import { addNewBook } from '../../redux/books/operations';
 
 const initialValues = {
   title: '',
@@ -23,9 +24,19 @@ const schema = Yup.object({
 
 export default function LibraryDashboard() {
   const results = useSelector(selectBookData);
+  const dispatch = useDispatch();
 
-  const handleSubmit = () => {    
-    console.log("submit")
+  const handleSubmit = (e) => {  
+    const title= e.title
+    const author= e.author
+    const page= parseInt(e.page)
+
+
+    if(page) dispatch(addNewBook({ title, author, totalPages:page}))  
+    // console.log(e.title)
+    // console.log(e.author)
+    // console.log(e.page)
+
   }
   return (
     <Dashboard>

@@ -17,6 +17,7 @@ export const BookImg = styled.img`
 
   border-radius: 8px; 
   margin-bottom: 8px;
+  background: ${color.gryeBlack};
 `
 
 export const BookDataBlock = styled.div`

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addBookById, deleteBook, fetchBooks, ownBooks, readingStart, readingStop } from "./operations";
+import { addBookById, addNewBook, deleteBook, fetchBooks, ownBooks, readingStart, readingStop } from "./operations";
 
 
 const bookSlice = createSlice({
@@ -23,12 +23,48 @@ const bookSlice = createSlice({
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload.results;
+        // console.log(action.payload.results)
         state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchBooks.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
+
+
+
+
+
+      .addCase(addNewBook.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(addNewBook.fulfilled, (state, action) => {
+        state.loading = false;
+        // console.log(state)
+        state.myBooks = [...state.myBooks, action.payload];
+      })
+      .addCase(addNewBook.rejected, (state, action) => {
+        state.loading = false;
+        // console.error("Add New Book Error:", action.error);
+        state.error = action.error.message;
+      })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       .addCase(addBookById.pending, (state) => {
         state.loading = true;
