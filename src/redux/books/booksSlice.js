@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addBookById, addNewBook, deleteBook, fetchBooks, ownBooks, readingStart, readingStop } from "./operations";
+import { addBookById, addNewBook, bookReadingInf, deleteBook, fetchBooks, ownBooks, readingStart, readingStop } from "./operations";
 
 
 const bookSlice = createSlice({
@@ -11,7 +11,7 @@ const bookSlice = createSlice({
     error: null,
     totalPages: 1, // Добавлено поле общего количества страниц
     readBook: [],
-    
+    allInfoBook: [],
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -31,10 +31,6 @@ const bookSlice = createSlice({
         state.error = action.error.message;
       })
 
-
-
-
-
       .addCase(addNewBook.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -49,21 +45,6 @@ const bookSlice = createSlice({
         // console.error("Add New Book Error:", action.error);
         state.error = action.error.message;
       })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
       .addCase(addBookById.pending, (state) => {
@@ -116,7 +97,7 @@ const bookSlice = createSlice({
       .addCase(readingStart.fulfilled, (state, action) => {
         // console.log(action.payload)
         state.loading = false;
-        state.readBook = action.payload;
+        state.readBook = [...state.readBook, action.payload];
       })
       .addCase(readingStart.rejected, (state, action) => {
         state.loading = false;
@@ -129,12 +110,33 @@ const bookSlice = createSlice({
       })
       .addCase(readingStop.fulfilled, (state, action) => {
         state.loading = false;
-        // eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+
+        // console.log(action.payload);
+        state.readBook =  [...state.readBook, action.payload];
       })
       .addCase(readingStop.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
+
+
+
+
+
+      .addCase(bookReadingInf.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(bookReadingInf.fulfilled, (state, action) => {
+        state.loading = false;
+
+        console.log(action.payload);
+        state.allInfoBook =  action.payload;
+      })
+      .addCase(bookReadingInf.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
 
   },
 });

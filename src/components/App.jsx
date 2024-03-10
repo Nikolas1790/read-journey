@@ -21,9 +21,11 @@ export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
 
   return isRefreshing ? (
     <Loader />
@@ -31,7 +33,7 @@ export const App = () => {
       <div>
        <Routes>
          <Route path="/" element={<Layout />}>
-           <Route index element={<Navigate replace to="/register" />} />
+           <Route index element={<Navigate replace to= '/register' />} />
            <Route path="/register" element={<RestrictedRoute redirectTo='/recommended' component={<Register/>} />} />
            <Route path="/login" element={<RestrictedRoute redirectTo='/recommended' component={<Login />} />} />
            <Route path="/recommended" element={<PrivateRoute redirectTo="/register" component={<Recommended />} />} />

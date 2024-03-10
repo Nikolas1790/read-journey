@@ -6,32 +6,50 @@ export const Forma = styled.div`
   margin-bottom: 40px;
 `
 
-export const StarPicture = styled.picture`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: ${color.blackWhite};
-  margin: 0 auto;
-`
+// export const StarPicture = styled.picture`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100px;
+//   height: 100px;
+//   border-radius: 50%;
+//   background: ${color.blackWhite};
+//   margin: 0 auto;
+// `
 
 /////////////////////////////////////////////////////////
 
 
-export const ProgressTitle = styled.h4`
+// export const ProgressTitle = styled.h4`
+//   font-size: 20px;
+//   font-weight: 700;
+//   margin-bottom: 14px;
+// `
+
+// export const ProgressText = styled.p`
+//   color: ${color.gryeLight};
+//   margin-bottom: 60px;
+// `
+
+export const DiaryTitle = styled.h4`
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 14px;
 `
+////////////////////////////////////////////////////////////////////////////////////
 
-export const ProgressText = styled.p`
-  color: ${color.gryeLight};
-  margin-bottom: 60px;
+export const DiaryHeaderConteiner = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 `
+export const DiarySvgConteiner = styled.div`
+  display: flex;
+  gap: 8px;
 
-
-
-
-
+`
+export const DiaryInfConteiner = styled.div`
+  width: 313px;
+  height: 373px;  
+  background: ${color.gryeBlack};
+  border-radius: 12px;
+`

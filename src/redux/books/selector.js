@@ -4,6 +4,6 @@ export const selectTotalPage = (state) => state.book.totalPages;
 
 export const selectOwnBooks = (state) => state.book.myBooks;
 
-// export const selectMounthWater = (state) => state.water.mounthHistory;
+export const selectInfoCurrentBook = (state) => state.book.allInfoBook;
 
-// export const selectStatusOperation = (state) => state.water.statusOperation;
+export const selectReadBook = (state) => state.book.readBook;

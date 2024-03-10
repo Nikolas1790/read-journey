@@ -1,25 +1,25 @@
 import { createGlobalStyle } from 'styled-components';
 import color from './GlobalColers';
 
-// import GilroyBold from '../fonts/Gilroy-Bold.woff2';
-// import GilroyMedium from '../fonts/Gilroy-Medium.woff2';
+import GilroyBold from '../fonts/Gilroy-Bold.woff';
+import GilroyMedium from '../fonts/Gilroy-Medium.woff';
 // import SFProTextSemibold from '../fonts/SFProText-Semibold.woff2';
 
 export const GlobalStyle = createGlobalStyle`
 
-/* @font-face {
+@font-face {
   font-family: 'Gilroy';
   font-style: normal;
   font-weight: 700; // Bold
-  
+  src: url(${GilroyBold}) format('woff');
 }
 @font-face {
   font-family: 'Gilroy';
   font-style: normal;
   font-weight: 500; // Medium
-  
+  src: url(${GilroyMedium}) format('woff');
 }
-@font-face {
+/* @font-face {
   font-family: 'SF Pro Text';
   font-style: normal;
   font-weight: 600; // Semibold
