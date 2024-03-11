@@ -4,13 +4,14 @@ import CustomButton from "components/CustomButton/CustomButton";
 import { ErrorMessageStyled, FormField, FormFieldConteiner, FormFieldLabel, FormFields} from '../LibraryDashoard/LibraryDashoard.styled';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
-import {  BtnInfReading, BtnInfSvg, DayHeaderConteiner, DayHeaderData, DayTotalPages, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, IconsBlock, MinutesPercentBlock, PageHour, Percent, ResultsBlock, SquareConteiner, SquareInteriorConteiner, Text } from './ReadingDashboard.styled';
+import {  BtnInfReading, BtnInfSvg, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, IconsBlock, MinutesPercentBlock, PageHour, Percent, ResultsBlock, SquareConteiner, SquareInteriorConteiner, Text } from './ReadingDashboard.styled';
 import sprite from '../../img/ico-sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { bookReadingInf, readingStart, readingStop } from '../../redux/books/operations';
+import { bookReadingInf, readingDell, readingStart, readingStop } from '../../redux/books/operations';
 import { useEffect, useState } from 'react';
 import DashboardProgress from 'components/DashboardProgress/DashboardProgress';
 import { selectInfoCurrentBook, selectReadBook } from '../../redux/books/selector';
+import Loader from 'components/Loader/Loader';
 
 const initialValues = {
   page: '',
@@ -22,6 +23,7 @@ const schema = Yup.object({
 });
 
 export default function ReadingDashboard(selectedBook) {
+  const dailyReadings = {};
   const [read, setRead] = useState(false);
   const dispatch = useDispatch();
   const InfoAboutBook =useSelector(selectInfoCurrentBook);
@@ -31,9 +33,9 @@ export default function ReadingDashboard(selectedBook) {
       if(selectedBook.selectedBook) dispatch(bookReadingInf(selectedBook.selectedBook))
     }, [ selectedBook.selectedBook, read, dispatch, ReadBook]);
 
-  // Создайте объект для хранения прогресса по датам
-  const dailyReadings = {};
 
+  
+  // console.log(InfoAboutBook)
   // Переберите массив прогресса и распределите данные по датам
   if(InfoAboutBook && InfoAboutBook.progress && InfoAboutBook.progress.length > 0 ){
     InfoAboutBook?.progress.forEach(entry => {
@@ -47,6 +49,7 @@ export default function ReadingDashboard(selectedBook) {
       const readingDurationMinutes = (finishReadingTime - startReadingTime) / (1000 * 60);
 
        dailyReadings[date].push({
+        id: entry._id,
         startPage: entry.startPage,
         finishPage: entry.finishPage,
         totalPage: InfoAboutBook.totalPages,
@@ -58,7 +61,7 @@ export default function ReadingDashboard(selectedBook) {
   }
 // console.log(InfoAboutBook)
 
-console.log(dailyReadings)
+// console.log(dailyReadings)
 
   const handleSubmit = (e) => {   
     // console.log(e)
@@ -79,6 +82,14 @@ console.log(dailyReadings)
     };
   }
 
+  const handleDellTrash = (e) => {   
+    const res = {
+      bookId: InfoAboutBook._id,
+      readingId: e,
+    }
+    // console.log(e)
+    dispatch(readingDell(res))
+  }
   return (  
     <Dashboard> 
       <Forma>
@@ -102,9 +113,9 @@ console.log(dailyReadings)
         </Formik>
       </Forma>
       <div>
-      { read && <DashboardProgress />}
+      { !read && InfoAboutBook?.progress?.length === 0 && <DashboardProgress />}
 
-        <div>
+      { InfoAboutBook?.progress?.length > 0 &&  <div>
           <DiaryHeaderConteiner>
             <DiaryTitle>Diary</DiaryTitle>
           
@@ -125,77 +136,63 @@ console.log(dailyReadings)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           
-          <DiaryInfConteiner>
+           <DiaryInfConteiner>
             {Object.entries(dailyReadings).map(([date, dailyReadingArray]) => {
-              // Вычисляем общее количество прочитанных страниц за день
-              const totalReadForDay = dailyReadingArray.reduce((total, dailyReading) => total + dailyReading.totalRead, 0);
-            
-              return (
-                <li key={date}>
-                  <DayHeaderConteiner>
-                    <SquareConteiner>
-                      <SquareInteriorConteiner></SquareInteriorConteiner>
-                    </SquareConteiner>
-                    <DayHeaderData>{date}</DayHeaderData>
-                    <DayTotalPages>{totalReadForDay} pages</DayTotalPages>
-                  </DayHeaderConteiner>
-                  <ul>
-                    {dailyReadingArray.map((dailyReading, index) => (
-                      <li key={index}>
+              // Проверка, что date не равно 'Invalid Date'
 
-                        <ResultsBlock>
+              if (date !== 'Invalid Date') {
+                // Вычисляем общее количество прочитанных страниц за день
+                const totalReadForDay = dailyReadingArray.reduce((total, dailyReading) => total + dailyReading.totalRead, 0);
+  
+                return (
+                  <li key={date}>
+                    <DayHeaderConteiner>
+                      <SquareConteiner>
+                        <SquareInteriorConteiner />
+                        {/* <LineConteiner /> */}
+                      </SquareConteiner>
+                      <DayHeaderData>{date}</DayHeaderData>
+                      <DayTotalPages>{totalReadForDay} pages</DayTotalPages>
+                    </DayHeaderConteiner>
+                    <ul>
+                      {dailyReadingArray.map(dailyReading => (
+                        <ResultsBlock key={dailyReading.id}>
                           <MinutesPercentBlock>
                             <Percent>{dailyReading.percent}%</Percent>
                             <Text>{dailyReading.readingDuration} minutes</Text>
                           </MinutesPercentBlock>
-
+                      
                           <div>
                             <IconsBlock>
                               <svg width={59} height={25}>
                                 <use href={`${sprite}#icon-block`} />
                               </svg> 
-                              <svg width={14} height={14}>
-                                <use href={`${sprite}#icon-trash`} />
-                              </svg> 
+                              <DellBtn onClick={() =>handleDellTrash(dailyReading.id)}>
+                                <svg width={14} height={14}>
+                                  <use href={`${sprite}#icon-trash`} />
+                                </svg> 
+                              </DellBtn>
                             </IconsBlock>
                             <PageHour>{dailyReading.totalRead} pages per hour</PageHour>
                           </div>
-                          
                         </ResultsBlock>
-                        
-                        
-                        
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              );
+                      ))}
+                    </ul>
+                  </li>
+                );
+              } else {
+                // Вернуть null или что-то другое, если 'Invalid Date'
+                return <Loader  key="1"/>;
+              }
             })}
           </DiaryInfConteiner>
 
 
 
-        </div>
 
+        </div>
+}
       </div>
     </Dashboard> 
   );

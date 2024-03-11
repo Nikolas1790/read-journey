@@ -74,6 +74,14 @@ export const DiaryInfConteiner = styled.ul`
   background: ${color.gryeBlack};
   border-radius: 12px;
   padding: 20px;
+
+  /* height: 523px; */
+  overflow: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 export const DayHeaderConteiner = styled.div`
@@ -84,6 +92,7 @@ export const DayHeaderConteiner = styled.div`
 `
 
 export const SquareConteiner = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,9 +106,28 @@ export const SquareInteriorConteiner = styled.div`
   width: 12px;
   height: 12px;  
   background: ${color.blackBackground};
-  border-radius: 4px;
+  border-radius: 2px;
 
 `
+
+// export const LineConteiner = styled.div`
+//   position: absolute;
+//   top: 20px;
+//   width: 4px;
+//   height: 100%;
+//   background: ${color.green};
+//   border-radius: 4px;
+// `
+
+
+
+
+
+
+
+
+
+
 
 export const DayHeaderData = styled.h5`
   font-size: 16px;
@@ -110,7 +138,7 @@ export const DayTotalPages = styled.p`
   color: ${color.gryeLight};
 `
 
-export const ResultsBlock = styled.div`
+export const ResultsBlock = styled.li`
   display: flex;
   justify-content: space-between;
   margin-bottom: 27px;
@@ -137,9 +165,26 @@ export const IconsBlock = styled.div`
   margin-bottom: 7px;
 `
 
+export const DellBtn = styled.button`
+ background: transparent;
+ transition: color 0.3s ease; /* Добавляем плавный переход */
+
+&:hover {
+  fill: red;
+  stroke: red;
+  color: red; /* Цвет при наведении */
+}
+
+&:focus {
+  outline: none; /* Убираем стандартную обводку фокуса */
+  color: blue; /* Цвет при фокусе */
+}
+`
+
 export const PageHour = styled.p`
   max-width: 59px;
   text-align: center;
   font-size: 12px;
   color: ${color.gryeLight};
 `
+

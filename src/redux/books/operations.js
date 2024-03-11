@@ -60,11 +60,11 @@ export const deleteBook = createAsyncThunk("/books/remove",
 export const readingStart = createAsyncThunk("/books/reading/start",
   async (data, thunkAPI) => {
     try {
-      console.log(data)
+      // console.log(data)
       const response = await axios.post(`/books/reading/start`, data);
       return response.data;
     } catch (e) {
-      console.error(e.response.data);
+      // console.error(e.response.data);
       return thunkAPI.rejectWithValue(e.message);
     }
 });
@@ -72,10 +72,22 @@ export const readingStart = createAsyncThunk("/books/reading/start",
 export const readingStop = createAsyncThunk("/books/reading/finish",
   async (data, thunkAPI) => {
     try {
-      console.log(data)
+      // console.log(data)
       const response = await axios.post(`/books/reading/finish`, data );
       return response.data;
     } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+});
+
+export const readingDell = createAsyncThunk("/books/reading",
+  async (data, thunkAPI) => {
+    try {
+      // console.log(data)
+      const response = await axios.delete(`/books/reading?bookId=${data.bookId}&readingId=${data.readingId}` );
+      return response.data;
+    } catch (e) {
+      // console.log(e)
       return thunkAPI.rejectWithValue(e.message);
     }
 });
