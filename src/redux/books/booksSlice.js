@@ -130,7 +130,7 @@ const bookSlice = createSlice({
       .addCase(bookReadingInf.fulfilled, (state, action) => {
         state.loading = false;
 
-        console.log(action.payload);
+        // console.log(action.payload);
         state.allInfoBook =  action.payload;
       })
       .addCase(bookReadingInf.rejected, (state, action) => {
