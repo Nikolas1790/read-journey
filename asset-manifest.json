@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/read-journey/static/css/main.b09bb6a4.css",
-    "main.js": "/read-journey/static/js/main.648e0fe9.js",
+    "main.js": "/read-journey/static/js/main.9f76f665.js",
     "static/js/165.8a4788ac.chunk.js": "/read-journey/static/js/165.8a4788ac.chunk.js",
     "static/js/942.640ab76f.chunk.js": "/read-journey/static/js/942.640ab76f.chunk.js",
     "static/js/406.6a1dc471.chunk.js": "/read-journey/static/js/406.6a1dc471.chunk.js",
     "static/js/716.9c19f4eb.chunk.js": "/read-journey/static/js/716.9c19f4eb.chunk.js",
-    "static/js/351.93b27ecc.chunk.js": "/read-journey/static/js/351.93b27ecc.chunk.js",
+    "static/js/351.c224925c.chunk.js": "/read-journey/static/js/351.c224925c.chunk.js",
     "static/js/196.b22b49a5.chunk.js": "/read-journey/static/js/196.b22b49a5.chunk.js",
     "static/js/306.3ca91b05.chunk.js": "/read-journey/static/js/306.3ca91b05.chunk.js",
     "static/js/348.48a4f1fc.chunk.js": "/read-journey/static/js/348.48a4f1fc.chunk.js",
@@ -22,12 +22,12 @@
     "static/media/ico-sprite.svg": "/read-journey/static/media/ico-sprite.bb665e0854bf44759de511d651a864c1.svg",
     "index.html": "/read-journey/index.html",
     "main.b09bb6a4.css.map": "/read-journey/static/css/main.b09bb6a4.css.map",
-    "main.648e0fe9.js.map": "/read-journey/static/js/main.648e0fe9.js.map",
+    "main.9f76f665.js.map": "/read-journey/static/js/main.9f76f665.js.map",
     "165.8a4788ac.chunk.js.map": "/read-journey/static/js/165.8a4788ac.chunk.js.map",
     "942.640ab76f.chunk.js.map": "/read-journey/static/js/942.640ab76f.chunk.js.map",
     "406.6a1dc471.chunk.js.map": "/read-journey/static/js/406.6a1dc471.chunk.js.map",
     "716.9c19f4eb.chunk.js.map": "/read-journey/static/js/716.9c19f4eb.chunk.js.map",
-    "351.93b27ecc.chunk.js.map": "/read-journey/static/js/351.93b27ecc.chunk.js.map",
+    "351.c224925c.chunk.js.map": "/read-journey/static/js/351.c224925c.chunk.js.map",
     "196.b22b49a5.chunk.js.map": "/read-journey/static/js/196.b22b49a5.chunk.js.map",
     "306.3ca91b05.chunk.js.map": "/read-journey/static/js/306.3ca91b05.chunk.js.map",
     "348.48a4f1fc.chunk.js.map": "/read-journey/static/js/348.48a4f1fc.chunk.js.map",
@@ -35,6 +35,6 @@
   },
   "entrypoints": [
     "static/css/main.b09bb6a4.css",
-    "static/js/main.648e0fe9.js"
+    "static/js/main.9f76f665.js"
   ]
 }
