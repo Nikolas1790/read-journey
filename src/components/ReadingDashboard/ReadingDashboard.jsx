@@ -4,7 +4,7 @@ import CustomButton from "components/CustomButton/CustomButton";
 import { ErrorMessageStyled, FormField, FormFieldConteiner, FormFieldLabel, FormFields} from '../LibraryDashoard/LibraryDashoard.styled';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
-import {  BtnInfReading, BtnInfSvg, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, IconsBlock, MinutesPercentBlock, PageHour, Percent, ResultsBlock, SquareConteiner, SquareInteriorConteiner, Text } from './ReadingDashboard.styled';
+import {  BtnInfReading, BtnInfSvg, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatText, Text } from './ReadingDashboard.styled';
 import sprite from '../../img/ico-sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { bookReadingInf, readingDell, readingStart, readingStop } from '../../redux/books/operations';
@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import DashboardProgress from 'components/DashboardProgress/DashboardProgress';
 import { selectInfoCurrentBook, selectReadBook } from '../../redux/books/selector';
 import Loader from 'components/Loader/Loader';
+import {CircleProgress} from 'react-gradient-progress';
 
 const initialValues = {
   page: '',
@@ -24,9 +25,12 @@ const schema = Yup.object({
 
 export default function ReadingDashboard(selectedBook) {
   const dailyReadings = {};
+  let totalReadInBook = 0;
+
   const [read, setRead] = useState(false);
   const dispatch = useDispatch();
   const InfoAboutBook =useSelector(selectInfoCurrentBook);
+  const [diaryStat, setDiaryStat] = useState(false);
 
   const ReadBook =useSelector(selectReadBook);  
     useEffect(() =>{
@@ -34,10 +38,8 @@ export default function ReadingDashboard(selectedBook) {
     }, [ selectedBook.selectedBook, read, dispatch, ReadBook]);
 
 
-  
-  // console.log(InfoAboutBook)
   // Переберите массив прогресса и распределите данные по датам
-  if(InfoAboutBook && InfoAboutBook.progress && InfoAboutBook.progress.length > 0 ){
+  if(InfoAboutBook?.progress?.length > 0 ){
     InfoAboutBook?.progress.forEach(entry => {
       const date = new Date(entry.finishReading).toLocaleDateString();
   
@@ -57,11 +59,12 @@ export default function ReadingDashboard(selectedBook) {
         totalRead: entry.finishPage-entry.startPage,
         percent: parseFloat(((100 * (entry.finishPage - entry.startPage)) / InfoAboutBook.totalPages).toFixed(1)),
       });
+      totalReadInBook += entry.finishPage - entry.startPage;
     });
   }
 // console.log(InfoAboutBook)
 
-// console.log(dailyReadings)
+// console.log(totalReadInBook)
 
   const handleSubmit = (e) => {   
     // console.log(e)
@@ -90,6 +93,17 @@ export default function ReadingDashboard(selectedBook) {
     // console.log(e)
     dispatch(readingDell(res))
   }
+
+  const handleDiaryStatistic = (e) => {   
+    if(e) setDiaryStat(false)
+    if(!e) setDiaryStat(true)
+
+    // console.log("true")
+    // setDiaryStat(true)
+  }
+
+  const roundToTwoDecimalPlaces = () => Math.min((Math.round(totalReadInBook * 100) / InfoAboutBook.totalPages).toFixed(2), 100);
+console.log(roundToTwoDecimalPlaces())
   return (  
     <Dashboard> 
       <Forma>
@@ -117,15 +131,15 @@ export default function ReadingDashboard(selectedBook) {
 
       { InfoAboutBook?.progress?.length > 0 &&  <div>
           <DiaryHeaderConteiner>
-            <DiaryTitle>Diary</DiaryTitle>
+            <DiaryTitle>{diaryStat ? 'Statistic' : 'Diary' }</DiaryTitle>
           
             <DiarySvgConteiner>
-              <BtnInfReading >
+              <BtnInfReading onClick={() => handleDiaryStatistic(true)} >
                 <BtnInfSvg width={20} height={20}  >
                   <use href={`${sprite}#icon-hourglass`} />
                 </BtnInfSvg> 
               </BtnInfReading>
-              <BtnInfReading>
+              <BtnInfReading onClick={() => handleDiaryStatistic(false)}>
                 <svg width={20} height={20}>
                   <use href={`${sprite}#icon-pie-chart`} />
                 </svg>  
@@ -137,14 +151,43 @@ export default function ReadingDashboard(selectedBook) {
 
 
           
-           <DiaryInfConteiner>
+          { diaryStat ? (
+
+            <>
+              <StatText>Each page, each chapter is a new round of knowledge, a new step towards understanding. By rewriting statistics, we create our own reading history.</StatText>
+              <StatBlock>
+              <CircleProgress percentage={roundToTwoDecimalPlaces() || 0} strokeWidth={12} width={189} secondaryColor={"#1F1F1F"} primaryColor={['#30B94D', '#30B94D']} fontSize={'20'}  />
+                {/* <StatPercentBlock >
+                  <div>
+                    <p>100%</p>
+                  </div>
+                </StatPercentBlock> */}
+                <PagePercentBlock>
+                  <GreenBlock />
+                  <div>
+                    <PercentTitle>{roundToTwoDecimalPlaces() || 0} %</PercentTitle>
+                    <PagesRead>{totalReadInBook} pages read</PagesRead>
+                  </div>
+                </PagePercentBlock>
+
+
+  
+
+
+
+
+              </StatBlock>
+
+            </>
+          ) : ( 
+          <DiaryInfConteiner>
             {Object.entries(dailyReadings).map(([date, dailyReadingArray]) => {
               // Проверка, что date не равно 'Invalid Date'
-
+              
               if (date !== 'Invalid Date') {
                 // Вычисляем общее количество прочитанных страниц за день
                 const totalReadForDay = dailyReadingArray.reduce((total, dailyReading) => total + dailyReading.totalRead, 0);
-  
+                // console.log(totalReadForDay)
                 return (
                   <li key={date}>
                     <DayHeaderConteiner>
@@ -186,9 +229,10 @@ export default function ReadingDashboard(selectedBook) {
                 return <Loader  key="1"/>;
               }
             })}
-          </DiaryInfConteiner>
+          </DiaryInfConteiner>)
+          }
 
-
+        
 
 
         </div>

@@ -1,39 +1,14 @@
 import color from 'common/GlobalColers'
 import styled from 'styled-components'
 
-
 export const Forma = styled.div`
   margin-bottom: 40px;
 `
 
-// export const StarPicture = styled.picture`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 100px;
-//   height: 100px;
-//   border-radius: 50%;
-//   background: ${color.blackWhite};
-//   margin: 0 auto;
-// `
-
-/////////////////////////////////////////////////////////
-
-
-// export const ProgressTitle = styled.h4`
-//   font-size: 20px;
-//   font-weight: 700;
-//   margin-bottom: 14px;
-// `
-
-// export const ProgressText = styled.p`
-//   color: ${color.gryeLight};
-//   margin-bottom: 60px;
-// `
-
 export const DiaryTitle = styled.h4`
   font-size: 20px;
   font-weight: 700;
+  line-height: 1;
 `
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -66,6 +41,94 @@ export const Bt = styled.use`
   /* fill: red ; */
   /* stroke: green ; */
 ` 
+////////////////////////////////////////////////////////////////////
+
+export const StatText = styled.p`
+  color: ${color.gryeLight};
+  margin-bottom: 20px;
+`
+export const StatBlock = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 313px;
+  height: 281px;
+  background: ${color.gryeBlack};
+  border-radius: 12px;
+  padding:  20px;
+`
+export const StatPercentBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  /* flex-direction: column; */
+  width: 168px;
+  height: 168px;
+  /* background: ${color.gryeBlack}; */
+  border-radius: 50%;
+  
+  /* padding: 31px 20px 20px 20px; */
+  
+`
+
+export const InteriorStatPercentBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  /* flex-direction: column; */
+  width: 168px;
+  height: 168px;
+  /* background: ${color.gryeBlack}; */
+  border-radius: 50%;
+  /* padding: 31px 20px 20px 20px; */
+`
+
+export const PagePercentBlock = styled.div`
+  display: flex;
+  /* align-items: center; */
+  /* justify-content:center; */
+  /* flex-direction: column; */
+  /* width: 168px;
+  height: 168px; */
+  /* border-radius: 50%;   */
+`
+
+export const GreenBlock = styled.div`
+  width: 14px;
+  height: 14px;
+  border-radius: 4px; 
+  background: ${color.green};
+  margin-right: 15px;
+`
+export const PercentTitle = styled.h6`
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 8px;
+`
+
+export const PagesRead = styled.p`
+  font-size: 12px;
+  font-weight: 500;
+  color: ${color.gryeLight};
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ////////////////////////////////////////////////////////////////////////
 export const DiaryInfConteiner = styled.ul`
