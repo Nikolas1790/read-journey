@@ -25,3 +25,4 @@ export const AuthorBook = styled.p`
   color: ${color.gryeLight};
   margin-bottom: 25px;
 `;
+

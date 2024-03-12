@@ -36,9 +36,9 @@ export const App = () => {
            <Route index element={<Navigate replace to= '/register' />} />
            <Route path="/register" element={<RestrictedRoute redirectTo='/recommended' component={<Register/>} />} />
            <Route path="/login" element={<RestrictedRoute redirectTo='/recommended' component={<Login />} />} />
-           <Route path="/recommended" element={<PrivateRoute redirectTo="/register" component={<Recommended />} />} />
-           <Route path="/library" element={<PrivateRoute redirectTo="/register" component={<Library />} />} />
-           <Route path="/reading/:bookId" element={<PrivateRoute redirectTo="/register" component={<Reading />} />} />
+           <Route path="/recommended" element={<PrivateRoute redirectTo="/recommended" component={<Recommended />} />} />
+           <Route path="/library" element={<PrivateRoute redirectTo="/library" component={<Library />} />} />
+           <Route path="/reading/:bookId" element={<PrivateRoute redirectTo="/library" component={<Reading />} />} />
            <Route path="*" element={<NotFoundPage />} />
          </Route>
        </Routes>

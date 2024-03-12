@@ -9,7 +9,7 @@ export const StarPicture = styled.picture`
   height: 100px;
   border-radius: 50%;
   background: ${color.blackWhite};
-  margin: 0 auto;
+  margin: 0 auto 163px auto;
 `
 
 export const ProgressTitle = styled.h4`

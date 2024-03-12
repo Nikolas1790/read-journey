@@ -4,7 +4,7 @@ import CustomButton from "components/CustomButton/CustomButton";
 import { ErrorMessageStyled, FormField, FormFieldConteiner, FormFieldLabel, FormFields} from '../LibraryDashoard/LibraryDashoard.styled';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
-import {  BtnInfReading, BtnInfSvg, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatText, Text } from './ReadingDashboard.styled';
+import {  BtnInfReading, BtnInfSvg, DashboardConteiner, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatText, Text } from './ReadingDashboard.styled';
 import sprite from '../../img/ico-sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { bookReadingInf, readingDell, readingStart, readingStop } from '../../redux/books/operations';
@@ -23,19 +23,24 @@ const schema = Yup.object({
   .transform((value, originalValue) => originalValue.replace(/\s/g, '')),
 });
 
-export default function ReadingDashboard(selectedBook) {
+export default function ReadingDashboard({selectedBook, onReadChange}) {
   const dailyReadings = {};
   let totalReadInBook = 0;
+  // let homePage = 0;
 
   const [read, setRead] = useState(false);
   const dispatch = useDispatch();
   const InfoAboutBook =useSelector(selectInfoCurrentBook);
   const [diaryStat, setDiaryStat] = useState(false);
+  // const [homePage, setomePage] = useState(false);
+ 
+
+
 
   const ReadBook =useSelector(selectReadBook);  
     useEffect(() =>{
-      if(selectedBook.selectedBook) dispatch(bookReadingInf(selectedBook.selectedBook))
-    }, [ selectedBook.selectedBook, read, dispatch, ReadBook]);
+      if(selectedBook) dispatch(bookReadingInf(selectedBook))
+    }, [ selectedBook, dispatch, ReadBook]);
 
 
   // Переберите массив прогресса и распределите данные по датам
@@ -50,37 +55,43 @@ export default function ReadingDashboard(selectedBook) {
       const finishReadingTime = new Date(entry.finishReading).getTime();
       const readingDurationMinutes = (finishReadingTime - startReadingTime) / (1000 * 60);
 
-       dailyReadings[date].push({
-        id: entry._id,
-        startPage: entry.startPage,
-        finishPage: entry.finishPage,
-        totalPage: InfoAboutBook.totalPages,
-        readingDuration: Math.round(readingDurationMinutes),
-        totalRead: entry.finishPage-entry.startPage,
-        percent: parseFloat(((100 * (entry.finishPage - entry.startPage)) / InfoAboutBook.totalPages).toFixed(1)),
-      });
-      totalReadInBook += entry.finishPage - entry.startPage;
+      const totalRead = entry.finishPage - entry.startPage;
+
+      // Проверка, является ли totalRead числом
+      if (!isNaN(totalRead)) {
+        dailyReadings[date].push({
+          id: entry._id,
+          startPage: entry.startPage,
+          finishPage: entry.finishPage,
+          totalPage: InfoAboutBook.totalPages,
+          readingDuration: Math.round(readingDurationMinutes),
+          totalRead: totalRead,
+          percent: parseFloat(((100 * totalRead) / InfoAboutBook.totalPages).toFixed(1)),
+        });
+        totalReadInBook += totalRead;
+      }
     });
   }
-// console.log(InfoAboutBook)
 
-// console.log(totalReadInBook)
+  // console.log(InfoAboutBook?.progress)
+  const handleSubmit = (e) => { 
+    // homePage += e?.page;
+    // console.log(homePage)
 
-  const handleSubmit = (e) => {   
-    // console.log(e)
     const requestData = {
-      id: selectedBook.selectedBook,
+      id: selectedBook,
       page: e.page 
     }; 
-
     if (e.page) {
       if(!read){
         dispatch(readingStart(requestData))
         setRead(true)
+        onReadChange(read)
       }
       if(read){
         dispatch(readingStop(requestData))
         setRead(false)
+        onReadChange(read)
       }
     };
   }
@@ -90,22 +101,19 @@ export default function ReadingDashboard(selectedBook) {
       bookId: InfoAboutBook._id,
       readingId: e,
     }
-    // console.log(e)
     dispatch(readingDell(res))
   }
 
   const handleDiaryStatistic = (e) => {   
     if(e) setDiaryStat(false)
     if(!e) setDiaryStat(true)
-
-    // console.log("true")
-    // setDiaryStat(true)
   }
 
   const roundToTwoDecimalPlaces = () => Math.min((Math.round(totalReadInBook * 100) / InfoAboutBook.totalPages).toFixed(2), 100);
-console.log(roundToTwoDecimalPlaces())
+
   return (  
     <Dashboard> 
+      <DashboardConteiner>
       <Forma>
         <FilterTitle>Start page:</FilterTitle>
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
@@ -131,69 +139,48 @@ console.log(roundToTwoDecimalPlaces())
 
       { InfoAboutBook?.progress?.length > 0 &&  <div>
           <DiaryHeaderConteiner>
-            <DiaryTitle>{diaryStat ? 'Statistic' : 'Diary' }</DiaryTitle>
-          
+            <DiaryTitle>{diaryStat ? 'Statistic' : 'Diary' }</DiaryTitle>          
             <DiarySvgConteiner>
               <BtnInfReading onClick={() => handleDiaryStatistic(true)} >
-                <BtnInfSvg width={20} height={20}  >
+                <BtnInfSvg width={20} height={20} diarystat={diaryStat ?  "true" : "" } >
                   <use href={`${sprite}#icon-hourglass`} />
                 </BtnInfSvg> 
               </BtnInfReading>
               <BtnInfReading onClick={() => handleDiaryStatistic(false)}>
-                <svg width={20} height={20}>
+                <BtnInfSvg width={20} height={20} diarystat={diaryStat  ? "" : "true" } >
                   <use href={`${sprite}#icon-pie-chart`} />
-                </svg>  
+                </BtnInfSvg>  
               </BtnInfReading>
             </DiarySvgConteiner>
           </DiaryHeaderConteiner>
 
-
-
-
-          
           { diaryStat ? (
-
-            <>
-              <StatText>Each page, each chapter is a new round of knowledge, a new step towards understanding. By rewriting statistics, we create our own reading history.</StatText>
-              <StatBlock>
-              <CircleProgress percentage={roundToTwoDecimalPlaces() || 0} strokeWidth={12} width={189} secondaryColor={"#1F1F1F"} primaryColor={['#30B94D', '#30B94D']} fontSize={'20'}  />
-                {/* <StatPercentBlock >
-                  <div>
-                    <p>100%</p>
-                  </div>
-                </StatPercentBlock> */}
-                <PagePercentBlock>
-                  <GreenBlock />
-                  <div>
-                    <PercentTitle>{roundToTwoDecimalPlaces() || 0} %</PercentTitle>
-                    <PagesRead>{totalReadInBook} pages read</PagesRead>
-                  </div>
-                </PagePercentBlock>
-
-
-  
-
-
-
-
-              </StatBlock>
-
-            </>
-          ) : ( 
-          <DiaryInfConteiner>
+              <>
+                <StatText>Each page, each chapter is a new round of knowledge, a new step towards understanding. By rewriting statistics, we create our own reading history.</StatText>
+                <StatBlock>
+                  <CircleProgress percentage={roundToTwoDecimalPlaces() || 0} strokeWidth={12} width={189} secondaryColor={"#1F1F1F"} primaryColor={['#30B94D', '#30B94D']} fontSize={'20'}  />
+                    <PagePercentBlock>
+                    <GreenBlock />
+                    <div>
+                      <PercentTitle>{roundToTwoDecimalPlaces() || 0} %</PercentTitle>
+                      <PagesRead>{totalReadInBook} pages read</PagesRead>
+                    </div>
+                  </PagePercentBlock>
+                </StatBlock>
+              </>
+            ) : ( 
+            <DiaryInfConteiner>
             {Object.entries(dailyReadings).map(([date, dailyReadingArray]) => {
+
               // Проверка, что date не равно 'Invalid Date'
-              
               if (date !== 'Invalid Date') {
                 // Вычисляем общее количество прочитанных страниц за день
                 const totalReadForDay = dailyReadingArray.reduce((total, dailyReading) => total + dailyReading.totalRead, 0);
-                // console.log(totalReadForDay)
                 return (
                   <li key={date}>
                     <DayHeaderConteiner>
                       <SquareConteiner>
                         <SquareInteriorConteiner />
-                        {/* <LineConteiner /> */}
                       </SquareConteiner>
                       <DayHeaderData>{date}</DayHeaderData>
                       <DayTotalPages>{totalReadForDay} pages</DayTotalPages>
@@ -225,19 +212,15 @@ console.log(roundToTwoDecimalPlaces())
                   </li>
                 );
               } else {
-                // Вернуть null или что-то другое, если 'Invalid Date'
                 return <Loader  key="1"/>;
               }
             })}
           </DiaryInfConteiner>)
           }
-
-        
-
-
         </div>
-}
+      }
       </div>
+      </DashboardConteiner>
     </Dashboard> 
   );
 }

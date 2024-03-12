@@ -22,13 +22,17 @@ export default function MyLibraryBooks() {
   const selecctRef = useRef(null);
 
   const ownLibrary = useSelector(selectOwnBooks);
-  // console.log(ownLibrary)
+  console.log(ownLibrary)
+
   const dispatch = useDispatch();
   useEffect(()=> {
     dispatch(ownBooks())
+    
   }, [dispatch]);
 
-  
+  // useEffect(()=> {
+  //   dispatch(ownBooks("in-progress"))
+  // }, [selectedBooks]);
   const openLoginModal = (book) => {
     setModalOpen(true);
     setBookData(book); // Передаем данные о книге
@@ -48,9 +52,19 @@ export default function MyLibraryBooks() {
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+    
     // console.log("selectedBooks")
   };
 
+  const handleSelectedBooks = (e) => {
+    setSelectedBooks(e);
+    if(e === "Done") dispatch(ownBooks("done"))
+    if(e === "In progress") dispatch(ownBooks("in-progress"))
+    if(e === "All books") dispatch(ownBooks())
+    if(e === "Unread") dispatch(ownBooks("unread"))
+    
+    console.log(e)
+  };
 
   return (
     <UnivesalMainConteainer>
@@ -58,24 +72,25 @@ export default function MyLibraryBooks() {
           <MainBlockTitle>My library</MainBlockTitle>
 
           <Dropdown onClick={toggleDropdown} ref={selecctRef}>
-            {!isOpen ? (<DropdownSvg width={16} height={16} >
+            {!isOpen ? (
+            <DropdownSvg width={16} height={16} >
               <use href={`${sprite}#icon-chevron-down`}  />
-            </DropdownSvg>) : (
+            </DropdownSvg>
+            ) : (
             <DropdownSvg width={16} height={16} >
               <use href={`${sprite}#icon-chevron-upp`}  />
-            </DropdownSvg>)}
+            </DropdownSvg>
+            )}
             <DropdownButton >{selectedBooks || "All books"}</DropdownButton>
             <DropdownList open={isOpen}>
               {options.map((book) => (
-                <DropdownItem key={book} value={book} onClick={() => setSelectedBooks(book)}>
+                <DropdownItem key={book} value={book} onClick={() => handleSelectedBooks(book)}>
                   {book}
                 </DropdownItem>
               ))}
             </DropdownList>                   
           </Dropdown>
         </HeaderAndPaginationBlock>
-
-
 
         {ownLibrary.length === 0 ? ( 
           <EmptyLibraryScreensaver />
@@ -86,11 +101,6 @@ export default function MyLibraryBooks() {
             ))}
           </BooksTen> 
         )}
-
-
-
-
-
 
         <PortalModal active={modalOpen} setActive={setModalOpen}>
           <DetailedInformationBook bookData={bookData} closeModals={() => setModalOpen()} btnLabel="Start reading" />

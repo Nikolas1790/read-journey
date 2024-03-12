@@ -1,8 +1,15 @@
 import color from 'common/GlobalColers'
 import styled from 'styled-components'
 
+export const DashboardConteiner = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`
+
 export const Forma = styled.div`
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 `
 
 export const DiaryTitle = styled.h4`
@@ -29,11 +36,8 @@ export const BtnInfReading = styled.button`
 ` 
 
 export const BtnInfSvg = styled.svg`
-  /* background: transparent; */
-  /* color: red !important; */
-  /* background: yellow; */
-  fill: red ;
-  stroke: green ;
+  fill: ${props => (props.diarystat ? color.gryeLight : color.whitePrimary)};
+  stroke: ${props => (props.diarystat ? color.gryeLight : color.whitePrimary)};
 ` 
 export const Bt = styled.use`
   /* color: red !important; */
