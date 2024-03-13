@@ -57,26 +57,22 @@ export const StatBlock = styled.div`
   height: 281px;
   background: ${color.gryeBlack};
   border-radius: 12px;
-  padding:  20px;
+  padding:   30px 20px 20px 20px;
 `
 export const StatPercentBlock = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content:center;
-  width: 168px;
-  height: 168px;
-  border-radius: 50%;
+  margin-bottom: 20px;
   
 `
 
-export const InteriorStatPercentBlock = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content:center;
-  /* flex-direction: column; */
-  width: 168px;
-  height: 168px;
-  border-radius: 50%;
+export const TextOneHundredPercent = styled.p`
+  position: absolute;
+  z-index: 1;
+  font-size: 20px;
+  font-weight: 700;
 `
 
 export const PagePercentBlock = styled.div`

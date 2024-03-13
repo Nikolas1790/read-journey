@@ -4,7 +4,7 @@ import CustomButton from "components/CustomButton/CustomButton";
 import { ErrorMessageStyled, FormField, FormFieldConteiner, FormFieldLabel, FormFields} from '../LibraryDashoard/LibraryDashoard.styled';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
-import {  BtnInfReading, BtnInfSvg, DashboardConteiner, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatText, Text } from './ReadingDashboard.styled';
+import {  BtnInfReading, BtnInfSvg, DashboardConteiner, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatPercentBlock, StatText, Text, TextOneHundredPercent } from './ReadingDashboard.styled';
 import sprite from '../../img/ico-sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { bookReadingInf, readingDell, readingStart, readingStop } from '../../redux/books/operations';
@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import DashboardProgress from 'components/DashboardProgress/DashboardProgress';
 import { selectInfoCurrentBook, selectReadBook } from '../../redux/books/selector';
 import Loader from 'components/Loader/Loader';
-import {CircleProgress} from 'react-gradient-progress';
+import { Circle } from 'rc-progress';
 import PortalModal from 'components/PortalModal/PortalModal';
 import ModalBookIsRead from 'components/ModalBookWindow/ModalBookIsRead';
 
@@ -193,7 +193,10 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
               <>
                 <StatText>Each page, each chapter is a new round of knowledge, a new step towards understanding. By rewriting statistics, we create our own reading history.</StatText>
                 <StatBlock>
-                  <CircleProgress percentage={roundToTwoDecimalPlaces() || 0} strokeWidth={12} width={189} secondaryColor={"#1F1F1F"} primaryColor={['#30B94D', '#30B94D']} fontSize={'20'}  />
+                <StatPercentBlock>
+                  <Circle percent={roundToTwoDecimalPlaces() || 0} strokeWidth={9} width={168} strokeColor={'#30B94D'} trailWidth={9} trailColor={"#1F1F1F"} />
+                  <TextOneHundredPercent>100 %</TextOneHundredPercent>
+                </StatPercentBlock>
                     <PagePercentBlock>
                     <GreenBlock />
                     <div>
