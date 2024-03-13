@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectBookData } from '../../redux/books/selector';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
-import { addNewBook } from '../../redux/books/operations';
+import { addNewBook, fetchBooks } from '../../redux/books/operations';
 import PortalModal from 'components/PortalModal/PortalModal';
-import ModalAddBookSuccessfully from 'components/ModalAddBookSuccessfully/ModalAddBookSuccessfully';
-import { useState } from 'react';
+import ModalAddBookSuccessfully from 'components/ModalBookWindow/ModalAddBookSuccessfully';
+import { useEffect, useState } from 'react';
 
 const initialValues = {
   title: '',
@@ -26,9 +26,19 @@ const schema = Yup.object({
 });
 
 export default function LibraryDashboard() {
+
+ 
+
+
+
+
   const [modalOpen, setModalOpen] = useState(false);
   const results = useSelector(selectBookData);
   const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(fetchBooks({ page: 1, limit: 10  }))
+  }, [dispatch]);
 
   const handleSubmit = (e, { resetForm }) => {  
     const title= e.title
@@ -41,6 +51,8 @@ export default function LibraryDashboard() {
       resetForm();  // Сбрасываем форму после успешного сабмита
     }
   }
+
+  console.log(results)
   return (
     <Dashboard>
     <MainBlockLibraryDashboard>      

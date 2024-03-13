@@ -13,6 +13,8 @@ import DashboardProgress from 'components/DashboardProgress/DashboardProgress';
 import { selectInfoCurrentBook, selectReadBook } from '../../redux/books/selector';
 import Loader from 'components/Loader/Loader';
 import {CircleProgress} from 'react-gradient-progress';
+import PortalModal from 'components/PortalModal/PortalModal';
+import ModalBookIsRead from 'components/ModalBookWindow/ModalBookIsRead';
 
 const initialValues = {
   page: '',
@@ -24,25 +26,50 @@ const schema = Yup.object({
 });
 
 export default function ReadingDashboard({selectedBook, onReadChange}) {
+  const [isRendered, setIsRendered] = useState(false);
+  // const isLoading = useSelector(state => state.book.loading);
+
   const dailyReadings = {};
   let totalReadInBook = 0;
   // let homePage = 0;
-
+  const [modalOpen, setModalOpen] = useState(false);
   const [read, setRead] = useState(false);
   const dispatch = useDispatch();
   const InfoAboutBook =useSelector(selectInfoCurrentBook);
   const [diaryStat, setDiaryStat] = useState(false);
   // const [homePage, setomePage] = useState(false);
- 
-
-
-
   const ReadBook =useSelector(selectReadBook);  
+
+  useEffect(() => {
+    setIsRendered(true);
+  }, [isRendered]);
+
     useEffect(() =>{
       if(selectedBook) dispatch(bookReadingInf(selectedBook))
     }, [ selectedBook, dispatch, ReadBook]);
 
 
+    useEffect(() => {
+      // Подсчет после каждого обновления progress
+      const timer = setTimeout(() => {
+      const totalReadPages = InfoAboutBook?.progress?.reduce((total, entry) => {
+        const startPage = Number(entry.startPage);
+        const finishPage = Number(entry.finishPage);
+        if (!isNaN(startPage) && !isNaN(finishPage)) {
+          return total + (finishPage - startPage);
+        }
+        return total;
+      }, 0);
+    
+      if (totalReadPages >= InfoAboutBook?.totalPages) {
+        setModalOpen(true);
+      }
+    
+      // console.log(totalReadPages, InfoAboutBook?.totalPages);
+    }, 250);
+    return () => clearTimeout(timer); 
+    }, [InfoAboutBook?.progress, InfoAboutBook?.totalPages]);
+    
   // Переберите массив прогресса и распределите данные по датам
   if(InfoAboutBook?.progress?.length > 0 ){
     InfoAboutBook?.progress.forEach(entry => {
@@ -73,11 +100,12 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
     });
   }
 
-  // console.log(InfoAboutBook?.progress)
-  const handleSubmit = (e) => { 
-    // homePage += e?.page;
-    // console.log(homePage)
 
+
+
+
+  
+  const handleSubmit = (e) => { 
     const requestData = {
       id: selectedBook,
       page: e.page 
@@ -92,6 +120,8 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
         dispatch(readingStop(requestData))
         setRead(false)
         onReadChange(read)
+
+
       }
     };
   }
@@ -109,8 +139,11 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
     if(!e) setDiaryStat(true)
   }
 
-  const roundToTwoDecimalPlaces = () => Math.min((Math.round(totalReadInBook * 100) / InfoAboutBook.totalPages).toFixed(2), 100);
-
+  const roundToTwoDecimalPlaces = () => {
+    const percentage = Math.min((Math.round(totalReadInBook * 100) / InfoAboutBook.totalPages).toFixed(2), 100);
+// console.log(totalReadInBook)
+    return percentage;
+  };
   return (  
     <Dashboard> 
       <DashboardConteiner>
@@ -170,7 +203,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
               </>
             ) : ( 
             <DiaryInfConteiner>
-            {Object.entries(dailyReadings).map(([date, dailyReadingArray]) => {
+            {Object.entries(dailyReadings).map(([date, dailyReadingArray], index) => {
 
               // Проверка, что date не равно 'Invalid Date'
               if (date !== 'Invalid Date') {
@@ -179,8 +212,8 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
                 return (
                   <li key={date}>
                     <DayHeaderConteiner>
-                      <SquareConteiner>
-                        <SquareInteriorConteiner />
+                      <SquareConteiner first={index === 0 ? "true" : "false"} >
+                        <SquareInteriorConteiner first={index === 0 ? "true" : "false"} />
                       </SquareConteiner>
                       <DayHeaderData>{date}</DayHeaderData>
                       <DayTotalPages>{totalReadForDay} pages</DayTotalPages>
@@ -220,6 +253,11 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
         </div>
       }
       </div>
+
+      <PortalModal active={modalOpen} setActive={setModalOpen}>
+        <ModalBookIsRead  closeModals={() => setModalOpen()} />
+      </PortalModal>
+
       </DashboardConteiner>
     </Dashboard> 
   );

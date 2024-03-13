@@ -41,9 +41,7 @@ export const BtnInfSvg = styled.svg`
 ` 
 export const Bt = styled.use`
   /* color: red !important; */
-  /* background: yellow; */
-  /* fill: red ; */
-  /* stroke: green ; */
+
 ` 
 ////////////////////////////////////////////////////////////////////
 
@@ -65,13 +63,9 @@ export const StatPercentBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content:center;
-  /* flex-direction: column; */
   width: 168px;
   height: 168px;
-  /* background: ${color.gryeBlack}; */
   border-radius: 50%;
-  
-  /* padding: 31px 20px 20px 20px; */
   
 `
 
@@ -82,19 +76,11 @@ export const InteriorStatPercentBlock = styled.div`
   /* flex-direction: column; */
   width: 168px;
   height: 168px;
-  /* background: ${color.gryeBlack}; */
   border-radius: 50%;
-  /* padding: 31px 20px 20px 20px; */
 `
 
 export const PagePercentBlock = styled.div`
   display: flex;
-  /* align-items: center; */
-  /* justify-content:center; */
-  /* flex-direction: column; */
-  /* width: 168px;
-  height: 168px; */
-  /* border-radius: 50%;   */
 `
 
 export const GreenBlock = styled.div`
@@ -165,29 +151,19 @@ export const SquareConteiner = styled.div`
   justify-content: center;
   width: 20px;
   height: 20px;  
-  background: ${color.whitePrimary};
+  /* background: ${color.whitePrimary}; */
+  background: ${({ first }) => first === "true" ?  color.whitePrimary : color.gryeLight};
   border-radius: 4px;
   margin-right: 10px;
 `
 export const SquareInteriorConteiner = styled.div`
   width: 12px;
   height: 12px;  
-  background: ${color.blackBackground};
+  /* background: ${color.blackBackground}; */
+  background: ${({ first }) => first === "true" ?  color.blackBackground : color.blackLight};
   border-radius: 2px;
 
 `
-
-// export const LineConteiner = styled.div`
-//   position: absolute;
-//   top: 20px;
-//   width: 4px;
-//   height: 100%;
-//   background: ${color.green};
-//   border-radius: 4px;
-// `
-
-
-
 
 
 

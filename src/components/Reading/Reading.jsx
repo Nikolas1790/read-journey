@@ -15,9 +15,9 @@ export default function Reading() {
   const { bookId } = useParams();
   const books = useSelector(selectOwnBooks);
   const [read, setRead] = useState(false);
-
+  // console.log(bookId)
   const selectedBook = books.find(book => book._id === bookId);
-// console.log(read)
+
   const getImageUrl = () => {
     const img = new Image();
     img.src = notFoundImg;

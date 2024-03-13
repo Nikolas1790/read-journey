@@ -1,5 +1,5 @@
 import sprite from '../../img/sprite.svg';
-import { ClosingSymbol, Conteiner, Img, Text, TextSpan, Title } from './ModalAddBookSuccessfully.styled';
+import { ClosingSymbol, Conteiner, Img, Text, TextSpan, Title } from './ModalBooks.styled';
 import like2x from '../../img/stackBooksAndLike/like-desc@2x.png';
 import like from '../../img/stackBooksAndLike/like-desc.png';
 

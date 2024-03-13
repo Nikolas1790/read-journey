@@ -9,10 +9,8 @@ import notFoundImg2x from '../../img/notFoundImg/open-book@2x.jpg';
 import notFoundImg from '../../img/notFoundImg/open-book.jpg';
 
 export default function DetailedInformationBook({ closeModals, bookData, btnLabel }) {
-  // const ownLibrary = useSelector(selectOwnBooks); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // console.log(ownLibrary)
 
   const handleButtonClick =  () => {   
     if(btnLabel === "Add to library") dispatch(addBookById(bookData._id));  

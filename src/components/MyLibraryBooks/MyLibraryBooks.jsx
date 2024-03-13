@@ -22,7 +22,7 @@ export default function MyLibraryBooks() {
   const selecctRef = useRef(null);
 
   const ownLibrary = useSelector(selectOwnBooks);
-  console.log(ownLibrary)
+  // console.log(ownLibrary)
 
   const dispatch = useDispatch();
   useEffect(()=> {
@@ -30,9 +30,6 @@ export default function MyLibraryBooks() {
     
   }, [dispatch]);
 
-  // useEffect(()=> {
-  //   dispatch(ownBooks("in-progress"))
-  // }, [selectedBooks]);
   const openLoginModal = (book) => {
     setModalOpen(true);
     setBookData(book); // Передаем данные о книге

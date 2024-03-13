@@ -11,7 +11,7 @@ export const Conteiner = styled.div`
   height: 290px;
   background: ${color.blackLight};
   border-radius: 12px;
-  padding: 50px ;
+  padding: 49px ;
 `;
 
 export const ClosingSymbol = styled.button`
