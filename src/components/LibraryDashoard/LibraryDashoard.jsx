@@ -4,13 +4,15 @@ import CustomButton from "components/CustomButton/CustomButton";
 import sprite from '../../img/sprite.svg';
 import { Arguments, CardAutor, CardImg, CardRecomended, CardTitle, ErrorMessageStyled, Filters, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTextToHome, LinkToHome, MainBlockLibraryDashboard, StartWorkoutBlock, StartWorkoutTitle } from './LibraryDashoard.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBookData } from '../../redux/books/selector';
+import { selectBookData, selectOwnBooks } from '../../redux/books/selector';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
-import { addNewBook, fetchBooks } from '../../redux/books/operations';
+import { addNewBook, fetchBooks, ownBooks } from '../../redux/books/operations';
 import PortalModal from 'components/PortalModal/PortalModal';
 import ModalAddBookSuccessfully from 'components/ModalBookWindow/ModalAddBookSuccessfully';
 import { useEffect, useState } from 'react';
+import DetailedInformationBook from 'components/DetailedInformationBook/DetailedInformationBook';
+import { toast } from 'react-toastify';
 
 const initialValues = {
   title: '',
@@ -26,17 +28,16 @@ const schema = Yup.object({
 });
 
 export default function LibraryDashboard() {
-
- 
-
-
-
-
+  const [openModal, setOpenModal] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [bookData, setBookData] = useState(false); 
+  const [bookExists, setBookExists] = useState(false);
   const results = useSelector(selectBookData);
+  const ownLibrary = useSelector(selectOwnBooks);
   const dispatch = useDispatch();
 
   useEffect(()=> {
+    dispatch(ownBooks())  
     dispatch(fetchBooks({ page: 1, limit: 10  }))
   }, [dispatch]);
 
@@ -46,13 +47,27 @@ export default function LibraryDashboard() {
     const page= parseInt(e.page)
 
     if(page) {
-      dispatch(addNewBook({ title, author, totalPages: page }));
-      setModalOpen(true)
-      resetForm();  // Сбрасываем форму после успешного сабмита
+      const bookExists = ownLibrary.find(item => item.title === title);
+
+      // Если find возвращает undefined, значит, книга не найдена в библиотеке, и мы можем добавить ее
+      if (bookExists === undefined) {
+        dispatch(addNewBook({ title, author, totalPages: page }));
+        setModalOpen(true);
+        setBookExists(false);
+        resetForm();
+      } else {
+        setBookExists(true);
+        toast.error('Книга уже есть в библиотеке.')
+      }
     }
+    e.target.blur();
   }
 
-  console.log(results)
+  const openLoginModal = (book) => {
+    setOpenModal(true);
+    setBookData(book); // Передаем данные о книге
+  };
+  // console.log(results)
   return (
     <Dashboard>
     <MainBlockLibraryDashboard>      
@@ -65,7 +80,7 @@ export default function LibraryDashboard() {
               <FormFields>  
                 <FormFieldConteiner>
                   <FormFieldLabel htmlFor="title">Book title:</FormFieldLabel>
-                  <FormField id="title" name="title" type="title" placeholder="I See You Are..." error={errors.title && touched.title ? "true" : "false" } />     
+                  <FormField id="title" name="title" type="title" placeholder="I See You Are..." error={errors.title && touched.title ? "true" : "false"  }  style={bookExists ? { borderColor: 'red' } : {}} />     
                   <ErrorMessageStyled name="title" component='div' />           
                 </FormFieldConteiner>                
                 <FormFieldConteiner>
@@ -87,21 +102,15 @@ export default function LibraryDashboard() {
 
       <StartWorkoutBlock>
         <StartWorkoutTitle>Recommended books</StartWorkoutTitle>
-
-
-
         <Arguments >
-          {results?.slice(0, 3).map((book) => (
+          {results?.slice(3, 6).map((book) => (
             <CardRecomended key={book._id}>
-              <CardImg src={book.imageUrl} alt="book title"  />
+              <CardImg src={book.imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
               <CardTitle>{book.title}</CardTitle>
               <CardAutor>{book.author}</CardAutor>
             </CardRecomended>
           ))}     
         </Arguments>
-
-
-
         <LinkToHome to="/recommended">
           <LinkTextToHome>Home </LinkTextToHome>            
           <svg width={24} height={24}>
@@ -112,6 +121,9 @@ export default function LibraryDashboard() {
 
       <PortalModal active={modalOpen} setActive={setModalOpen}>
         <ModalAddBookSuccessfully  closeModals={() => setModalOpen()} />
+      </PortalModal>
+      <PortalModal active={openModal} setActive={setOpenModal}>
+        <DetailedInformationBook bookData={bookData} closeModals={() => setOpenModal()} btnLabel="Add to library"/>
       </PortalModal>
     </MainBlockLibraryDashboard>
     </Dashboard>

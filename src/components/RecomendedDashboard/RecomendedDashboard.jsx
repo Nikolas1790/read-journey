@@ -28,6 +28,7 @@ export default function RecomendedDashboard() {
     const author= e.author
 
     dispatch(fetchBooks({ title, author  }))
+    e.target.blur();
   }
   return (
     <Dashboard>
@@ -74,8 +75,7 @@ export default function RecomendedDashboard() {
         </LinkToLibrary>
       </StartWorkoutBlock>
 
-      <QuoteBlock>
-        
+      <QuoteBlock>        
       <picture>
         <source srcSet={imgBooksDesc2x} media="(min-resolution: 192dpi)" />        
         <img src={imgBooksDesc} alt="stack books" width={40} />

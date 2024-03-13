@@ -4,7 +4,6 @@ import like2x from '../../img/stackBooksAndLike/like-desc@2x.png';
 import like from '../../img/stackBooksAndLike/like-desc.png';
 
 export default function ModalAddBookSuccessfully({ closeModals}) {
-
   return (
     <Conteiner>
       <ClosingSymbol onClick={closeModals}>
@@ -18,7 +17,6 @@ export default function ModalAddBookSuccessfully({ closeModals}) {
       </Img>  
       <Title>Good job</Title>
       <Text>Your book is now in <TextSpan>the library!</TextSpan> The joy knows no bounds and now you can start your training</Text>
-
     </Conteiner>
   );
 }

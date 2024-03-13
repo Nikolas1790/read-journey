@@ -16,11 +16,9 @@ import { Circle } from 'rc-progress';
 import PortalModal from 'components/PortalModal/PortalModal';
 import ModalBookIsRead from 'components/ModalBookWindow/ModalBookIsRead';
 
-
 const initialValues = {
   page: '',
 };
-
 
 const schema = Yup.object({
   page: Yup.string().required('Required').matches(/^[0-9]+$/, 'Must be only digits')
@@ -28,18 +26,15 @@ const schema = Yup.object({
 });
 
 export default function ReadingDashboard({selectedBook, onReadChange}) {
-  const [isRendered, setIsRendered] = useState(false);
-  // const isLoading = useSelector(state => state.book.loading);
-
   const dailyReadings = {};
   let totalReadInBook = 0;
-  // let homePage = 0;
+  const [isRendered, setIsRendered] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [read, setRead] = useState(false);
+  const [diaryStat, setDiaryStat] = useState(false);
+
   const dispatch = useDispatch();
   const InfoAboutBook =useSelector(selectInfoCurrentBook);
-  const [diaryStat, setDiaryStat] = useState(false);
-  // const [homePage, setomePage] = useState(false);
   const ReadBook =useSelector(selectReadBook);  
 
   useEffect(() => {
@@ -49,7 +44,6 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
     useEffect(() =>{
       if(selectedBook) dispatch(bookReadingInf(selectedBook))
     }, [ selectedBook, dispatch, ReadBook]);
-
 
     useEffect(() => {
       // Подсчет после каждого обновления progress
@@ -101,11 +95,6 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
       }
     });
   }
-
-
-
-
-
   
   const handleSubmit = (e) => { 
     const requestData = {
@@ -122,10 +111,9 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
         dispatch(readingStop(requestData))
         setRead(false)
         onReadChange(read)
-
-
       }
     };
+    e.target.blur();
   }
 
   const handleDellTrash = (e) => {   
@@ -143,7 +131,6 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
 
   const roundToTwoDecimalPlaces = () => {
     const percentage = Math.min((Math.round(totalReadInBook * 100) / InfoAboutBook.totalPages).toFixed(2), 100);
-// console.log(totalReadInBook)
     return percentage;
   };
   return (  
@@ -208,7 +195,16 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
               </>
             ) : ( 
             <DiaryInfConteiner>
-            {Object.entries(dailyReadings).map(([date, dailyReadingArray], index) => {
+            {Object.entries(dailyReadings)
+              .sort(([dateA], [dateB]) => {
+                // Преобразование строк дат в формат, который можно сравнивать
+                const [dayA, monthA, yearA] = dateA.split(".");
+                const [dayB, monthB, yearB] = dateB.split(".");
+                const dateObjA = new Date(`${yearA}-${monthA}-${dayA}`);
+                const dateObjB = new Date(`${yearB}-${monthB}-${dayB}`);
+                return dateObjB - dateObjA; // Сортировка по убыванию
+              })
+              .map(([date, dailyReadingArray], index) => {
 
               // Проверка, что date не равно 'Invalid Date'
               if (date !== 'Invalid Date') {
@@ -262,7 +258,6 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
       <PortalModal active={modalOpen} setActive={setModalOpen}>
         <ModalBookIsRead  closeModals={() => setModalOpen()} />
       </PortalModal>
-
       </DashboardConteiner>
     </Dashboard> 
   );

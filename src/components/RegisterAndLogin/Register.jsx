@@ -3,14 +3,12 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import sprite from '../../img/sprite.svg';
 import { Container, ErrorMessagePassword, ErrorMessageStyled, EyeSvg, FormBlock, FormField, FormFieldConteiner, FormFieldLabel, FormFieldPassvord, FormFieldPassvordConteiner, FormFields} from "./RegisterAndLogin.styled";
-
 import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
 import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
 import SubmitBlockRegister from 'components/SubmitBlockAutorization/SubmitBlockRegister';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import { toast } from 'react-toastify';
-
 import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
@@ -64,8 +62,7 @@ export default function Register() {
                     <FormField id="name" name="name" type="name" placeholder="Nik Ovson" error={errors.name && touched.name ? "true" : "false" } />
                     <ErrorMessageStyled name="name" component='div' />
                   </FormFieldConteiner>
-          
-          
+                    
                   <FormFieldConteiner>
                     <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
                     <FormField id="email" name="email" type="email" placeholder="nik@google.com" error={errors.email && touched.email ? "true" : "false" } email="true" />
@@ -77,9 +74,7 @@ export default function Register() {
                     <FormFieldLabel htmlFor="password">Password:</FormFieldLabel>
                     <FormFieldPassvord id="password" name="password" type={showPassword ? "text" : "password"} placeholder="********" error={errors.password && touched.password ? "true" : "false"}  />
           
-
-          
-                    {showPassword ? (
+                   {showPassword ? (
                     <EyeSvg
                       width={20}
                       height={20}
@@ -111,8 +106,6 @@ export default function Register() {
                     >
                       <use href={`${sprite}#icon-check-ok`} />
                     </EyeSvg> }
-
-
 
                   </FormFieldPassvordConteiner>
                 </div>     

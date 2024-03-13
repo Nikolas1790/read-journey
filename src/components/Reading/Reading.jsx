@@ -15,7 +15,7 @@ export default function Reading() {
   const { bookId } = useParams();
   const books = useSelector(selectOwnBooks);
   const [read, setRead] = useState(false);
-  // console.log(bookId)
+ 
   const selectedBook = books.find(book => book._id === bookId);
 
   const getImageUrl = () => {
@@ -30,11 +30,10 @@ export default function Reading() {
     }
   };
   const imageUrl = selectedBook.imageUrl || getImageUrl();
-  return (
-    <UnivesalGeneralBlock >
-      
-      <ReadingDashboard  selectedBook={selectedBook._id} onReadChange={(e) => setRead(!e)} />     
 
+  return (
+    <UnivesalGeneralBlock >      
+      <ReadingDashboard  selectedBook={selectedBook._id} onReadChange={(e) => setRead(!e)} />     
 
       <UnivesalMainConteainer>
         <MainBlockTitle>My reading</MainBlockTitle>
@@ -42,8 +41,6 @@ export default function Reading() {
           <BasicImg src={imageUrl} alt='title'/>
           <TitleBook>{selectedBook.title}</TitleBook>
           <AuthorBook>{selectedBook.author}</AuthorBook>
-
-
           {read ?(
             <svg width={50} height={50}>
               <use href={`${sprite}#icon-block-start`} />
@@ -57,7 +54,6 @@ export default function Reading() {
 
         </BasicInfBook>
       </UnivesalMainConteainer>
-
     </UnivesalGeneralBlock>
   );
 }

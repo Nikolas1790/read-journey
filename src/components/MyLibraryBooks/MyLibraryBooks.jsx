@@ -16,26 +16,23 @@ const options = ["Unread", "In progress", "Done", "All books" ]
 export default function MyLibraryBooks() {
   const [modalOpen, setModalOpen] = useState(false);
   const [bookData, setBookData] = useState(false);
-
-  const [selectedBooks, setSelectedBooks] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const selecctRef = useRef(null);
 
   const ownLibrary = useSelector(selectOwnBooks);
-  // console.log(ownLibrary)
+  const [selectedBooks, setSelectedBooks] = useState("");
+  const selecctRef = useRef(null);
 
+  // console.log(ownLibrary)
   const dispatch = useDispatch();
   useEffect(()=> {
-    dispatch(ownBooks())
-    
+    dispatch(ownBooks())    
   }, [dispatch]);
 
   const openLoginModal = (book) => {
     setModalOpen(true);
     setBookData(book); // Передаем данные о книге
   };
-  useEffect(() => {
-    
+  useEffect(() => {    
     const handleClickOutside = (event) => {
         if (selecctRef.current && !selecctRef.current.contains(event.target)) {
           setIsOpen(false);
@@ -49,8 +46,6 @@ export default function MyLibraryBooks() {
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
-    
-    // console.log("selectedBooks")
   };
 
   const handleSelectedBooks = (e) => {
@@ -59,8 +54,6 @@ export default function MyLibraryBooks() {
     if(e === "In progress") dispatch(ownBooks("in-progress"))
     if(e === "All books") dispatch(ownBooks())
     if(e === "Unread") dispatch(ownBooks("unread"))
-    
-    console.log(e)
   };
 
   return (
@@ -102,7 +95,7 @@ export default function MyLibraryBooks() {
         <PortalModal active={modalOpen} setActive={setModalOpen}>
           <DetailedInformationBook bookData={bookData} closeModals={() => setModalOpen()} btnLabel="Start reading" />
         </PortalModal>
-      </UnivesalMainConteainer>
+    </UnivesalMainConteainer>
   );
 }
   

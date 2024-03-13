@@ -16,10 +16,9 @@ export const CustomBtn = styled.button`
 
   transition: color 0.3s linear, background 0.3s linear; /* добавленный transition для плавных изменений */
 
-&:hover,
-&:focus {
-  color: ${color.blackLight};
-  background: ${color.whitePrimary};
-  
-}
+  &:hover,
+  &:focus {
+    color: ${color.blackLight};
+    background: ${color.whitePrimary};  
+  }
 `

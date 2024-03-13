@@ -16,7 +16,6 @@ export default function CardBook({book, openLoginModal, currentPage=false}) {
   const getImageUrl = () => {
     const img = new Image();
     img.src = notFoundImg;
-
     // Check if the device has a higher pixel density (retina display)
     if (window.devicePixelRatio && window.devicePixelRatio > 1) {
       return notFoundImg2x;

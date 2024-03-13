@@ -1,19 +1,36 @@
 import CustomButton from "components/CustomButton/CustomButton";
 import { AuthorBook, ClosingSymbol, Conteiner, CoverBook, PagesBook, TitleBook } from "./DetailedInformationBook.styled";
 import sprite from '../../img/sprite.svg';
-import { useDispatch } from "react-redux";
-import { addBookById } from "../../redux/books/operations";
-// import { selectOwnBooks } from "../../redux/books/selector";
+import { useDispatch, useSelector } from "react-redux";
+import { addBookById, ownBooks } from "../../redux/books/operations";
 import { useNavigate } from 'react-router-dom';
 import notFoundImg2x from '../../img/notFoundImg/open-book@2x.jpg';
 import notFoundImg from '../../img/notFoundImg/open-book.jpg';
+import { useEffect } from "react";
+import { selectOwnBooks } from "../../redux/books/selector";
+import { toast } from "react-toastify";
 
 export default function DetailedInformationBook({ closeModals, bookData, btnLabel }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const ownLibrary = useSelector(selectOwnBooks);
+  useEffect(()=> {
+    dispatch(ownBooks())    
+  }, [dispatch]);
+// console.log(ownLibrary.filter(item => item.title === bookData.title))
+  const handleButtonClick =  () => {  
+    if(btnLabel === "Add to library") {
+      const bookExists = ownLibrary.find(item => item.title === bookData.title);
 
-  const handleButtonClick =  () => {   
-    if(btnLabel === "Add to library") dispatch(addBookById(bookData._id));  
+      // Если find возвращает undefined, значит, книга не найдена в библиотеке, и мы можем добавить ее
+      if (bookExists === undefined) {
+        toast.success("Книга не найдена в библиотеке. Добавляем...")
+        dispatch(addBookById(bookData._id));
+      } else {
+        toast.error('Книга уже есть в библиотеке.')
+      }
+    };  
+
     if(btnLabel === "Start reading") navigate(`/reading/${bookData._id}`);
 
     closeModals();
@@ -31,7 +48,6 @@ export default function DetailedInformationBook({ closeModals, bookData, btnLabe
   };
 
   const imageUrl = bookData.imageUrl || getImageUrl();
-
   return (
     <Conteiner>
       <ClosingSymbol onClick={closeModals}>

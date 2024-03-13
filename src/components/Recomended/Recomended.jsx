@@ -19,7 +19,6 @@ export default function Recomended() {
   const [modalOpen, setModalOpen] = useState(false);
   const [bookData, setBookData] = useState(false); 
   const [page, setPage] = useState(1);
-  // const ownLibrary = useSelector(selectOwnBooks); 
 
   useEffect(()=> {
     dispatch(fetchBooks({ page, limit: 10  }))
@@ -36,10 +35,8 @@ export default function Recomended() {
     setBookData(book); // Передаем данные о книге
   };
   return (
-    <UnivesalGeneralBlock >
-      
-        <RecomendedDashboard />
-      
+    <UnivesalGeneralBlock >      
+      <RecomendedDashboard />      
 
       <UnivesalMainConteainer >
         <HeaderAndPaginationBlock>
@@ -58,22 +55,16 @@ export default function Recomended() {
           </div>
         </HeaderAndPaginationBlock>
 
-
-
         <BooksTen>
           {results?.map((book) => (
             <CardBook  key={book._id} book={book} openLoginModal={openLoginModal} />
           ))}
-        </BooksTen>   
-
+        </BooksTen>  
       </UnivesalMainConteainer>
-
-
 
       <PortalModal active={modalOpen} setActive={setModalOpen}>
         <DetailedInformationBook bookData={bookData} closeModals={() => setModalOpen()} btnLabel="Add to library"/>
       </PortalModal>
-
     </UnivesalGeneralBlock>
   );
 }
