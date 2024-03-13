@@ -20,6 +20,7 @@ const initialValues = {
   page: '',
 };
 
+
 const schema = Yup.object({
   page: Yup.string().required('Required').matches(/^[0-9]+$/, 'Must be only digits')
   .transform((value, originalValue) => originalValue.replace(/\s/g, '')),
