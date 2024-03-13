@@ -3,7 +3,6 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import sprite from '../../img/sprite.svg';
 import { Container, ErrorMessagePassword, ErrorMessageStyled, EyeSvg, FormBlock, FormField, FormFieldConteiner, FormFieldLabel, FormFieldPassvord, FormFieldPassvordConteiner, FormFields} from "./RegisterAndLogin.styled";
-
 import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
 import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
 import SubmitBlockLogin from 'components/SubmitBlockAutorization/SubmitBlockLogin';
@@ -11,7 +10,6 @@ import { logIn } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
 
 const initialValues = {
   email: '',

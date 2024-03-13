@@ -59,22 +59,60 @@ export default function Register() {
 
                   <FormFieldConteiner>
                     <FormFieldLabel htmlFor="name">Name:</FormFieldLabel>
-                    <FormField id="name" name="name" type="name" placeholder="Nik Ovson" error={errors.name && touched.name ? "true" : "false" } />
+                    <FormField 
+                      id="name" 
+                      name="name" 
+                      type="name" 
+                      placeholder="Nik Ovson" 
+                      error={errors.name && touched.name ? "true" : "false" } />
                     <ErrorMessageStyled name="name" component='div' />
                   </FormFieldConteiner>
                     
                   <FormFieldConteiner>
                     <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
-                    <FormField id="email" name="email" type="email" placeholder="nik@google.com" error={errors.email && touched.email ? "true" : "false" } email="true" />
+                    <FormField 
+                      id="email" 
+                      name="email" 
+                      type="email" 
+                      placeholder="nik@google.com" 
+                      error={errors.email && touched.email ? "true" : "false" } 
+                      email="true" 
+                    />
                     <ErrorMessageStyled name="email" component='div' />
                   </FormFieldConteiner>
-                  {/* {emailError && <EmailErrorMessage >{emailError}</EmailErrorMessage> } */}
           
                   <FormFieldPassvordConteiner>
                     <FormFieldLabel htmlFor="password">Password:</FormFieldLabel>
-                    <FormFieldPassvord id="password" name="password" type={showPassword ? "text" : "password"} placeholder="********" error={errors.password && touched.password ? "true" : "false"}  />
+                    <FormFieldPassvord 
+                      id="password" 
+                      name="password" 
+                      type={showPassword ? "text" : "password"} 
+                      placeholder="********" 
+                      error={errors.password && touched.password ? "true" : "false"}  
+                    />
+
+                      
+  {errors.password && touched.password ? (
+    <EyeSvg width={20} height={20}>
+      <use href={`${sprite}#icon-pajamas_error`} />
+    </EyeSvg>
+  ) : !errors.password && touched.password ? (
+    <EyeSvg width={20} height={20}>
+      <use href={`${sprite}#icon-check-ok`} />
+    </EyeSvg>
+  ) : showPassword ? (
+    <EyeSvg width={20} height={20} onClick={togglePasswordVisibility}>
+      <use href={`${sprite}#icon-eye`} />
+    </EyeSvg>
+  ) : (
+    <EyeSvg width={20} height={20} onClick={togglePasswordVisibility}>
+      <use href={`${sprite}#icon-eye-off`} />
+    </EyeSvg>
+  )}
+  
+  <ErrorMessagePassword name="password" component='div' />
           
-                   {showPassword ? (
+                   {/* {showPassword ? (
                     <EyeSvg
                       width={20}
                       height={20}
@@ -105,9 +143,9 @@ export default function Register() {
                       height={20}
                     >
                       <use href={`${sprite}#icon-check-ok`} />
-                    </EyeSvg> }
-
+                    </EyeSvg> } */}
                   </FormFieldPassvordConteiner>
+
                 </div>     
    
                 <SubmitBlockRegister />
