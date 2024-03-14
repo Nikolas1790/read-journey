@@ -48,12 +48,11 @@ export const FormField = styled(Field)`
   color: ${color.whitePrimary};
   background: ${color.gryeBlack};
   padding-left: ${(props) => props.paddindleft || '86px'};
-  border: 1px solid	${(props) => (props.error === "true" ? "red" : "rgba(18, 20, 23, 0.1)")};
+  border: 1px solid	${(props) => (props.error === "true" ? color.focusColor : "rgba(18, 20, 23, 0.1)")};
 `;
 
 export const ErrorMessageStyled = styled(ErrorMessage)`
-  color: red;
-  font-size: 14px;
-  margin-top: -5px; 
-  padding:  5px 10px 10px;
+  font-size: 10px;
+  color: ${color.focusColor};
+  padding: 4px 0px 0px 14px;
 `;
