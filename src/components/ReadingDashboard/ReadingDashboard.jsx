@@ -1,7 +1,7 @@
 import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
-import { ErrorMessageStyled, FormField, FormFieldConteiner, FormFieldLabel, FormFields} from '../LibraryDashoard/LibraryDashoard.styled';
+import { ErrorMessageStyled, FormField, FormFieldConteiner, FormFieldLabel, FormFields} from '../Dashboard/Dashboard.styled';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
 import {  BtnInfReading, BtnInfSvg, DashboardConteiner, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryConteiner, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatPercentBlock, StatText, Text, TextOneHundredPercent } from './ReadingDashboard.styled';
@@ -149,7 +149,6 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
                  <FormFieldConteiner>
                   <FormFieldLabel htmlFor="page">Pages number:</FormFieldLabel>
                   <FormField id="page" name="page" type="page" placeholder="0" paddindleft="111px" error={errors.page && touched.page ? "true" : "false" } />  
-                    {/* {console.log(errors)}            */}
                   <ErrorMessageStyled name="page" component='div' />   
 
                 </FormFieldConteiner>            
