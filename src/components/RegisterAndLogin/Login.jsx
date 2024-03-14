@@ -1,6 +1,5 @@
 import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
 import sprite from '../../img/sprite.svg';
 import { Container, ErrorMessageStyled, EyeSvg, FormBlock, FormConteiner, FormField, FormFieldConteiner, FormFieldLabel, FormFields, SecureMessage } from "./RegisterAndLogin.styled";
 import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
@@ -10,6 +9,7 @@ import { logIn } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const initialValues = {
   email: '',
@@ -101,11 +101,17 @@ export default function Login() {
                         <use href={`${sprite}#icon-check-ok`} />
                       </EyeSvg>
                     ) : showPassword ? (
-                      <EyeSvg width={20} height={20} onClick={togglePasswordVisibility}>
+                      <EyeSvg width={20} height={20} onMouseDown={(e) => {
+                        e.preventDefault(); // Предотвратить смену фокуса
+                        togglePasswordVisibility();
+                      }}>
                         <use href={`${sprite}#icon-eye`} />
                       </EyeSvg>
                     ) : (
-                      <EyeSvg width={20} height={20} onClick={togglePasswordVisibility}>
+                      <EyeSvg width={20} height={20} onMouseDown={(e) => {
+                        e.preventDefault(); // Предотвратить смену фокуса
+                        togglePasswordVisibility();
+                      }}>
                         <use href={`${sprite}#icon-eye-off`} />
                       </EyeSvg>
                     )}

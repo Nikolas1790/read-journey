@@ -127,7 +127,6 @@ export default function Register() {
                                      touched.password && !errors.password ? "green" : "defaultColor",
                       }}
                     />
-
                       
                     {errors.password && touched.password ? (
                       <EyeSvg width={20} height={20}>
@@ -138,11 +137,17 @@ export default function Register() {
                         <use href={`${sprite}#icon-check-ok`} />
                       </EyeSvg>
                     ) : showPassword ? (
-                      <EyeSvg width={20} height={20} onClick={togglePasswordVisibility}>
+                      <EyeSvg width={20} height={20} onMouseDown={(e) => {
+                        e.preventDefault(); // Предотвратить смену фокуса
+                        togglePasswordVisibility();
+                      }}>
                         <use href={`${sprite}#icon-eye`} />
                       </EyeSvg>
                     ) : (
-                      <EyeSvg width={20} height={20} onClick={togglePasswordVisibility}>
+                      <EyeSvg width={20} height={20} onMouseDown={(e) => {
+                        e.preventDefault(); // Предотвратить смену фокуса
+                        togglePasswordVisibility();
+                      }}>
                         <use href={`${sprite}#icon-eye-off`} />
                       </EyeSvg>
                     )}
