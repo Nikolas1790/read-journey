@@ -3,7 +3,6 @@ import color from './GlobalColers';
 
 import GilroyBold from '../fonts/Gilroy-Bold.woff';
 import GilroyMedium from '../fonts/Gilroy-Medium.woff';
-// import SFProTextSemibold from '../fonts/SFProText-Semibold.woff2';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -19,15 +18,6 @@ export const GlobalStyle = createGlobalStyle`
   font-weight: 500; // Medium
   src: url(${GilroyMedium}) format('woff');
 }
-/* @font-face {
-  font-family: 'SF Pro Text';
-  font-style: normal;
-  font-weight: 600; // Semibold
-  
-} */
-
-
-
 
 *,
 *::before,

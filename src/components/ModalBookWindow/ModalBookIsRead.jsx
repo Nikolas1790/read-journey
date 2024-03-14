@@ -4,7 +4,6 @@ import books2x from '../../img/stackBooksAndLike/books-desc@2.png';
 import books from '../../img/stackBooksAndLike/books-desc.png';
 
 export default function ModalBookIsRead({ closeModals}) {
-
   return (
     <Conteiner>
       <ClosingSymbol onClick={closeModals}>
@@ -18,7 +17,6 @@ export default function ModalBookIsRead({ closeModals}) {
       </Img>  
       <Title>The book is read</Title>
       <Text>It was an  <TextSpan>exciting journey</TextSpan>, where each page revealed new horizons, and the characters became inseparable friends.</Text>
-
     </Conteiner>
   );
 }

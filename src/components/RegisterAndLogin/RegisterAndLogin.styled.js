@@ -53,17 +53,6 @@ export const FormField = styled(Field)`
   background: ${color.gryeBlack};
 `;
 
-// export const FormFieldPassvord = styled(Field)`
-//   width: 100%;
-//   height: 50px;
-//   border: 1px solid	${(props) => (props.error === "true" ? "red" : "rgba(18, 20, 23, 0.1)")};
-//   border-radius: 12px;
-//   padding:  16px 14px 16px 86px;
-//   outline: none;
-//   color: ${color.whitePrimary};
-//   background: ${color.gryeBlack};
-// `;
-
 export const EyeSvg = styled.svg`
   position: absolute;
   top: 17px;

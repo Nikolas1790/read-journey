@@ -5,6 +5,5 @@ export const GeneralBlock = styled.div`
   align-items: center;
   justify-content: center;
   gap: 16px;
-
   padding:  16px 0;
 ;`

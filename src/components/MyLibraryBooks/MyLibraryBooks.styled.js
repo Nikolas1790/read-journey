@@ -1,7 +1,6 @@
 import color from 'common/GlobalColers'
 import styled from 'styled-components'
 
-
 export const HeaderAndPaginationBlock = styled.div`
   display: flex;
   justify-content: space-between;
@@ -9,7 +8,6 @@ export const HeaderAndPaginationBlock = styled.div`
 `
 
 ///////////////////////////////////////////////////////////////
-
 export const Dropdown = styled.div`
   position: relative;
 `;
@@ -23,7 +21,6 @@ export const DropdownSvg = styled.svg`
 
 export const DropdownButton = styled.button`
   display: flex;
-
   width: 153px;
   height: 46px;
   border-radius: 12px; 
@@ -32,7 +29,6 @@ export const DropdownButton = styled.button`
   cursor: pointer;
   background: transparent;
   padding: 14px;
-
 `;
 
 export const DropdownList = styled.ul`
@@ -64,7 +60,6 @@ export const DropdownItem = styled.li`
     color: ${color.whitePrimary};
   }
 `;
-
 
 export const BooksTen = styled.ul`
   display: flex;

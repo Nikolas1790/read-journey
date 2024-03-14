@@ -37,9 +37,9 @@ export const TitleBook = styled.h2`
   font-size: 20px;
   margin-bottom: 2px;
 
-     /* Ограничиваем текст одной строкой */
-     white-space: nowrap;
-     overflow: hidden;
+  /* Ограничиваем текст одной строкой */
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 `;
 
@@ -48,9 +48,9 @@ export const AuthorBook = styled.p`
   color: ${color.gryeLight};
   margin-bottom: 4px;
 
-       /* Ограничиваем текст одной строкой */
-     white-space: nowrap;
-     overflow: hidden;
+  /* Ограничиваем текст одной строкой */
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 `;
 

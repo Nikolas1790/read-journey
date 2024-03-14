@@ -3,7 +3,6 @@ import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
 import sprite from '../../img/sprite.svg';
 import { Arguments, Filters, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTextToLibrary, LinkToLibrary, Quote, QuoteBlock, QuoteSpan, SeriaNumber, StartWorkoutBlock, StartWorkoutTitle, TextOne, TextSpan, TextTwo } from './RecomendedDashboard.styled';
-
 import imgBooksDesc from '../../img/stackBooksAndLike/books-desc.png';
 import imgBooksDesc2x from '../../img/stackBooksAndLike/books-desc@2.png';
 import Dashboard from 'components/Dashboard/Dashboard';

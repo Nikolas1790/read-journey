@@ -14,10 +14,11 @@ export default function DetailedInformationBook({ closeModals, bookData, btnLabe
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const ownLibrary = useSelector(selectOwnBooks);
+  
   useEffect(()=> {
     dispatch(ownBooks())    
   }, [dispatch]);
-// console.log(ownLibrary.filter(item => item.title === bookData.title))
+  
   const handleButtonClick =  () => {  
     if(btnLabel === "Add to library") {
       const bookExists = ownLibrary.find(item => item.title === bookData.title);

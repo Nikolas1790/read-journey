@@ -11,14 +11,12 @@ export const DashboardConteiner = styled.div`
 export const Forma = styled.div`
   /* margin-bottom: 40px; */
 `
-
 export const DiaryTitle = styled.h4`
   font-size: 20px;
   font-weight: 700;
   line-height: 1;
 `
 ////////////////////////////////////////////////////////////////////////////////////
-
 export const DiaryHeaderConteiner = styled.div`
   display: flex;
   justify-content: space-between;
@@ -27,12 +25,10 @@ export const DiaryHeaderConteiner = styled.div`
 export const DiarySvgConteiner = styled.div`
   display: flex;
   gap: 8px;
-
 `
 
 export const BtnInfReading = styled.button`
-  background: transparent;
-  
+  background: transparent;  
 ` 
 
 export const BtnInfSvg = styled.svg`
@@ -41,10 +37,8 @@ export const BtnInfSvg = styled.svg`
 ` 
 export const Bt = styled.use`
   /* color: red !important; */
-
 ` 
 ////////////////////////////////////////////////////////////////////
-
 export const StatText = styled.p`
   color: ${color.gryeLight};
   margin-bottom: 20px;
@@ -64,8 +58,7 @@ export const StatPercentBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content:center;
-  margin-bottom: 20px;
-  
+  margin-bottom: 20px;  
 `
 
 export const TextOneHundredPercent = styled.p`
@@ -99,23 +92,6 @@ export const PagesRead = styled.p`
   color: ${color.gryeLight};
 `
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ////////////////////////////////////////////////////////////////////////
 export const DiaryInfConteiner = styled.ul`
   width: 313px;
@@ -124,7 +100,6 @@ export const DiaryInfConteiner = styled.ul`
   border-radius: 12px;
   padding: 20px;
 
-  /* height: 523px; */
   overflow: hidden;
   overflow-y: auto;
 
@@ -136,7 +111,6 @@ export const DiaryInfConteiner = styled.ul`
 export const DayHeaderConteiner = styled.div`
   display: flex;
   align-items: center;
-
   margin-bottom: 28px; 
 `
 
@@ -147,7 +121,6 @@ export const SquareConteiner = styled.div`
   justify-content: center;
   width: 20px;
   height: 20px;  
-  /* background: ${color.whitePrimary}; */
   background: ${({ first }) => first === "true" ?  color.whitePrimary : color.gryeLight};
   border-radius: 4px;
   margin-right: 10px;
@@ -155,18 +128,9 @@ export const SquareConteiner = styled.div`
 export const SquareInteriorConteiner = styled.div`
   width: 12px;
   height: 12px;  
-  /* background: ${color.blackBackground}; */
   background: ${({ first }) => first === "true" ?  color.blackBackground : color.blackLight};
   border-radius: 2px;
-
 `
-
-
-
-
-
-
-
 
 export const DayHeaderData = styled.h5`
   font-size: 16px;
@@ -181,7 +145,6 @@ export const ResultsBlock = styled.li`
   display: flex;
   justify-content: space-between;
   margin-bottom: 27px;
-
 `
 
 export const MinutesPercentBlock = styled.div`
@@ -205,19 +168,18 @@ export const IconsBlock = styled.div`
 `
 
 export const DellBtn = styled.button`
- background: transparent;
- transition: color 0.3s ease; /* Добавляем плавный переход */
+  background: transparent;
+    transition: color 0.3s ease; /* Добавляем плавный переход */
 
-&:hover {
-  fill: red;
-  stroke: red;
-  color: red; /* Цвет при наведении */
-}
-
-&:focus {
-  outline: none; /* Убираем стандартную обводку фокуса */
-  color: blue; /* Цвет при фокусе */
-}
+  &:hover {
+    fill: red;
+    stroke: red;
+    color: red; 
+  }
+  &:focus {
+    outline: none; /* Убираем стандартную обводку фокуса */
+    color: blue; /* Цвет при фокусе */
+  }
 `
 
 export const PageHour = styled.p`
@@ -226,4 +188,3 @@ export const PageHour = styled.p`
   font-size: 12px;
   color: ${color.gryeLight};
 `
-

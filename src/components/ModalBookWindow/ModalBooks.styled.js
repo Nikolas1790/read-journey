@@ -30,7 +30,6 @@ export const Img = styled.picture`
   height: 70px; 
   margin-bottom: 32px;
 `
-
 export const Title = styled.h3`
   font-size: 20px;
   font-weight: 700;

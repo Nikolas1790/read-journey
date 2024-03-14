@@ -38,7 +38,7 @@ export default function LibraryDashboard() {
 
   useEffect(()=> {
     dispatch(ownBooks())  
-    dispatch(fetchBooks({ page: 1, limit: 10  }))
+    dispatch(fetchBooks({ page: 2, limit: 10  }))
   }, [dispatch]);
 
   const handleSubmit = (e, { resetForm }) => {  
@@ -67,7 +67,7 @@ export default function LibraryDashboard() {
     setOpenModal(true);
     setBookData(book); // Передаем данные о книге
   };
-  // console.log(results)
+  
   return (
     <Dashboard>
     <MainBlockLibraryDashboard>      

@@ -4,7 +4,6 @@ import styled from 'styled-components'
 export const BookCard = styled.li`
   width: 137px;
   height: 248px;
-
   background: transparent;
   
   &:last-child {
@@ -30,14 +29,12 @@ export const TitleAutorBlock = styled.div`
 `
 
 export const BookTitle = styled.h3`
-
   font-size: 14px ;
   font-weight: 700;
   margin-bottom: 2px;
 
   /* Ограничиваем текст одной строкой */
   white-space: nowrap;
-
   /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
   overflow: hidden;
   text-overflow: ellipsis;
@@ -50,7 +47,6 @@ export const BookAutor = styled.p`
 
   /* Ограничиваем текст одной строкой */
   white-space: nowrap;
-
   /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
   overflow: hidden;
   text-overflow: ellipsis;

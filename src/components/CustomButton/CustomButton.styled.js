@@ -11,7 +11,6 @@ export const CustomBtn = styled.button`
 
   border: 1px solid ${color.whiteLightTranslucent};
   border-radius: 30px;
-
   background: transparent;
 
   transition: color 0.3s linear, background 0.3s linear; /* добавленный transition для плавных изменений */

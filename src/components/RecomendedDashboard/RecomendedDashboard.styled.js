@@ -3,14 +3,13 @@ import { Field } from 'formik'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-
 export const Filters = styled.div`
   margin-bottom: 20px;
 `
 
 export const FilterTitle = styled.h3`
-font-size: 14px;
-font-weight: 500;
+  font-size: 14px;
+  font-weight: 500;
   margin-bottom: 8px;
   margin-left: 14px;
 `
@@ -19,7 +18,6 @@ export const FormFields = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   gap: 8px;
   margin-bottom: 20px;  
 `;
@@ -48,26 +46,21 @@ export const FormField = styled(Field)`
   padding-left: ${(props) => props.paddindleft || '86px'};
 `;
 
-
-
-
-
 export const StartWorkoutBlock = styled.div`
   width: 313px;
   height: 272px;
   border-radius: 12px;
 
   background: ${color.gryeBlack};
-
   padding: 20px;
   margin-bottom: 20px;
 `
 export const StartWorkoutTitle = styled.p`
   font-size: 20px;
-font-weight: 700;
-line-height: 1;
+  font-weight: 700;
+  line-height: 1;
 
-margin-bottom: 40px;
+  margin-bottom: 40px;
 `
 export const Arguments = styled.div`
   display: flex;
@@ -84,8 +77,7 @@ export const SeriaNumber = styled.div`
   font-size: 20px;
   font-weight: 700;  
   color: ${color.blackLight};
-  background: ${color.whitePrimary};
-  
+  background: ${color.whitePrimary};  
 `
 export const TextOne = styled.p`
   width: 190px;  
@@ -95,15 +87,13 @@ export const TextTwo = styled.p`
 `
 
 export const TextSpan = styled.span`
- color: ${color.gryeLight};
-  
+ color: ${color.gryeLight};  
 `
 
 export const LinkToLibrary = styled(NavLink)`
   display: flex;
   align-items: center;
-  justify-content: space-between;  color: ${color.gryeLight}; 
-  
+  justify-content: space-between;  color: ${color.gryeLight};   
   
   &:hover::after,
   &:focus::after {
@@ -112,7 +102,6 @@ export const LinkToLibrary = styled(NavLink)`
 `;
 export const LinkTextToLibrary = styled.p`
   position: relative; 
-
   transition: color 0.3s linear; 
 
   &::after {
@@ -125,7 +114,6 @@ export const LinkTextToLibrary = styled.p`
     background: ${color.gryeLight}; 
     transition: background 0.3s linear; 
   }
-
   &:hover,
   &:focus {
     color: ${color.whitePrimary};
@@ -146,22 +134,13 @@ export const QuoteBlock = styled.div`
   border-radius: 12px;
 
   background: ${color.gryeBlack};
-
   padding: 14px 20PX;
 `
-// export const BlackBlock = styled.div`
-//   width: 40px;
-//   height: 40px;
-//   background: ${color.black};
-// `
-
 export const Quote = styled.p`
   width: 219px;
-  color: ${color.gryeLight};
- 
+  color: ${color.gryeLight}; 
 `
 
 export const QuoteSpan = styled.span`  
-  color: ${color.whitePrimary};
- 
+  color: ${color.whitePrimary}; 
 `

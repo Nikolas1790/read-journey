@@ -5,7 +5,6 @@ export const DashboardBlock = styled.div`
   width: 353px;
   height: 651px;
   border-radius: 30px;
-
   background: ${color.blackLight};
   padding: 40px 20px 20px 20px;
 ;`

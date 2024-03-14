@@ -29,7 +29,7 @@ export default function Recomended() {
       setPage(newPage);
     }
   };
-  // console.log(ownLibrary)
+  
   const openLoginModal = (book) => {
     setModalOpen(true);
     setBookData(book); // Передаем данные о книге

@@ -61,7 +61,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
         setModalOpen(true);
       }
     
-      // console.log(totalReadPages, InfoAboutBook?.totalPages);
+      
     }, 250);
     return () => clearTimeout(timer); 
     }, [InfoAboutBook?.progress, InfoAboutBook?.totalPages]);

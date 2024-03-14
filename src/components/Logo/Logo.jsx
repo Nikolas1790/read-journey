@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import sprite from '../../img/sprite.svg';
 import {  LogoLink } from "./Logo.styled";
 

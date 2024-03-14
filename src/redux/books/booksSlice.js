@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addBookById, addNewBook, bookReadingInf, deleteBook, fetchBooks, ownBooks, readingDell, readingStart, readingStop } from "./operations";
 
-
 const bookSlice = createSlice({
   name: "book",
   initialState: {
@@ -23,7 +22,6 @@ const bookSlice = createSlice({
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload.results;
-        // console.log(action.payload.results)
         state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchBooks.rejected, (state, action) => {
@@ -37,15 +35,12 @@ const bookSlice = createSlice({
       })
       .addCase(addNewBook.fulfilled, (state, action) => {
         state.loading = false;
-        // console.log(state)
         state.myBooks = [...state.myBooks, action.payload];
       })
       .addCase(addNewBook.rejected, (state, action) => {
         state.loading = false;
-        // console.error("Add New Book Error:", action.error);
         state.error = action.error.message;
       })
-
 
       .addCase(addBookById.pending, (state) => {
         state.loading = true;
@@ -53,7 +48,6 @@ const bookSlice = createSlice({
       })
       .addCase(addBookById.fulfilled, (state, action) => {
         state.loading = false;
-        // console.log(state)
         state.myBooks = [...state.myBooks, action.payload];
       })
       .addCase(addBookById.rejected, (state, action) => {
@@ -67,7 +61,6 @@ const bookSlice = createSlice({
       })
       .addCase(ownBooks.fulfilled, (state, action) => {
         state.loading = false;
-        // console.log(action.payload)
         state.myBooks = action.payload;
       })
       .addCase(ownBooks.rejected, (state, action) => {
@@ -81,7 +74,6 @@ const bookSlice = createSlice({
       })
       .addCase(deleteBook.fulfilled, (state, action) => {
         state.loading = false;
-        // console.log(state.myBooks);
         state.myBooks = state.myBooks.filter(book => book._id !== action.payload.id);
       })
       .addCase(deleteBook.rejected, (state, action) => {
@@ -89,13 +81,11 @@ const bookSlice = createSlice({
         state.error = action.error.message;
       })
 
-
       .addCase(readingStart.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(readingStart.fulfilled, (state, action) => {
-        // console.log(action.payload)
         state.loading = false;
         state.readBook = [...state.readBook, action.payload];
       })
@@ -110,8 +100,6 @@ const bookSlice = createSlice({
       })
       .addCase(readingStop.fulfilled, (state, action) => {
         state.loading = false;
-
-        // console.log(action.payload);
         state.readBook =  [...state.readBook, action.payload];
       })
       .addCase(readingStop.rejected, (state, action) => {
@@ -124,20 +112,13 @@ const bookSlice = createSlice({
         state.error = null;
       })
       .addCase(readingDell.fulfilled, (state, action) => {
-        state.loading = false;
-
-        
+        state.loading = false;        
         state.readBook =  [action.payload];
       })
       .addCase(readingDell.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-        
-        // console.error(action.error);
       })
-
-
-
 
       .addCase(bookReadingInf.pending, (state) => {
         state.loading = true;
@@ -145,8 +126,6 @@ const bookSlice = createSlice({
       })
       .addCase(bookReadingInf.fulfilled, (state, action) => {
         state.loading = false;
-
-        // console.log(action.payload);
         state.allInfoBook =  action.payload;
       })
       .addCase(bookReadingInf.rejected, (state, action) => {

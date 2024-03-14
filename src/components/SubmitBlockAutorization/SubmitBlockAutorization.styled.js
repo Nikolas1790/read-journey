@@ -18,20 +18,18 @@ export const FormBtn = styled.button`
 
   transition: color 0.3s linear, background 0.3s linear; 
 
-&:hover,
-&:focus {
-  color: ${color.whitePrimary};
-  background: ${color.blackLight};
-  box-shadow: 0 0 0 2px ${color.whiteLightTranslucent};
-}
-
+  &:hover,
+  &:focus {
+    color: ${color.whitePrimary};
+    background: ${color.blackLight};
+    box-shadow: 0 0 0 2px ${color.whiteLightTranslucent};
+  }
 `;
 
 export const LinkTo = styled(NavLink)`
   position: relative;
   color: ${color.gryeLight}; 
   font-weight: 500;
-
   transition: color 0.3s linear; 
 
   &::after {
@@ -44,7 +42,6 @@ export const LinkTo = styled(NavLink)`
     background: ${color.gryeLight}; 
     transition: background 0.3s linear; 
   }
-
   &:hover,
   &:focus {
     color: ${color.whitePrimary};
@@ -52,6 +49,5 @@ export const LinkTo = styled(NavLink)`
     &::after {
       background: ${color.whitePrimary};  
     }
-  }
-  
+  }  
 `;

@@ -8,23 +8,18 @@ export const HeaderContainer = styled.div`
   align-items: center;
   padding-top: 32px; 
 `
-
 export const BlockMainInf = styled.div`
   display: flex;
   align-items: center;
-
   width: 1216px;
   height: 74px;
   background: ${color.blackLight};
   border-radius: 15px;
-
-  padding: 16px;
-  
+  padding: 16px;  
 `
 
 export const BlockNav = styled.nav`
-margin-left: 332px;
-  
+margin-left: 332px;  
 `
 
 export const PagesNav = styled(NavLink)`
@@ -51,28 +46,22 @@ export const PagesNav = styled(NavLink)`
       border-radius: 2px;
       left: 50%; 
       transform: translateX(-50%);
-      top: 79%; 
-      
+      top: 79%;       
     }
 
     &:hover {
       color: ${color.focusColor};
     }
   }
-
   &:not(:last-child) {
     margin-right: 36px; 
   }
-
 `
 ///////////////////////////////////////////////////
-
 export const UserBar = styled.div`
   display: flex;
   align-items: center;
-  margin-left: auto;
- 
-  
+  margin-left: auto;  
 `
 
 export const Initials = styled.div`
@@ -83,15 +72,13 @@ export const Initials = styled.div`
   height: 40px;
   border-radius: 50%;
   border: 1px solid rgba(249, 249, 249, 0.2);
-  background: ${color.gryeBlack};
- 
+  background: ${color.gryeBlack}; 
   margin-right: 8px;
 `
 
 export const UserName = styled.p`
   font-size: 16px;
   font-weight: 700;
-
   margin-right: 16px;
 `
 
@@ -103,6 +90,5 @@ export const BtnLogOut = styled.button`
 
   border: 1px solid rgba(249, 249, 249, 0.2);
   border-radius: 30px;
-
   background: transparent;
 `

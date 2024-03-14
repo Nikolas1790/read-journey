@@ -8,25 +8,16 @@ export const MainBlockLibraryDashboard = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-
 `
 
 export const Filters = styled.div`
   margin-bottom: 20px;
 `
 
-// export const FilterTitle = styled.h3`
-// font-size: 14px;
-// font-weight: 500;
-//   margin-bottom: 8px;
-//   margin-left: 14px;
-// `
-
 export const FormFields = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   gap: 8px;
   margin-bottom: 20px;  
 `;
@@ -64,7 +55,6 @@ export const ErrorMessageStyled = styled(ErrorMessage)`
 `;
 
 //////////////////////////////////////////////
-
 export const StartWorkoutBlock = styled.div`
   width: 313px;
   height: 259px;
@@ -77,7 +67,6 @@ export const StartWorkoutTitle = styled.h2`
   font-size: 20px;
   font-weight: 700;
   line-height: 1;
-
   margin-bottom: 20px;
 `
 /////   
@@ -96,7 +85,6 @@ export const CardImg = styled.img`
   width: 71px;
   height: 107px;
   border-radius: 8px;  
-
   margin-bottom: 8px;
 `
 
@@ -104,36 +92,30 @@ export const CardTitle = styled.h4`
   font-size: 10px;
   font-weight: 700;
 
-   /* Ограничиваем текст одной строкой */
-   white-space: nowrap;
-
+  margin-bottom: 2px;
+  /* Ограничиваем текст одной строкой */
+  white-space: nowrap;
   /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
   overflow: hidden;
   text-overflow: ellipsis;
-
-  margin-bottom: 2px;
 `
 
 export const CardAutor = styled.p`
   font-size: 10px;
   color: ${color.gryeLight};
 
-   /* Ограничиваем текст одной строкой */
-   white-space: nowrap;
-
+  /* Ограничиваем текст одной строкой */
+  white-space: nowrap;
   /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
   overflow: hidden;
   text-overflow: ellipsis;
 `
 //////////////////////////////////////////////////////////////
-
-
 export const LinkToHome = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: ${color.gryeLight}; 
-
   margin: auto 0;
   
   &:hover::after,
@@ -160,13 +142,9 @@ export const LinkTextToHome = styled.p`
 
   &:hover,
   &:focus {
-    color: ${color.whitePrimary};
-    
+    color: ${color.whitePrimary};    
     &::after {
       background: ${color.whitePrimary};  
     }
   }
 `;
-
-
-
