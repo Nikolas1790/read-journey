@@ -16,8 +16,6 @@ export const FilterTitle = styled.h3`
   margin-bottom: 8px;
   margin-left: 14px;
 `
-
-
 export const FormFields = styled.div`
   display: flex;
   flex-direction: column;

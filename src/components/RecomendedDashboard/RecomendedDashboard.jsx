@@ -26,10 +26,11 @@ export default function RecomendedDashboard() {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {  
-    const title= e.title
-    const author= e.author
-    setIsRestButtonVisible(true);
-    dispatch(fetchBooks({ title, author  }))
+    const { title, author } = e;
+    if(title) {
+      setIsRestButtonVisible(true);
+      dispatch(fetchBooks({ title, author  }))
+    }
     e.target.blur();
   }
 
@@ -39,8 +40,7 @@ export default function RecomendedDashboard() {
     dispatch(fetchBooks({ page: 1, limit: 10  }))
   };
   return (
-    <Dashboard>
-      
+    <Dashboard>      
       <Filters>
         <FilterTitle>Filters:</FilterTitle>
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
@@ -62,8 +62,7 @@ export default function RecomendedDashboard() {
                 {isRestButtonVisible && (
                   <CustomButton label="Rest" onClick={() => handleReset(resetForm)} width="98px" />
                 )}
-              </ButtonConteiner>     
-                           
+              </ButtonConteiner>                             
             </Form>
           )}
         </Formik>

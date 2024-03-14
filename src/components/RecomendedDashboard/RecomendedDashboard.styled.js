@@ -1,5 +1,4 @@
 import color from 'common/GlobalColers'
-// import { Field } from 'formik'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -13,43 +12,11 @@ export const FilterTitle = styled.h3`
   margin-bottom: 8px;
   margin-left: 14px;
 `
-// export const FormFieldConteiner = styled.div`
-//   position:relative;
-// `;
-
-// export const FormFields = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   gap: 8px;
-//   margin-bottom: 20px;  
-// `;
 
 export const ButtonConteiner = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
-
-// export const FormFieldLabel = styled.label`
-//   position:absolute;
-//   top: 16px;
-//   left: 14px;
-//   color: ${color.gryeLight};
-// `;
-
-// export const FormField = styled(Field)`
-//   width: 100%;
-//   height: 50px;
-//   border: none;
-//   border-radius: 12px;
-//   padding: 16px 14px 16px 65px;
-  
-//   outline: none;
-//   color: ${color.whitePrimary};
-//   background: ${color.gryeBlack};
-//   padding-left: ${(props) => props.paddindleft || '86px'};
-// `;
 
 export const StartWorkoutBlock = styled.div`
   width: 313px;
@@ -128,7 +95,6 @@ export const LinkTextToLibrary = styled.p`
     }
   }
 `;
-
 
 export const QuoteBlock = styled.div`
   display: flex;
