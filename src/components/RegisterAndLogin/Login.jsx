@@ -2,7 +2,7 @@ import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import sprite from '../../img/sprite.svg';
-import { Container, ErrorMessagePassword, ErrorMessageStyled, EyeSvg, FormBlock, FormField, FormFieldConteiner, FormFieldLabel, FormFieldPassvord, FormFieldPassvordConteiner, FormFields} from "./RegisterAndLogin.styled";
+import { Container, ErrorMessageStyled, EyeSvg, FormBlock, FormConteiner, FormField, FormFieldConteiner, FormFieldLabel, FormFields, SecureMessage } from "./RegisterAndLogin.styled";
 import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
 import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
 import SubmitBlockLogin from 'components/SubmitBlockAutorization/SubmitBlockLogin';
@@ -23,7 +23,6 @@ const schema = Yup.object({
 
 export default function Login() {  
   const [showPassword, setShowPassword] = useState(false);
-  // const [emailError, setEmailError] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -49,39 +48,73 @@ export default function Login() {
           {({ errors, touched }) => (
             <Form>
               <FormFields>  
-                <div>            
-          
+                <FormConteiner>           
                   <FormFieldConteiner>
                         <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
-                        <FormField id="email" name="email" type="email" placeholder="nik@google.com" error={errors.email && touched.email ? "true" : "false" } email="true" />
+                        <FormField 
+                          id="email"
+                          name="email" 
+                          type="email" 
+                          placeholder="nik@google.com" 
+                          error={errors.email && touched.email ? "true" : "false" } 
+                          paddingleft="53px"
+                          style={{
+                            borderColor: touched.email && errors.email ? "red" : 
+                                         touched.email && !errors.email ? "green" : "defaultColor",
+                          }}
+                        />
+                      {touched.email && (
+                        errors.email ? (
+                          <EyeSvg width={20} height={20}>
+                            <use href={`${sprite}#icon-pajamas_error`} />
+                          </EyeSvg>
+                        ) : (
+                          <EyeSvg width={20} height={20}>
+                            <use href={`${sprite}#icon-check-ok`} />
+                          </EyeSvg>
+                        )
+                      )}
+                        {touched.email && !errors.email && <SecureMessage>Email is secure</SecureMessage>}
                         <ErrorMessageStyled name="email" component='div' />
                   </FormFieldConteiner>
-                        {/* {emailError && <EmailErrorMessage >{emailError}</EmailErrorMessage> } */}
           
-                  <FormFieldPassvordConteiner>
+                  <FormFieldConteiner>
                     <FormFieldLabel htmlFor="password">Password:</FormFieldLabel>
-                    <FormFieldPassvord id="password" name="password" type={showPassword ? "text" : "password"} placeholder="********" error={errors.password && touched.password ? "true" : "false"}  />
+                    <FormField
+                     id="password" 
+                     name="password" 
+                     type={showPassword ? "text" : "password"} 
+                     placeholder="********" error={errors.password && touched.password ? "true" : "false"} 
+                     paddingleft="86px"
+                     style={{
+                      borderColor: touched.password && errors.password ? "red" : 
+                                   touched.password && !errors.password ? "green" : "defaultColor",
+                    }}
+                   />
           
-                    {showPassword ? (
-                    <EyeSvg
-                      width={20}
-                      height={20}
-                      onClick={togglePasswordVisibility}
-                    >
-                      <use href={`${sprite}#icon-eye`} />
-                    </EyeSvg>
-                      ) : (
-                    <EyeSvg
-                      width={20}
-                      height={20}
-                      onClick={togglePasswordVisibility}
-                    >
-                      <use href={`${sprite}#icon-eye-off`} />
-                    </EyeSvg>
+                    {errors.password && touched.password ? (
+                      <EyeSvg width={20} height={20}>
+                        <use href={`${sprite}#icon-pajamas_error`} />
+                      </EyeSvg>
+                    ) : !errors.password && touched.password ? (
+                      <EyeSvg width={20} height={20}>
+                        <use href={`${sprite}#icon-check-ok`} />
+                      </EyeSvg>
+                    ) : showPassword ? (
+                      <EyeSvg width={20} height={20} onClick={togglePasswordVisibility}>
+                        <use href={`${sprite}#icon-eye`} />
+                      </EyeSvg>
+                    ) : (
+                      <EyeSvg width={20} height={20} onClick={togglePasswordVisibility}>
+                        <use href={`${sprite}#icon-eye-off`} />
+                      </EyeSvg>
                     )}
-                    <ErrorMessagePassword name="password" component='div' />
-                  </FormFieldPassvordConteiner>
-                </div>     
+
+                     {touched.password && !errors.password && <SecureMessage>Password is secure</SecureMessage>}
+                    <ErrorMessageStyled name="password" component='div' />
+
+                  </FormFieldConteiner>
+                </FormConteiner>     
 
                 <SubmitBlockLogin />                    
               </FormFields>                    

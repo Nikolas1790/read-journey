@@ -10,6 +10,7 @@ margin-bottom: 108px;
 `
 
 export const Title = styled.h2`
+width: 444px;
   font-size: 64px;
   font-weight: 700;  
   line-height: 0.94;

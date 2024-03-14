@@ -17,6 +17,12 @@ export const FormBlock = styled.div`
 `
 
 ///////////////////////////////////////////////////////////
+export const FormConteiner = styled.div`
+  display:flex;
+  flex-direction: column;
+  gap: 14px;
+`;
+
 export const FormFields = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,28 +46,23 @@ export const FormField = styled(Field)`
   height: 50px;
   border: 1px solid	${(props) => (props.error === "true" ? "red" : "rgba(18, 20, 23, 0.1)")};
   border-radius: 12px;
-  margin-bottom: 14px;
   padding: 16px 14px 16px 65px;
-  padding-left: ${(props) => (props.email ? '53px' : '65px')};
+  padding-left: ${(props) => props.paddingleft || '65px'};
   outline: none;
   color: ${color.whitePrimary};
   background: ${color.gryeBlack};
 `;
 
-export const FormFieldPassvordConteiner = styled.div`
-  position: relative;  
-`;
-
-export const FormFieldPassvord = styled(Field)`
-  width: 100%;
-  height: 50px;
-  border: 1px solid	${(props) => (props.error === "true" ? "red" : "rgba(18, 20, 23, 0.1)")};
-  border-radius: 12px;
-  padding:  16px 14px 16px 86px;
-  outline: none;
-  color: ${color.whitePrimary};
-  background: ${color.gryeBlack};
-`;
+// export const FormFieldPassvord = styled(Field)`
+//   width: 100%;
+//   height: 50px;
+//   border: 1px solid	${(props) => (props.error === "true" ? "red" : "rgba(18, 20, 23, 0.1)")};
+//   border-radius: 12px;
+//   padding:  16px 14px 16px 86px;
+//   outline: none;
+//   color: ${color.whitePrimary};
+//   background: ${color.gryeBlack};
+// `;
 
 export const EyeSvg = styled.svg`
   position: absolute;
@@ -74,15 +75,12 @@ export const EyeSvg = styled.svg`
 
 //////////////////////////////////////////////////////////////////////
 export const ErrorMessageStyled = styled(ErrorMessage)`
+  font-size: 10px;
   color: red;
-  font-size: 14px;
-  margin-top: -20px; 
-  padding:  5px 10px 10px;
+  padding: 4px 0px 0px 14px;
 `;
-
-export const ErrorMessagePassword = styled(ErrorMessage)`
-  color: red;
-  font-size: 14px;
-  margin-top: -5px; 
-  padding:  5px 10px 10px;
+export const SecureMessage = styled.p`
+  font-size: 10px;
+  color: ${color.green};
+  padding: 4px 0px 0px 14px;
 `;
