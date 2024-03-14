@@ -7,7 +7,7 @@ import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
 import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
 import SubmitBlockRegister from 'components/SubmitBlockAutorization/SubmitBlockRegister';
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/operations';
+import { register } from '../../redux/auth/operationsAuth';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 

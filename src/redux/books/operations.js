@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 export const fetchBooks = createAsyncThunk("/books/recommend",
   async ({ page = 1, limit = 10, title ="", autor ="" }, thunkAPI) => {
@@ -59,6 +60,7 @@ export const readingStart = createAsyncThunk("/books/reading/start",
       const response = await axios.post(`/books/reading/start`, data);
       return response.data;
     } catch (e) {
+      toast.error("Connection error")
       return thunkAPI.rejectWithValue(e.message);
     }
 });
@@ -69,6 +71,7 @@ export const readingStop = createAsyncThunk("/books/reading/finish",
       const response = await axios.post(`/books/reading/finish`, data );
       return response.data;
     } catch (e) {
+      toast.error("Connection error");
       return thunkAPI.rejectWithValue(e.message);
     }
 });

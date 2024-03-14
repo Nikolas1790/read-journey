@@ -5,7 +5,7 @@ import { Container, ErrorMessageStyled, EyeSvg, FormBlock, FormConteiner, FormFi
 import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
 import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
 import SubmitBlockLogin from 'components/SubmitBlockAutorization/SubmitBlockLogin';
-import { logIn } from '../../redux/auth/operations';
+import { logIn } from '../../redux/auth/operationsAuth';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';

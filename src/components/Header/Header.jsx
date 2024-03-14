@@ -3,9 +3,9 @@ import {BlockMainInf, BlockNav, HeaderContainer, Initials, PagesNav, UserBar, Us
 import { Link, useNavigate } from "react-router-dom";
 import CustomButton from "components/CustomButton/CustomButton";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../../redux/auth/operations";
+import { logOut } from "../../redux/auth/operationsAuth";
 import { toast } from "react-toastify";
-import {  selectUser } from "../../redux/auth/selector";
+import {  selectUser } from "../../redux/auth/selectorAuth";
 
 export default function Header() {
   const dispatch = useDispatch();

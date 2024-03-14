@@ -4,7 +4,7 @@ import Layout from './Layout/Layout';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from 'react-redux';
-import { refreshUser } from '../redux/auth/operations';
+import { refreshUser } from '../redux/auth/operationsAuth';
 import { useAuth } from 'hooks/useAyth';
 import Loader from './Loader/Loader';
 import { RestrictedRoute } from './RestrictedRoute';

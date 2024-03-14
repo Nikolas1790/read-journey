@@ -99,6 +99,7 @@ export const DiaryInfConteiner = styled.ul`
   background: ${color.gryeBlack};
   border-radius: 12px;
   padding: 20px;
+  /* position: relative;  */
 
   overflow: hidden;
   overflow-y: auto;
@@ -106,6 +107,25 @@ export const DiaryInfConteiner = styled.ul`
   &::-webkit-scrollbar {
     display: none;
   }
+`
+
+
+export const DiaryConteiner = styled.div`
+  position: relative; 
+
+  &::before {
+  content: "";
+  position: absolute;
+  top: 20px; 
+  left: 30px;
+  width: 2px; 
+  height: calc(100% - 40px); 
+  background: linear-gradient(
+    to bottom ,
+    transparent,
+    ${color.blackLight} 15px 
+  );
+}
 `
 
 export const DayHeaderConteiner = styled.div`
@@ -169,16 +189,14 @@ export const IconsBlock = styled.div`
 
 export const DellBtn = styled.button`
   background: transparent;
-    transition: color 0.3s ease; /* Добавляем плавный переход */
+  stroke:  ${color.gryeLight};
+  transition: stroke 0.3s ease; /* Добавляем плавный переход */
 
   &:hover {
-    fill: red;
-    stroke: red;
-    color: red; 
+    stroke: ${color.focusColor};
   }
   &:focus {
     outline: none; /* Убираем стандартную обводку фокуса */
-    color: blue; /* Цвет при фокусе */
   }
 `
 

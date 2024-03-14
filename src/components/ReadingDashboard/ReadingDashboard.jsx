@@ -4,7 +4,7 @@ import CustomButton from "components/CustomButton/CustomButton";
 import { ErrorMessageStyled, FormField, FormFieldConteiner, FormFieldLabel, FormFields} from '../LibraryDashoard/LibraryDashoard.styled';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
-import {  BtnInfReading, BtnInfSvg, DashboardConteiner, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatPercentBlock, StatText, Text, TextOneHundredPercent } from './ReadingDashboard.styled';
+import {  BtnInfReading, BtnInfSvg, DashboardConteiner, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryConteiner, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatPercentBlock, StatText, Text, TextOneHundredPercent } from './ReadingDashboard.styled';
 import sprite from '../../img/ico-sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { bookReadingInf, readingDell, readingStart, readingStop } from '../../redux/books/operations';
@@ -32,6 +32,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
   const [modalOpen, setModalOpen] = useState(false);
   const [read, setRead] = useState(false);
   const [diaryStat, setDiaryStat] = useState(false);
+  const [activeModal, setActiveModal] = useState(false);
 
   const dispatch = useDispatch();
   const InfoAboutBook =useSelector(selectInfoCurrentBook);
@@ -48,6 +49,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
     useEffect(() => {
       // Подсчет после каждого обновления progress
       const timer = setTimeout(() => {
+        if(activeModal) {
       const totalReadPages = InfoAboutBook?.progress?.reduce((total, entry) => {
         const startPage = Number(entry.startPage);
         const finishPage = Number(entry.finishPage);
@@ -59,12 +61,11 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
     
       if (totalReadPages >= InfoAboutBook?.totalPages) {
         setModalOpen(true);
-      }
-    
-      
-    }, 250);
+      }  
+    }    
+    }, 200);
     return () => clearTimeout(timer); 
-    }, [InfoAboutBook?.progress, InfoAboutBook?.totalPages]);
+    }, [InfoAboutBook?.progress, InfoAboutBook?.totalPages, activeModal]);
     
   // Переберите массив прогресса и распределите данные по датам
   if(InfoAboutBook?.progress?.length > 0 ){
@@ -103,11 +104,13 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
     }; 
     if (e.page) {
       if(!read){
+        setActiveModal(false)
         dispatch(readingStart(requestData))
         setRead(true)
         onReadChange(read)
       }
       if(read){
+        setActiveModal(true)
         dispatch(readingStop(requestData))
         setRead(false)
         onReadChange(read)
@@ -194,6 +197,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
                 </StatBlock>
               </>
             ) : ( 
+              <DiaryConteiner>
             <DiaryInfConteiner>
             {Object.entries(dailyReadings)
               .sort(([dateA], [dateB]) => {
@@ -205,9 +209,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
                 return dateObjB - dateObjA; // Сортировка по убыванию
               })
               .map(([date, dailyReadingArray], index) => {
-
-              // Проверка, что date не равно 'Invalid Date'
-              if (date !== 'Invalid Date') {
+                if (date !== 'Invalid Date') {
                 // Вычисляем общее количество прочитанных страниц за день
                 const totalReadForDay = dailyReadingArray.reduce((total, dailyReading) => total + dailyReading.totalRead, 0);
                 return (
@@ -249,7 +251,9 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
                 return <Loader  key="1"/>;
               }
             })}
-          </DiaryInfConteiner>)
+          </DiaryInfConteiner>
+          </DiaryConteiner>
+          )
           }
         </div>
       }
@@ -261,5 +265,6 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
       </DashboardConteiner>
     </Dashboard> 
   );
-}
-  
+}  
+
+

@@ -13,6 +13,9 @@ export const FilterTitle = styled.h3`
   margin-bottom: 8px;
   margin-left: 14px;
 `
+export const FormFieldConteiner = styled.div`
+  position:relative;
+`;
 
 export const FormFields = styled.div`
   display: flex;
@@ -22,9 +25,11 @@ export const FormFields = styled.div`
   margin-bottom: 20px;  
 `;
 
-export const FormFieldConteiner = styled.div`
-  position:relative;
+export const ButtonConteiner = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
+
 
 export const FormFieldLabel = styled.label`
   position:absolute;

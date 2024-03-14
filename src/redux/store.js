@@ -11,7 +11,7 @@ import {
 } from "redux-persist";
 import persistStore from "redux-persist/es/persistStore";
 
-import { authReducer } from './auth/slice';
+import { authReducer } from './auth/sliceAuth';
 import booksSlice from "./books/booksSlice";
 
 const authPersistConfig = {
