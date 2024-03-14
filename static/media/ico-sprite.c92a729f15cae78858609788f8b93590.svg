@@ -8,9 +8,9 @@
     </symbol>
 
     <symbol id="icon-trash" viewBox="0 0 32 32">
-      <path fill="none" stroke="#686868" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286" d="M4 8h24" style="stroke:var(--color1, #686868)"/>
-      <path fill="none" stroke="#686868" stroke-linejoin="round" stroke-width="2.286" d="M25.333 8v18.667a2.668 2.668 0 0 1-2.667 2.667H9.333a2.668 2.668 0 0 1-2.667-2.667V8m4.001 0V5.334a2.666 2.666 0 0 1 2.667-2.667h5.333a2.668 2.668 0 0 1 2.667 2.667V8" style="stroke:var(--color1, #686868)"/>
-      <path fill="none" stroke="#686868" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286" d="M13.333 14.667v8m5.334-8v8" style="stroke:var(--color1, #686868)"/>
+      <path fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286" d="M4 8h24" />
+      <path fill="none"  stroke-linejoin="round" stroke-width="2.286" d="M25.333 8v18.667a2.668 2.668 0 0 1-2.667 2.667H9.333a2.668 2.668 0 0 1-2.667-2.667V8m4.001 0V5.334a2.666 2.666 0 0 1 2.667-2.667h5.333a2.668 2.668 0 0 1 2.667 2.667V8" />
+      <path fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286" d="M13.333 14.667v8m5.334-8v8"/>
     </symbol>
     <symbol id="icon-block" viewBox="0 0 76 32">
       <path fill="#30b94d" d="M76.241 1.28.721 12.059V32h75.52V1.28z" opacity=".2" style="fill:var(--color2, #30b94d)"/>
