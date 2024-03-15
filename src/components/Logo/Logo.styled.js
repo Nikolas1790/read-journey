@@ -10,8 +10,12 @@ export const LogoLink = styled.div`
 `; 
 
 export const LogoName = styled.p`
-display: none;
+  display: none;
   @media (min-width: 768px) {
+    display: ${({ page }) => (page ? 'block' : 'none')};
+    /* display: block; */
+  }
+  @media (min-width: 1440px) {
     display: block;
   }
 `; 
