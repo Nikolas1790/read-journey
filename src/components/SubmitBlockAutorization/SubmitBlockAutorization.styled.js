@@ -10,12 +10,12 @@ export const FormBtn = styled.button`
   border-radius: 30px;
   color: ${color.blackLight};
   background: ${color.darkGgeen};
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
-  margin-right: 20px;
-  padding: 16px 54px;
-
+  margin-right: 14px;
+  /* padding: 12px 29px; */
+  padding:${(props) => (props.log === 'login' ? "12px 45px" : "12px 29px")};
   transition: color 0.3s linear, background 0.3s linear; 
 
   &:hover,
@@ -24,12 +24,20 @@ export const FormBtn = styled.button`
     background: ${color.blackLight};
     box-shadow: 0 0 0 2px ${color.whiteLightTranslucent};
   }
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+    margin-right: 20px;
+    padding: 16px 54px;
+  }
 `;
 
 export const LinkTo = styled(NavLink)`
-  position: relative;
-  color: ${color.gryeLight}; 
+  position: relative;  
   font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.2px;
+  color: ${color.gryeLight}; 
   transition: color 0.3s linear; 
 
   &::after {
@@ -50,4 +58,8 @@ export const LinkTo = styled(NavLink)`
       background: ${color.whitePrimary};  
     }
   }  
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+
 `;

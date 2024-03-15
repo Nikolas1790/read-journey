@@ -4,62 +4,111 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 10px;
+  align-items: center;
   justify-content: center ;
-  padding: 32px;
+  flex-direction: column;
+  padding: 20px;
+
+  @media (min-width: 768px) {
+    gap: 16px;
+    flex-direction: row;
+    justify-content: center ;
+    padding: 32px;
+  }
 `
 export const FormBlock = styled.div`
-  width:600px;
-  height: 736px; 
+  width:335px;
+  height: 411px; 
   background: ${color.blackLight};
   border-radius: 30px;
-  padding: 40px 64px;
+  padding: 20px 20px 40px 20px;
+
+  @media (min-width: 768px) {
+    width:704px;
+    height: 960px; 
+    padding: 40px 64px;
+  }
+  @media (min-width: 1440px) {
+    width:600px;
+    height: 736px; 
+  }
 `
 
 ///////////////////////////////////////////////////////////
 export const FormConteiner = styled.div`
   display:flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
+
+  @media (min-width: 768px) {
+    gap: 14px;
+  }
 `;
 
 export const FormFields = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 308px;
+  justify-content: space-between;  
+  height: 210px;
+
+  @media (min-width: 768px) {
+    height: 308px;
+  }
+
 `;
 
 export const FormFieldConteiner = styled.div`
   position:relative;
+  width: 295x;
+  @media (min-width: 768px) {
+    width: 472px;
+  }
 `;
 
 export const FormFieldLabel = styled.label`
   position:absolute;
-  top: 16px;
+  top: 13px;
   left: 14px;
   color: ${color.gryeLight};
+  @media (min-width: 768px) {
+    top: 16px;
+  }
 `;
 
 export const FormField = styled(Field)`
-  width: 100%;
-  height: 50px;
+  /* width: 100%; */
+  width: 295px;
+
+  height: 44px;
   border: 1px solid	${(props) => (props.error === "true" ? "red" : "rgba(18, 20, 23, 0.1)")};
   border-radius: 12px;
-  padding: 16px 14px 16px 65px;
+  padding: 14px;
   padding-left: ${(props) => props.paddingleft || '65px'};
   outline: none;
   color: ${color.whitePrimary};
   background: ${color.gryeBlack};
+
+  @media (min-width: 768px) {
+    width: 472px;
+    height: 50px;
+    padding: 16px 14px 16px 65px;
+  }
+
 `;
 
 export const EyeSvg = styled.svg`
   position: absolute;
-  top: 17px;
-  right: 17px;
+  top: 13px;
+  right: 13px;
   cursor: pointer;
   stroke: ${color.blackPrimary};
   fill: none;
+
+  @media (min-width: 768px) {
+    top: 17px;
+    right: 17px;
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

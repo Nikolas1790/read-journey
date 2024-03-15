@@ -1,5 +1,5 @@
 import sprite from '../../img/sprite.svg';
-import {  LogoLink } from "./Logo.styled";
+import {  LogoLink, LogoName } from "./Logo.styled";
 
 export default function Logo() {
   return (           
@@ -7,7 +7,7 @@ export default function Logo() {
         <svg width={42} height={17}>
             <use href={`${sprite}#icon-Logo`} />
         </svg>
-        <p>READ JOURNEY</p>
+        <LogoName>READ JOURNEY</LogoName>
       </LogoLink > 
   );
 };

@@ -7,4 +7,19 @@ export const LogoLink = styled.div`
   font-size: 18px;
   font-weight: 700;  
   line-height: 1;
-`;
+`; 
+
+export const LogoName = styled.p`
+display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+`; 
+
+
+
+
+
+
+
+

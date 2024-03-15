@@ -1,4 +1,4 @@
-import {  Navigate, Route, Routes } from 'react-router-dom';
+import {  Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import Layout from './Layout/Layout';
 import { ToastContainer } from "react-toastify";
@@ -20,10 +20,13 @@ const NotFoundPage = lazy(() => import('./NotFoundPage/NotFoundPage'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+  const location = useLocation();
 
   useEffect(() => {
+    if(location.pathname !== '/register' || location.pathname !== '/login'){
     dispatch(refreshUser());
-  }, [dispatch]);
+    }
+  }, [dispatch, location.pathname]);
 
   return isRefreshing ? (
     <Loader />
