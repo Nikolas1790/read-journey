@@ -26,5 +26,11 @@
       <path fill="none" stroke="#f9f9f9" stroke-width="1.28" d="M31.36 16c0 8.483-6.877 15.36-15.36 15.36S.64 24.483.64 16 7.517.64 16 .64 31.36 7.517 31.36 16z" style="stroke:var(--color1, #f9f9f9)"/>
     </symbol>
 
+
+    <symbol id="icon-menu" viewBox="0 0 32 32">
+      <path fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286" d="M4 16h24M4 8h24M12 24h16" style="stroke:var(--color1, #f9f9f9)"/>
+    </symbol>
+
+
   </defs>
 </svg>

@@ -1,8 +1,8 @@
 import { CustomBtn } from "./CustomButton.styled";
 
-export default function CustomButton({ label, onClick, width, height }){
+export default function CustomButton({ className, label, onClick, width, height }){
   return (
-    <CustomBtn onClick={onClick}  width={width} height={height} type="submit"  >
+    <CustomBtn className={className} onClick={onClick}  width={width} height={height} type="submit"  >
       {label}
     </CustomBtn>
   );

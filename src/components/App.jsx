@@ -23,7 +23,7 @@ export const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if(location.pathname !== '/register' || location.pathname !== '/login'){
+    if(location.pathname !== '/register' && location.pathname !== '/login'){
     dispatch(refreshUser());
     }
   }, [dispatch, location.pathname]);

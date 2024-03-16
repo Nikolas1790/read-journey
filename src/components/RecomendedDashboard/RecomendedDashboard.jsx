@@ -2,11 +2,11 @@ import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
 import sprite from '../../img/sprite.svg';
-import { Arguments, ButtonConteiner, Filters, LinkTextToLibrary, LinkToLibrary, Quote, QuoteBlock, QuoteSpan, SeriaNumber, StartWorkoutBlock, StartWorkoutTitle, TextOne, TextSpan, TextTwo } from './RecomendedDashboard.styled';
+import { Arguments, ArgumentsBlock, ButtonConteiner, Filters, Quote, QuoteBlock, QuoteSpan, SeriaNumber, StartWorkoutBlock, StartWorkoutTitle, TextOne, TextSpan, TextTwo } from './RecomendedDashboard.styled';
 import imgBooksDesc from '../../img/stackBooksAndLike/books-desc.png';
 import imgBooksDesc2x from '../../img/stackBooksAndLike/books-desc@2.png';
 import Dashboard from 'components/Dashboard/Dashboard';
-import { FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields } from 'components/Dashboard/Dashboard.styled';
+import { FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTitlelTo, LinkTo, LinkToSvg } from 'components/Dashboard/Dashboard.styled';
 import { fetchBooks } from '../../redux/books/operations';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
@@ -70,22 +70,23 @@ export default function RecomendedDashboard() {
 
       <StartWorkoutBlock>
         <StartWorkoutTitle>Start your workout</StartWorkoutTitle>
-        <Arguments maginbottom="20px" >
+        <ArgumentsBlock>
+        <Arguments>
           <SeriaNumber>1</SeriaNumber>
           <TextOne>Create a personal library: <TextSpan>add the books you intend to read to it.</TextSpan></TextOne>
         </Arguments>
-        <Arguments maginbottom="26px">
+        <Arguments>
           <SeriaNumber>2</SeriaNumber>
           <TextTwo>Create your first workout: <TextSpan>define a goal, choose a period, start training.</TextSpan></TextTwo>
         </Arguments>
+        </ArgumentsBlock>
 
-        <LinkToLibrary to="/library">
-          <LinkTextToLibrary>My library </LinkTextToLibrary>
-            
-          <svg width={24} height={24}>
+        <LinkTo to="/library">
+          <LinkTitlelTo>My library </LinkTitlelTo>            
+          <LinkToSvg>
             <use href={`${sprite}#icon-arrow-right`} />
-          </svg>          
-        </LinkToLibrary>
+          </LinkToSvg>          
+        </LinkTo>
       </StartWorkoutBlock>
 
       <QuoteBlock>        

@@ -1,4 +1,5 @@
 import color from 'common/GlobalColers'
+import CustomButton from 'components/CustomButton/CustomButton'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -11,15 +12,32 @@ export const HeaderContainer = styled.div`
 export const BlockMainInf = styled.div`
   display: flex;
   align-items: center;
-  width: 1216px;
-  height: 74px;
+  width: 335px;
+  height: 57px;
   background: ${color.blackLight};
   border-radius: 15px;
-  padding: 16px;  
+  padding: 11px 20px;  
+
+  @media (min-width: 768px) {
+    width: 704px;
+    height: 74px;  
+    padding: 16px;
+  }
+  @media (min-width: 1440px) {
+    width: 1216px;
+  }
 `
 
 export const BlockNav = styled.nav`
-margin-left: 332px;  
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    margin-left: 223px;        
+  }
+  @media (min-width: 1440px) {
+    margin-left: 332px; 
+  }
 `
 
 export const PagesNav = styled(NavLink)`
@@ -53,42 +71,72 @@ export const PagesNav = styled(NavLink)`
       color: ${color.focusColor};
     }
   }
-  &:not(:last-child) {
-    margin-right: 36px; 
+  &:not(:last-child) { 
+    @media (min-width: 768px) {   
+      margin-right: 32px;  
+    }
+  @media (min-width: 1440px) {
+    margin-right: 40px;; 
+  }
   }
 `
 ///////////////////////////////////////////////////
 export const UserBar = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-left: auto;  
+
 `
 
 export const Initials = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   border: 1px solid rgba(249, 249, 249, 0.2);
   background: ${color.gryeBlack}; 
-  margin-right: 8px;
+  margin-right: 10px;
+
+  @media (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;        
+  }
+  @media (min-width: 1440px) {
+    margin-right: 8px; 
+  }
 `
 
 export const UserName = styled.p`
-  font-size: 16px;
-  font-weight: 700;
-  margin-right: 16px;
+  display: none;
+
+  @media (min-width: 1440px) {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 16px;
+  }
 `
 
-export const BtnLogOut = styled.button`
-  width: 114px;
-  height: 42px;
-  font-size: 16px;
-  font-weight: 700;
-
-  border: 1px solid rgba(249, 249, 249, 0.2);
-  border-radius: 30px;
+export const BtnLogOut = styled(CustomButton)`
+  display: none ;
+    @media (min-width: 768px) {
+    display: block;
+  }
+`
+export const BtnBurger = styled.button`
   background: transparent;
+  scale: 1;
+  margin: auto 0;
+  transition: scale 0.25s linear;
+  &:hover,
+  &:focus {
+    scale: 1.1;
+  }
+  @media (min-width: 768px) {
+    display: none;
+  }
 `

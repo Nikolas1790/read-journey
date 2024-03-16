@@ -2,11 +2,11 @@ import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
 import sprite from '../../img/sprite.svg';
-import { Arguments, CardAutor, CardImg, CardRecomended, CardTitle, Filters, LinkTextToHome, LinkToHome, MainBlockLibraryDashboard, StartWorkoutBlock, StartWorkoutTitle } from './LibraryDashoard.styled';
+import { Arguments, CardAutor, CardImg, CardRecomended, CardTitle, Filters, StartWorkoutBlock, StartWorkoutTitle } from './LibraryDashoard.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBookData, selectOwnBooks } from '../../redux/books/selector';
 import Dashboard from 'components/Dashboard/Dashboard';
-import { ErrorMessageStyled, FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields } from 'components/Dashboard/Dashboard.styled';
+import { ErrorMessageStyled, FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTitlelTo, LinkTo, LinkToSvg } from 'components/Dashboard/Dashboard.styled';
 import { addNewBook, fetchBooks, ownBooks } from '../../redux/books/operations';
 import PortalModal from 'components/PortalModal/PortalModal';
 import ModalAddBookSuccessfully from 'components/ModalBookWindow/ModalAddBookSuccessfully';
@@ -70,7 +70,6 @@ export default function LibraryDashboard() {
   
   return (
     <Dashboard>
-    <MainBlockLibraryDashboard>      
       <Filters>
         <FilterTitle>Create your library:</FilterTitle>
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
@@ -111,12 +110,12 @@ export default function LibraryDashboard() {
             </CardRecomended>
           ))}     
         </Arguments>
-        <LinkToHome to="/recommended">
-          <LinkTextToHome>Home </LinkTextToHome>            
-          <svg width={24} height={24}>
+        <LinkTo to="/recommended">
+          <LinkTitlelTo>Home </LinkTitlelTo>            
+          <LinkToSvg>
             <use href={`${sprite}#icon-arrow-right`} />
-          </svg>          
-        </LinkToHome>
+          </LinkToSvg>          
+        </LinkTo>
       </StartWorkoutBlock>
 
       <PortalModal active={modalOpen} setActive={setModalOpen}>
@@ -125,7 +124,6 @@ export default function LibraryDashboard() {
       <PortalModal active={openModal} setActive={setOpenModal}>
         <DetailedInformationBook bookData={bookData} closeModals={() => setOpenModal()} btnLabel="Add to library"/>
       </PortalModal>
-    </MainBlockLibraryDashboard>
     </Dashboard>
   );
 }

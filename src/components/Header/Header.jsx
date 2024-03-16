@@ -1,13 +1,17 @@
 import Logo from "components/Logo/Logo";
-import {BlockMainInf, BlockNav, HeaderContainer, Initials, PagesNav, UserBar, UserName } from "./Header.styled";
+import {BlockMainInf, BlockNav, BtnBurger, BtnLogOut, HeaderContainer, Initials, PagesNav, UserBar, UserName } from "./Header.styled";
 import { Link, useNavigate } from "react-router-dom";
-import CustomButton from "components/CustomButton/CustomButton";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/auth/operationsAuth";
 import { toast } from "react-toastify";
 import {  selectUser } from "../../redux/auth/selectorAuth";
+import sprite from '../../img/ico-sprite.svg';
+import { useState } from "react";
+import PortalModal from "components/PortalModal/PortalModal";
+import SidebarMenu from "components/SidebarMenu/SidebarMenu";
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {name} = useSelector(selectUser);  
@@ -21,6 +25,9 @@ export default function Header() {
       toast.error("Log out failed. Something went wrong.");
     }
   };  
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <HeaderContainer>
@@ -37,10 +44,19 @@ export default function Header() {
         <UserBar>
           <Initials>{firstLetterAvatar}</Initials>
           <UserName>{name}</UserName>
-          <CustomButton label="Log out" onClick={handleButtonClick} width="114px" />
+          <BtnLogOut label="Log out" onClick={handleButtonClick} width="114px" />
+
+          <BtnBurger onClick={toggleMenu}>
+            <svg width={28} height={28}>
+              <use href={`${sprite}#icon-menu`} />
+            </svg>
+          </BtnBurger>
         </UserBar>
 
       </BlockMainInf>
+      <PortalModal active={isMenuOpen} setActive={setIsMenuOpen}>
+        <SidebarMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      </PortalModal>
     </HeaderContainer>
   );
 };
