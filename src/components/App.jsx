@@ -26,7 +26,7 @@ export const App = () => {
     if(location.pathname !== '/register' && location.pathname !== '/login'){
     dispatch(refreshUser());
     }
-  }, [dispatch, location.pathname]);
+  }, [dispatch, location.pathname ]);
 
   return isRefreshing ? (
     <Loader />

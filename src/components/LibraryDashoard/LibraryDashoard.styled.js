@@ -42,7 +42,7 @@ export const StartWorkoutBlock = styled.div`
     
   }
 `
-export const StartWorkoutTitle = styled.h2`
+export const StartWorkoutTitle = styled.h4`
     font-size: 18px;
   font-weight: 700;
   line-height: 1;

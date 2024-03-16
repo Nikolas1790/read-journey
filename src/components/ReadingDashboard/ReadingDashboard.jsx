@@ -4,7 +4,7 @@ import CustomButton from "components/CustomButton/CustomButton";
 import { ErrorMessageStyled, FormField, FormFieldConteiner, FormFieldLabel, FormFields} from '../Dashboard/Dashboard.styled';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
-import {  BtnInfReading, BtnInfSvg, DashboardConteiner, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryConteiner, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatPercentBlock, StatText, Text, TextOneHundredPercent } from './ReadingDashboard.styled';
+import {  BtnInfReading, BtnInfSvg, CircleStyle, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryConteiner, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatPercentBlock, StatText, SvgSchedule, Text, TextOneHundredPercent } from './ReadingDashboard.styled';
 import sprite from '../../img/ico-sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { bookReadingInf, readingDell, readingStart, readingStop } from '../../redux/books/operations';
@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import DashboardProgress from 'components/DashboardProgress/DashboardProgress';
 import { selectInfoCurrentBook, selectReadBook } from '../../redux/books/selector';
 import Loader from 'components/Loader/Loader';
-import { Circle } from 'rc-progress';
+// import { Circle } from 'rc-progress';
 import PortalModal from 'components/PortalModal/PortalModal';
 import ModalBookIsRead from 'components/ModalBookWindow/ModalBookIsRead';
 
@@ -50,21 +50,21 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
       // Подсчет после каждого обновления progress
       const timer = setTimeout(() => {
         if(activeModal) {
-      const totalReadPages = InfoAboutBook?.progress?.reduce((total, entry) => {
-        const startPage = Number(entry.startPage);
-        const finishPage = Number(entry.finishPage);
-        if (!isNaN(startPage) && !isNaN(finishPage)) {
-          return total + (finishPage - startPage);
-        }
-        return total;
-      }, 0);
+          const totalReadPages = InfoAboutBook?.progress?.reduce((total, entry) => {
+            const startPage = Number(entry.startPage);
+            const finishPage = Number(entry.finishPage);
+            if (!isNaN(startPage) && !isNaN(finishPage)) {
+              return total + (finishPage - startPage);
+            }
+            return total;
+          }, 0);
     
-      if (totalReadPages >= InfoAboutBook?.totalPages) {
-        setModalOpen(true);
-      }  
-    }    
-    }, 200);
-    return () => clearTimeout(timer); 
+          if (totalReadPages >= InfoAboutBook?.totalPages) {
+            setModalOpen(true);
+          }  
+        }    
+      }, 200);
+      return () => clearTimeout(timer); 
     }, [InfoAboutBook?.progress, InfoAboutBook?.totalPages, activeModal]);
     
   // Переберите массив прогресса и распределите данные по датам
@@ -138,7 +138,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
   };
   return (  
     <Dashboard> 
-      <DashboardConteiner>
+      {/* <DashboardConteiner> */}
       <Forma>
         <FilterTitle>Start page:</FilterTitle>
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
@@ -166,12 +166,12 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
             <DiaryTitle>{diaryStat ? 'Statistic' : 'Diary' }</DiaryTitle>          
             <DiarySvgConteiner>
               <BtnInfReading onClick={() => handleDiaryStatistic(true)} >
-                <BtnInfSvg width={20} height={20} diarystat={diaryStat ?  "true" : "" } >
+                <BtnInfSvg diarystat={diaryStat ?  "true" : "" } >
                   <use href={`${sprite}#icon-hourglass`} />
                 </BtnInfSvg> 
               </BtnInfReading>
               <BtnInfReading onClick={() => handleDiaryStatistic(false)}>
-                <BtnInfSvg width={20} height={20} diarystat={diaryStat  ? "" : "true" } >
+                <BtnInfSvg diarystat={diaryStat  ? "" : "true" } >
                   <use href={`${sprite}#icon-pie-chart`} />
                 </BtnInfSvg>  
               </BtnInfReading>
@@ -179,24 +179,24 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
           </DiaryHeaderConteiner>
 
           { diaryStat ? (
-              <>
-                <StatText>Each page, each chapter is a new round of knowledge, a new step towards understanding. By rewriting statistics, we create our own reading history.</StatText>
-                <StatBlock>
+            <>
+              <StatText>Each page, each chapter is a new round of knowledge, a new step towards understanding. By rewriting statistics, we create our own reading history.</StatText>
+              <StatBlock>
                 <StatPercentBlock>
-                  <Circle percent={roundToTwoDecimalPlaces() || 0} strokeWidth={9} width={168} strokeColor={'#30B94D'} trailWidth={9} trailColor={"#1F1F1F"} />
+                  <CircleStyle percent={roundToTwoDecimalPlaces() || 0} strokeWidth={9} strokeColor={'#30B94D'} trailWidth={9} trailColor={"#1F1F1F"} />
                   <TextOneHundredPercent>100 %</TextOneHundredPercent>
                 </StatPercentBlock>
-                    <PagePercentBlock>
-                    <GreenBlock />
-                    <div>
-                      <PercentTitle>{roundToTwoDecimalPlaces() || 0} %</PercentTitle>
-                      <PagesRead>{totalReadInBook} pages read</PagesRead>
-                    </div>
-                  </PagePercentBlock>
-                </StatBlock>
-              </>
-            ) : ( 
-              <DiaryConteiner>
+                <PagePercentBlock>
+                <GreenBlock />
+                <div>
+                  <PercentTitle>{roundToTwoDecimalPlaces() || 0} %</PercentTitle>
+                  <PagesRead>{totalReadInBook} pages read</PagesRead>
+                </div>
+                </PagePercentBlock>
+              </StatBlock>
+            </>
+          ) : ( 
+            <DiaryConteiner>
             <DiaryInfConteiner>
             {Object.entries(dailyReadings)
               .sort(([dateA], [dateB]) => {
@@ -230,9 +230,9 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
                       
                           <div>
                             <IconsBlock>
-                              <svg width={59} height={25}>
+                              <SvgSchedule >
                                 <use href={`${sprite}#icon-block`} />
-                              </svg> 
+                              </SvgSchedule> 
                               <DellBtn onClick={() =>handleDellTrash(dailyReading.id)}>
                                 <svg width={14} height={14}>
                                   <use href={`${sprite}#icon-trash`} />
@@ -261,9 +261,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
       <PortalModal active={modalOpen} setActive={setModalOpen}>
         <ModalBookIsRead  closeModals={() => setModalOpen()} />
       </PortalModal>
-      </DashboardConteiner>
+      {/* </DashboardConteiner> */}
     </Dashboard> 
   );
 }  
-
-

@@ -1,15 +1,40 @@
 import color from 'common/GlobalColers'
 import styled from 'styled-components'
 
+export const ProgressConteiner = styled.div`
+  width: 295px;
+  @media (min-width: 768px) {
+    width: 305px;
+  }
+  @media (min-width: 1440px) {
+    width: 313px;
+  }
+`
+
 export const StarPicture = styled.picture`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: ${color.blackWhite};
-  margin: 0 auto 163px auto;
+  margin: 0 auto 20px auto;
+  @media (min-width: 768px) {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto ;
+  }
+  @media (min-width: 1440px) {
+    margin: 0 auto 163px auto;
+  }
+`
+
+export const Star = styled.img`
+  width: 32px;
+  @media (min-width: 768px) {
+    width: 50px;
+  }
 `
 
 export const ProgressTitle = styled.h4`
@@ -20,7 +45,14 @@ export const ProgressTitle = styled.h4`
 
 export const ProgressText = styled.p`
   color: ${color.gryeLight};
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 50px;
+  }
+  @media (min-width: 1440px) {
+    margin-bottom: 60px;
+  }
 `
 
 
