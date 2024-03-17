@@ -4,12 +4,15 @@ import styled from 'styled-components'
 export const HeaderAndPaginationBlock = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+  }
 `
 
 export const PaginationBtn = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   margin-right: 8px;
   background: transparent;
   border-radius: 50%; 
@@ -18,12 +21,24 @@ export const PaginationBtn = styled.button`
   &:last-child {
     margin-right: 0; 
   }
+
+  @media (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
+  @media (min-width: 1440px) {
+ 
+  }
 `
 
 export const PaginationSvg = styled.svg`
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   stroke: ${(props) => (props.stoke === "true" ? color.whiteLightTranslucent : color.whitePrimary)};
+  @media (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
 `
 
 ///////////////////////////////////////////////////////////////////////////

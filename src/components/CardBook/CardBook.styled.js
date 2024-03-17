@@ -26,6 +26,7 @@ export const BookDataBlock = styled.div`
 `
 export const TitleAutorBlock = styled.div`
   max-width: ${({ page }) => ( page === 'true' ? '89px' : '137px')};
+  /* max-width: 89px; */
 `
 
 export const BookTitle = styled.h3`
@@ -51,7 +52,7 @@ export const BookAutor = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
 `
-///////////////////////////////////////////////////////////
+
 export const DellBtn = styled.button`
   background: transparent;
 `

@@ -12,6 +12,28 @@ import UnivesalMainConteainer from "components/UniversalMainContainer/UniversalM
 import UnivesalGeneralBlock from "components/UniversalGeneralBlock/UniversalGeneralBlock";
 import { MainBlockTitle } from "components/UniversalMainContainer/UniversalMainContainer.styled";
 
+// Вспомогательная функция для определения начального значения limit
+// const getInitialLimit = () => {
+//   const screenWidth = window.innerWidth;
+//   if (screenWidth < 768) {
+//     return 2; // Для мобильных
+//   } else if (screenWidth >= 768 && screenWidth < 1440) {
+//     return 8; // Для планшетов
+//   } else {
+//     return 10; // Для десктопов
+//   }
+// };
+
+const calculateLimit = (width) => {
+  if (width < 768) {
+    return 2;
+  } else if (width >= 768 && width < 1440) {
+    return 8;
+  } else {
+    return 10;
+  }
+};
+
 export default function Recomended() {
   const dispatch = useDispatch();
   const results = useSelector(selectBookData)
@@ -19,10 +41,24 @@ export default function Recomended() {
   const [modalOpen, setModalOpen] = useState(false);
   const [bookData, setBookData] = useState(false); 
   const [page, setPage] = useState(1);
+  
+  const [limit, setLimit] = useState(calculateLimit(window.innerWidth));
 
-  useEffect(()=> {
-    dispatch(fetchBooks({ page, limit: 10  }))
-  }, [dispatch, page]);
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.innerWidth;
+      const newLimit = calculateLimit(newWidth);
+      setLimit(newLimit); 
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchBooks({ page, limit }));
+  }, [dispatch, page, limit]);
+  
 
   const handlePageChange = (newPage) => { 
     if (newPage >= 1 && newPage <= totalPages) {

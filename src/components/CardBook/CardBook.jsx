@@ -28,12 +28,13 @@ export default function CardBook({book, openLoginModal, currentPage=false}) {
     <BookCard>
       <BookImg src={imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
       <BookDataBlock>
-        <TitleAutorBlock page={currentPage === " MyLibrary" ? 'true' : 'false' }>
+        
+        <TitleAutorBlock page={currentPage === "MyLibrary" ? 'true' : '' }>
           <BookTitle>{book.title}</BookTitle>
           <BookAutor>{book.author}</BookAutor>
         </TitleAutorBlock>
         
-        {currentPage === " MyLibrary" && (
+        {currentPage === "MyLibrary" && (
           <DellBtn onClick={handleDeleteClick} >        
             <svg width={28} height={28}>
               <use href={`${sprite}#icon-dell`} />

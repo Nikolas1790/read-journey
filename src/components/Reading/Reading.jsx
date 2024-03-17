@@ -4,7 +4,7 @@ import { MainBlockTitle } from "components/UniversalMainContainer/UniversalMainC
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { selectOwnBooks } from "../../redux/books/selector";
-import { AuthorBook, BasicImg, BasicInfBook, TitleBook } from "./Reading.styled";
+import { AuthorBook, BasicImg, BasicInfBook, SvgPlayStop, TitleBook } from "./Reading.styled";
 import sprite from '../../img/ico-sprite.svg';
 import ReadingDashboard from "components/ReadingDashboard/ReadingDashboard";
 import notFoundImg2x from '../../img/notFoundImg/open-book@2x.jpg';
@@ -42,14 +42,14 @@ export default function Reading() {
           <TitleBook>{selectedBook.title}</TitleBook>
           <AuthorBook>{selectedBook.author}</AuthorBook>
           {read ?(
-            <svg width={50} height={50}>
+            <SvgPlayStop>
               <use href={`${sprite}#icon-block-start`} />
-            </svg> 
+            </SvgPlayStop> 
 
           ) : (
-          <svg width={50} height={50}>
+          <SvgPlayStop>
             <use href={`${sprite}#icon-block-pause`} />
-          </svg> 
+          </SvgPlayStop> 
           )}
 
         </BasicInfBook>

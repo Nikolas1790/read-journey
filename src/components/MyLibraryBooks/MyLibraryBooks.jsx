@@ -87,7 +87,7 @@ export default function MyLibraryBooks() {
         ) : (
           <BooksTen>
             {Array.isArray(ownLibrary) && ownLibrary.map((book) => (  
-              <CardBook  key={book._id} book={book} openLoginModal={openLoginModal} currentPage=" MyLibrary"  />
+              <CardBook  key={book._id} book={book} openLoginModal={openLoginModal} currentPage="MyLibrary"  />
             ))}
           </BooksTen> 
         )}

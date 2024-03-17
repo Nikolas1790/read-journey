@@ -66,11 +66,16 @@ export const BooksTen = styled.ul`
   flex-wrap: wrap;
   gap: 27px 20px;
 
-  height: 523px;
+  height: 260px;
   overflow: hidden;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (min-width: 768px) {
+    
+    height: 523px;
   }
 `
