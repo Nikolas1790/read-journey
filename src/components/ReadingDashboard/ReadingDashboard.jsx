@@ -5,7 +5,7 @@ import { ErrorMessageStyled, FormField, FormFieldConteiner, FormFieldLabel, Form
 import Dashboard from 'components/Dashboard/Dashboard';
 import { FilterTitle } from 'components/Dashboard/Dashboard.styled';
 import {  BtnInfReading, BtnInfSvg, CircleStyle, DayHeaderConteiner, DayHeaderData, DayTotalPages, DellBtn, DiaryConteiner, DiaryHeaderConteiner, DiaryInfConteiner, DiarySvgConteiner, DiaryTitle, Forma, GreenBlock, IconsBlock, MinutesPercentBlock, PageHour, PagePercentBlock, PagesRead, Percent, PercentTitle, ResultsBlock, SquareConteiner, SquareInteriorConteiner, StatBlock, StatPercentBlock, StatText, SvgSchedule, Text, TextOneHundredPercent } from './ReadingDashboard.styled';
-import sprite from '../../img/ico-sprite.svg';
+import sprite from '../../img/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { bookReadingInf, readingDell, readingStart, readingStop } from '../../redux/books/operations';
 import { useEffect, useState } from 'react';

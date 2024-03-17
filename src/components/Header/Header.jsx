@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/auth/operationsAuth";
 import { toast } from "react-toastify";
 import {  selectUser } from "../../redux/auth/selectorAuth";
-import sprite from '../../img/ico-sprite.svg';
+import sprite from '../../img/sprite.svg';
 import { useState } from "react";
 import PortalModal from "components/PortalModal/PortalModal";
 import SidebarMenu from "components/SidebarMenu/SidebarMenu";

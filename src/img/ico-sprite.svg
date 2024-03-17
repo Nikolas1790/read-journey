@@ -1,8 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<!-- <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
   <defs>
+  
     <symbol id="icon-pie-chart" viewBox="0 0 32 32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2" d="M22.933 18.667c.369 0 .554 0 .704.082a.708.708 0 0 1 .293.324c.067.157.05.324.016.659a10.672 10.672 0 0 1-12.694 9.397 10.66 10.66 0 0 1-8.381-8.381 10.666 10.666 0 0 1 9.397-12.694c.334-.034.502-.05.659.016.13.055.257.17.324.293.082.15.082.334.082.704V17.6c0 .373 0 .56.073.703a.665.665 0 0 0 .291.291c.143.073.329.073.703.073h8.533zM18.667 3.733c0-.369 0-.554.082-.704a.713.713 0 0 1 .324-.293c.157-.067.324-.05.659-.016a10.665 10.665 0 0 1 9.548 9.549c.033.334.05.502-.016.659a.704.704 0 0 1-.293.324c-.15.082-.334.082-.704.082h-8.533c-.373 0-.56 0-.703-.073a.665.665 0 0 1-.291-.291c-.073-.143-.073-.329-.073-.703V3.734z"/>
     </symbol>
+
     <symbol id="icon-hourglass" viewBox="0 0 32 32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2" d="m16 16-5.697-4.748c-.846-.705-1.27-1.058-1.574-1.49a3.978 3.978 0 0 1-.591-1.263c-.137-.511-.137-1.061-.137-2.163V2.667M16 16l5.697-4.748c.847-.705 1.27-1.058 1.574-1.49.27-.383.47-.811.592-1.263C24 7.988 24 7.438 24 6.336V2.667M16 16l-5.697 4.748c-.846.705-1.27 1.058-1.574 1.491-.27.383-.47.81-.591 1.263-.137.51-.137 1.061-.137 2.163v3.669M16 16l5.697 4.748c.847.705 1.27 1.058 1.574 1.491.27.383.47.81.592 1.263.137.51.137 1.061.137 2.163v3.669M5.333 2.667h21.333M5.333 29.333h21.333"/>
     </symbol>
@@ -12,6 +14,7 @@
       <path fill="none"  stroke-linejoin="round" stroke-width="2.286" d="M25.333 8v18.667a2.668 2.668 0 0 1-2.667 2.667H9.333a2.668 2.668 0 0 1-2.667-2.667V8m4.001 0V5.334a2.666 2.666 0 0 1 2.667-2.667h5.333a2.668 2.668 0 0 1 2.667 2.667V8" />
       <path fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286" d="M13.333 14.667v8m5.334-8v8"/>
     </symbol>
+
     <symbol id="icon-block" viewBox="0 0 76 32">
       <path fill="#30b94d" d="M76.241 1.28.721 12.059V32h75.52V1.28z" opacity=".2" style="fill:var(--color2, #30b94d)"/>
       <path fill="#30b94d" d="M74.364.204 1.076 12.053a1.28 1.28 0 0 0-1.059 1.468l.204 1.264a1.28 1.28 0 0 0 1.468 1.059L74.977 3.995a1.28 1.28 0 0 0 1.059-1.468l-.204-1.264A1.28 1.28 0 0 0 74.364.204z" style="fill:var(--color2, #30b94d)"/>
@@ -21,16 +24,15 @@
       <path fill="none" stroke="#f9f9f9" stroke-width="1.28" d="M31.36 16c0 8.483-6.877 15.36-15.36 15.36S.64 24.483.64 16 7.517.64 16 .64 31.36 7.517 31.36 16z" style="stroke:var(--color1, #f9f9f9)"/>
       <path fill="#e90516" d="M11.52 9.6h8.96c1.06 0 1.92.86 1.92 1.92v8.96c0 1.06-.86 1.92-1.92 1.92h-8.96a1.92 1.92 0 0 1-1.92-1.92v-8.96c0-1.06.86-1.92 1.92-1.92z" style="fill:var(--color4, #e90516)"/>
     </symbol>
+
     <symbol id="icon-block-pause" viewBox="0 0 32 32">
       <path fill="#e90516" d="M28.8 16c0 7.069-5.731 12.8-12.8 12.8S3.2 23.069 3.2 16C3.2 8.931 8.931 3.2 16 3.2S28.8 8.931 28.8 16z" style="fill:var(--color4, #e90516)"/>
       <path fill="none" stroke="#f9f9f9" stroke-width="1.28" d="M31.36 16c0 8.483-6.877 15.36-15.36 15.36S.64 24.483.64 16 7.517.64 16 .64 31.36 7.517 31.36 16z" style="stroke:var(--color1, #f9f9f9)"/>
     </symbol>
 
 
-    <symbol id="icon-menu" viewBox="0 0 32 32">
-      <path fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286" d="M4 16h24M4 8h24M12 24h16" style="stroke:var(--color1, #f9f9f9)"/>
-    </symbol>
+
 
 
   </defs>
-</svg>
+</svg> -->

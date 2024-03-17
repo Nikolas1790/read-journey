@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { selectOwnBooks } from "../../redux/books/selector";
 import { AuthorBook, BasicImg, BasicInfBook, SvgPlayStop, TitleBook } from "./Reading.styled";
-import sprite from '../../img/ico-sprite.svg';
+import sprite from '../../img/sprite.svg';
 import ReadingDashboard from "components/ReadingDashboard/ReadingDashboard";
 import notFoundImg2x from '../../img/notFoundImg/open-book@2x.jpg';
 import notFoundImg from '../../img/notFoundImg/open-book.jpg';
