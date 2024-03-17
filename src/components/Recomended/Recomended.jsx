@@ -11,18 +11,7 @@ import CardBook from "components/CardBook/CardBook";
 import UnivesalMainConteainer from "components/UniversalMainContainer/UniversalMainContainer";
 import UnivesalGeneralBlock from "components/UniversalGeneralBlock/UniversalGeneralBlock";
 import { MainBlockTitle } from "components/UniversalMainContainer/UniversalMainContainer.styled";
-
-// Вспомогательная функция для определения начального значения limit
-// const getInitialLimit = () => {
-//   const screenWidth = window.innerWidth;
-//   if (screenWidth < 768) {
-//     return 2; // Для мобильных
-//   } else if (screenWidth >= 768 && screenWidth < 1440) {
-//     return 8; // Для планшетов
-//   } else {
-//     return 10; // Для десктопов
-//   }
-// };
+import EmptyScreensaver from "components/EmptyScreensaver/EmptyScreensaver";
 
 const calculateLimit = (width) => {
   if (width < 768) {
@@ -96,6 +85,7 @@ export default function Recomended() {
             <CardBook  key={book._id} book={book} openLoginModal={openLoginModal} />
           ))}
         </BooksTen>  
+        <EmptyScreensaver purt="Recomended" />
       </UnivesalMainConteainer>
 
       <PortalModal active={modalOpen} setActive={setModalOpen}>

@@ -21,14 +21,22 @@ export const DropdownSvg = styled.svg`
 
 export const DropdownButton = styled.button`
   display: flex;
-  width: 153px;
-  height: 46px;
+  width: 120px;
+  height: 40px;
   border-radius: 12px; 
   border: 1px solid ${color.charcoalGray};
   outline: none;
   cursor: pointer;
+  font-size: 12px;
   background: transparent;
-  padding: 14px;
+  padding: 12px 14px;
+  @media (min-width: 768px) {
+    width: 153px;
+    height: 46px;
+    padding: 14px;
+    font-size: 14px;
+  }
+
 `;
 
 export const DropdownList = styled.ul`
@@ -52,12 +60,17 @@ export const DropdownList = styled.ul`
 
 export const DropdownItem = styled.li`
   cursor: pointer;  
-
+  font-size: 12px;
+  
   &:not(:last-child) {
     margin-bottom: 7px;
   }
   &:hover {
     color: ${color.whitePrimary};
+  }
+
+  @media (min-width: 768px) {
+    font-size: 14px;
   }
 `;
 

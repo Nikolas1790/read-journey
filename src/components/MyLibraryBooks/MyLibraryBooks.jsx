@@ -9,7 +9,7 @@ import PortalModal from 'components/PortalModal/PortalModal';
 import DetailedInformationBook from 'components/DetailedInformationBook/DetailedInformationBook';
 import UnivesalMainConteainer from 'components/UniversalMainContainer/UniversalMainContainer';
 import { MainBlockTitle } from 'components/UniversalMainContainer/UniversalMainContainer.styled';
-import EmptyLibraryScreensaver from 'components/EmptyLibraryScreensaver/EmptyLibraryScreensaver';
+import EmptyScreensaver from 'components/EmptyScreensaver/EmptyScreensaver';
 
 const options = ["Unread", "In progress", "Done", "All books" ]
 
@@ -83,7 +83,7 @@ export default function MyLibraryBooks() {
         </HeaderAndPaginationBlock>
 
         {ownLibrary.length === 0 ? ( 
-          <EmptyLibraryScreensaver />
+          <EmptyScreensaver purt="MyLibraryBooks" />
         ) : (
           <BooksTen>
             {Array.isArray(ownLibrary) && ownLibrary.map((book) => (  

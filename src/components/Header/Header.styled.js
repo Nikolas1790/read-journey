@@ -7,7 +7,10 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center ;
   align-items: center;
-  padding-top: 32px; 
+  padding-top: 20px; 
+  @media (min-width: 768px) {
+    padding-top: 32px; 
+  }
 `
 export const BlockMainInf = styled.div`
   display: flex;
@@ -42,8 +45,8 @@ export const BlockNav = styled.nav`
 
 export const PagesNav = styled(NavLink)`
   position: relative;
-  padding: 20px 2px;
-  font-size: 16px;
+  padding: 10px 2px;
+  font-size: 14px;
   line-height: 1.13;
   color: ${color.gryeLight};
 
@@ -72,12 +75,14 @@ export const PagesNav = styled(NavLink)`
     }
   }
   &:not(:last-child) { 
-    @media (min-width: 768px) {   
+    @media (min-width: 768px) { 
+      font-size: 16px;  
       margin-right: 32px;  
+      padding: 20px 2px;
     }
-  @media (min-width: 1440px) {
-    margin-right: 40px;; 
-  }
+    @media (min-width: 1440px) {
+      margin-right: 40px;; 
+    }
   }
 `
 ///////////////////////////////////////////////////

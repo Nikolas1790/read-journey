@@ -9,7 +9,6 @@ export default function ImgAutorization() {
       <picture>
         <source srcSet={`${mobileImg} 1x, ${mobileImg2x} 2x`} media="(max-width: 767px)" />
         <source srcSet={`${desctopImg} 1x, ${desctopImg2x} 2x`} media="(min-width: 1440px)" />
-        {/* <source srcSet={desctopImg2x} media="(min-resolution: 192dpi)" /> */}
         <Img src={desctopImg} alt="register img" />
       </picture>  
   );
