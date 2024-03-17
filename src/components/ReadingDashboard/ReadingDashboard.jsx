@@ -153,7 +153,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
 
                 </FormFieldConteiner>            
               </FormFields>       
-              <CustomButton label={read ? "To stop" : "To start"} onClick={handleSubmit} width="114px" />             
+              <CustomButton label={read ? "To stop" : "To start"} onClick={handleSubmit} />             
             </Form>
           )}
         </Formik>

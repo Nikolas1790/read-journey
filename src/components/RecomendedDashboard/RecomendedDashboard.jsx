@@ -10,6 +10,7 @@ import { FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields,
 import { fetchBooks } from '../../redux/books/operations';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const initialValues = {
   title: '',
@@ -27,10 +28,14 @@ export default function RecomendedDashboard() {
 
   const handleSubmit = (e) => {  
     const { title, author } = e;
+    if(title === undefined) return;
     if(title) {
       setIsRestButtonVisible(true);
       dispatch(fetchBooks({ title, author  }))
+    } else{
+      toast.warn('Please fill out the form')
     }
+ 
     e.target.blur();
   }
 
@@ -58,9 +63,9 @@ export default function RecomendedDashboard() {
                 </FormFieldConteiner>            
               </FormFields>  
               <ButtonConteiner>
-                <CustomButton label="To apply" onClick={handleSubmit} width="122px" />
+                <CustomButton label="To apply" onClick={handleSubmit} />
                 {isRestButtonVisible && (
-                  <CustomButton label="Rest" onClick={() => handleReset(resetForm)} width="98px" />
+                  <CustomButton label="Rest" onClick={() => handleReset(resetForm)}/>
                 )}
               </ButtonConteiner>                             
             </Form>

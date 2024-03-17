@@ -93,7 +93,7 @@ export default function LibraryDashboard() {
                   <ErrorMessageStyled name="page" component='div' />   
                 </FormFieldConteiner>            
               </FormFields>       
-              <CustomButton label="Add book" width="131px" />             
+              <CustomButton label="Add book" />             
             </Form>
           )}
         </Formik>

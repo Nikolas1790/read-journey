@@ -61,7 +61,7 @@ export default function DetailedInformationBook({ closeModals, bookData, btnLabe
       <TitleBook>{bookData.title}</TitleBook>
       <AuthorBook>{bookData.author}</AuthorBook>
       <PagesBook>{bookData.totalPages} pages</PagesBook>
-      <CustomButton label={btnLabel} onClick={handleButtonClick} width="162px" height="46px" />
+      <CustomButton label={btnLabel} onClick={handleButtonClick} prop="true"/>
     </Conteiner>
   );
 }

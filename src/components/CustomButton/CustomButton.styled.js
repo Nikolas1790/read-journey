@@ -8,8 +8,7 @@ export const CustomBtn = styled.button`
   font-weight: 700;
   line-height: 18px;
   letter-spacing: 2%;
-  padding: 10px 20px;
-
+  padding: ${(props) => props.prop === 'true' ? '12px 24px' : '10px 20px'};
   border: 1px solid ${color.whiteLightTranslucent};
   border-radius: 30px;
   background: transparent;
@@ -23,6 +22,6 @@ export const CustomBtn = styled.button`
   
   @media (min-width: 768px) {
     font-size: 16px;
-    padding: 12px 28px;
+    padding: ${(props) => props.prop === 'true' ? '14px 28px' : '12px 28px'};
   }
 `
