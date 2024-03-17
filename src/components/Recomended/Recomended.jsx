@@ -85,7 +85,7 @@ export default function Recomended() {
             <CardBook  key={book._id} book={book} openLoginModal={openLoginModal} />
           ))}
         </BooksTen>  
-        <EmptyScreensaver purt="Recomended" />
+        { !results.length && <EmptyScreensaver purt="Recomended" />}
       </UnivesalMainConteainer>
 
       <PortalModal active={modalOpen} setActive={setModalOpen}>
