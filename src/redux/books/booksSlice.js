@@ -8,7 +8,7 @@ const bookSlice = createSlice({
     myBooks: [],
     loading: false,
     error: null,
-    totalPages: 1, // Добавлено поле общего количества страниц
+    totalPages: 1, 
     readBook: [],
     allInfoBook: [],
   },
@@ -132,7 +132,6 @@ const bookSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-
   },
 });
 export default bookSlice.reducer;

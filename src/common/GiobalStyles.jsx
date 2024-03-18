@@ -9,13 +9,13 @@ export const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: 'Gilroy';
   font-style: normal;
-  font-weight: 700; // Bold
+  font-weight: 700; 
   src: url(${GilroyBold}) format('woff');
 }
 @font-face {
   font-family: 'Gilroy';
   font-style: normal;
-  font-weight: 500; // Medium
+  font-weight: 500; 
   src: url(${GilroyMedium}) format('woff');
 }
 

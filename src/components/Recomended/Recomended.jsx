@@ -1,5 +1,4 @@
-import { BooksTen, HeaderAndPaginationBlock, PaginationBtn,PaginationSvg} from "./Recomended.styled"
-import sprite from '../../img/sprite.svg';
+import { BooksTen, HeaderAndPaginationBlock } from "./Recomended.styled"
 import RecomendedDashboard from "components/RecomendedDashboard/RecomendedDashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -12,6 +11,7 @@ import UnivesalMainConteainer from "components/UniversalMainContainer/UniversalM
 import UnivesalGeneralBlock from "components/UniversalGeneralBlock/UniversalGeneralBlock";
 import { MainBlockTitle } from "components/UniversalMainContainer/UniversalMainContainer.styled";
 import EmptyScreensaver from "components/EmptyScreensaver/EmptyScreensaver";
+import Pagination from "components/Pagination/Pagination";
 
 const calculateLimit = (width) => {
   if (width < 768) {
@@ -29,8 +29,7 @@ export default function Recomended() {
   const totalPages = useSelector(selectTotalPage);
   const [modalOpen, setModalOpen] = useState(false);
   const [bookData, setBookData] = useState(false); 
-  const [page, setPage] = useState(1);
-  
+  const [page, setPage] = useState(1);  
   const [limit, setLimit] = useState(calculateLimit(window.innerWidth));
 
   useEffect(() => {
@@ -39,7 +38,6 @@ export default function Recomended() {
       const newLimit = calculateLimit(newWidth);
       setLimit(newLimit); 
     };
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -48,7 +46,6 @@ export default function Recomended() {
     dispatch(fetchBooks({ page, limit }));
   }, [dispatch, page, limit]);
   
-
   const handlePageChange = (newPage) => { 
     if (newPage >= 1 && newPage <= totalPages) {
       setPage(newPage);
@@ -57,8 +54,13 @@ export default function Recomended() {
   
   const openLoginModal = (book) => {
     setModalOpen(true);
-    setBookData(book); // Передаем данные о книге
+    setBookData(book);
   };
+  
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
+  }
+  
   return (
     <UnivesalGeneralBlock >      
       <RecomendedDashboard />      
@@ -66,18 +68,7 @@ export default function Recomended() {
       <UnivesalMainConteainer >
         <HeaderAndPaginationBlock>
           <MainBlockTitle>Recommended</MainBlockTitle>
-          <div>
-            <PaginationBtn onClick={() => handlePageChange(page - 1)} >
-              <PaginationSvg stoke={page === 1 ? "true" : ''}>
-                <use href={`${sprite}#icon-chevron-left`} />
-              </PaginationSvg>
-            </PaginationBtn>
-            <PaginationBtn onClick={() => handlePageChange(page + 1)}>
-              <PaginationSvg stoke={page === totalPages ? "true" : ''} >
-                <use href={`${sprite}#icon-chevron-right`} />
-              </PaginationSvg>
-            </PaginationBtn>
-          </div>
+          <Pagination  totalPages={totalPages} handlePageChange={handlePageChange} page={page} />
         </HeaderAndPaginationBlock>
 
         <BooksTen>

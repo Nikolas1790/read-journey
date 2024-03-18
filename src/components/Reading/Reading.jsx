@@ -22,7 +22,6 @@ export default function Reading() {
     const img = new Image();
     img.src = notFoundImg;
 
-    // Check if the device has a higher pixel density (retina display)
     if (window.devicePixelRatio && window.devicePixelRatio > 1) {
       return notFoundImg2x;
     } else {
@@ -45,7 +44,6 @@ export default function Reading() {
             <SvgPlayStop>
               <use href={`${sprite}#icon-block-start`} />
             </SvgPlayStop> 
-
           ) : (
           <SvgPlayStop>
             <use href={`${sprite}#icon-block-pause`} />
@@ -56,5 +54,4 @@ export default function Reading() {
       </UnivesalMainConteainer>
     </UnivesalGeneralBlock>
   );
-}
-  
+}  

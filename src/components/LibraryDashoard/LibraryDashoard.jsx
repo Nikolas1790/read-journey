@@ -1,18 +1,16 @@
 import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
-import sprite from '../../img/sprite.svg';
-import { Arguments, CardAutor, CardImg, CardRecomended, CardTitle, Filters, StartWorkoutBlock, StartWorkoutTitle } from './LibraryDashoard.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectBookData, selectOwnBooks } from '../../redux/books/selector';
+import { selectOwnBooks } from '../../redux/books/selector';
 import Dashboard from 'components/Dashboard/Dashboard';
-import { ErrorMessageStyled, FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTitlelTo, LinkTo, LinkToSvg } from 'components/Dashboard/Dashboard.styled';
+import { ErrorMessageStyled, FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields } from 'components/Dashboard/Dashboard.styled';
 import { addNewBook, fetchBooks, ownBooks } from '../../redux/books/operations';
 import PortalModal from 'components/PortalModal/PortalModal';
 import ModalAddBookSuccessfully from 'components/ModalBookWindow/ModalAddBookSuccessfully';
 import { useEffect, useState } from 'react';
-import DetailedInformationBook from 'components/DetailedInformationBook/DetailedInformationBook';
 import { toast } from 'react-toastify';
+import RecommendedBooks from 'components/RecommendedBooks/RecommendedBooks';
 
 const initialValues = {
   title: '',
@@ -28,11 +26,8 @@ const schema = Yup.object({
 });
 
 export default function LibraryDashboard() {
-  const [openModal, setOpenModal] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [bookData, setBookData] = useState(false); 
   const [bookExists, setBookExists] = useState(false);
-  const results = useSelector(selectBookData);
   const ownLibrary = useSelector(selectOwnBooks);
   const dispatch = useDispatch();
 
@@ -49,7 +44,6 @@ export default function LibraryDashboard() {
     if(page) {
       const bookExists = ownLibrary.find(item => item.title === title);
 
-      // Если find возвращает undefined, значит, книга не найдена в библиотеке, и мы можем добавить ее
       if (bookExists === undefined) {
         dispatch(addNewBook({ title, author, totalPages: page }));
         setModalOpen(true);
@@ -62,15 +56,10 @@ export default function LibraryDashboard() {
     }
     e.target.blur();
   }
-
-  const openLoginModal = (book) => {
-    setOpenModal(true);
-    setBookData(book); // Передаем данные о книге
-  };
   
   return (
     <Dashboard>
-      <Filters>
+      <div>
         <FilterTitle>Create your library:</FilterTitle>
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
 
@@ -97,34 +86,12 @@ export default function LibraryDashboard() {
             </Form>
           )}
         </Formik>
-      </Filters>
+      </div>
 
-      <StartWorkoutBlock>
-        <StartWorkoutTitle>Recommended books</StartWorkoutTitle>
-        <Arguments >
-          {results?.slice(3, 6).map((book) => (
-            <CardRecomended key={book._id}>
-              <CardImg src={book.imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
-              <CardTitle>{book.title}</CardTitle>
-              <CardAutor>{book.author}</CardAutor>
-            </CardRecomended>
-          ))}     
-        </Arguments>
-        <LinkTo to="/recommended">
-          <LinkTitlelTo>Home </LinkTitlelTo>            
-          <LinkToSvg>
-            <use href={`${sprite}#icon-arrow-right`} />
-          </LinkToSvg>          
-        </LinkTo>
-      </StartWorkoutBlock>
-
+      <RecommendedBooks />
       <PortalModal active={modalOpen} setActive={setModalOpen}>
         <ModalAddBookSuccessfully  closeModals={() => setModalOpen()} />
       </PortalModal>
-      <PortalModal active={openModal} setActive={setOpenModal}>
-        <DetailedInformationBook bookData={bookData} closeModals={() => setOpenModal()} btnLabel="Add to library"/>
-      </PortalModal>
     </Dashboard>
   );
-}
-  
+}  

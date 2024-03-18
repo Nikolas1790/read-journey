@@ -2,8 +2,7 @@ import color from 'common/GlobalColers'
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components'
 
-export const SubmitBlock = styled.div`
-  /* margin-top: auto; */
+export const SubmitBlock = styled.div`  
 `;
 
 export const FormBtn = styled.button`
@@ -14,7 +13,6 @@ export const FormBtn = styled.button`
   font-weight: 700;
   line-height: 1;
   margin-right: 14px;
-  /* padding: 12px 29px; */
   padding:${(props) => (props.log === 'login' ? "12px 45px" : "12px 29px")};
   transition: color 0.3s linear, background 0.3s linear; 
 
@@ -58,8 +56,8 @@ export const LinkTo = styled(NavLink)`
       background: ${color.whitePrimary};  
     }
   }  
+  
   @media (min-width: 768px) {
     font-size: 14px;
   }
-
 `;

@@ -23,7 +23,6 @@ export default function DetailedInformationBook({ closeModals, bookData, btnLabe
     if(btnLabel === "Add to library") {
       const bookExists = ownLibrary.find(item => item.title === bookData.title);
 
-      // Если find возвращает undefined, значит, книга не найдена в библиотеке, и мы можем добавить ее
       if (bookExists === undefined) {
         toast.success("Книга не найдена в библиотеке. Добавляем...")
         dispatch(addBookById(bookData._id));
@@ -64,5 +63,4 @@ export default function DetailedInformationBook({ closeModals, bookData, btnLabe
       <CustomButton label={btnLabel} onClick={handleButtonClick} prop="true"/>
     </Conteiner>
   );
-}
-  
+}  

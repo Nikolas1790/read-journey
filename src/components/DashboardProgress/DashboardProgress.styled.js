@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const ProgressConteiner = styled.div`
   width: 295px;
+
   @media (min-width: 768px) {
     width: 305px;
   }
@@ -20,6 +21,7 @@ export const StarPicture = styled.picture`
   border-radius: 50%;
   background: ${color.blackWhite};
   margin: 0 auto 20px auto;
+
   @media (min-width: 768px) {
     width: 100px;
     height: 100px;
@@ -32,6 +34,7 @@ export const StarPicture = styled.picture`
 
 export const Star = styled.img`
   width: 32px;
+  
   @media (min-width: 768px) {
     width: 50px;
   }

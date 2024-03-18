@@ -20,6 +20,7 @@ export const BasicImg = styled.img`
   height: 208px;
   border-radius: 8px;
   margin-bottom: 10px;
+
   @media (min-width: 768px) {
     width: 169px;
     height: 256px;
@@ -32,9 +33,10 @@ export const BasicImg = styled.img`
 `
 
 export const TitleBook = styled.h2`
-text-align: center;
+  text-align: center;
   font-size: 14px;
   margin-bottom: 5px;
+
   @media (min-width: 768px) {
     font-size: 20px;
     margin-bottom: 4px;
@@ -45,6 +47,7 @@ export const AuthorBook = styled.p`
   font-size: 10px;
   color: ${color.gryeLight};
   margin-bottom: 20px;
+
   @media (min-width: 768px) {
     font-size: 14px;
     margin-bottom: 16px;
@@ -57,6 +60,7 @@ export const AuthorBook = styled.p`
 export const SvgPlayStop = styled.svg`
   width: 40px;
   height: 40px;
+  
   @media (min-width: 768px) {
     width: 50px;
     height: 50px;

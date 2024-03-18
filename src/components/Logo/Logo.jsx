@@ -7,11 +7,11 @@ export default function Logo() {
   const page = location.pathname === '/register' || location.pathname === '/login';
  
   return (           
-      <LogoLink  to="/recommended">
-        <svg width={42} height={17}>
-            <use href={`${sprite}#icon-Logo`} />
-        </svg>
-        <LogoName page={page ? "true" : ''}>READ JOURNEY</LogoName>
-      </LogoLink > 
+    <LogoLink  to="/recommended">
+      <svg width={42} height={17}>
+        <use href={`${sprite}#icon-Logo`} />
+      </svg>
+      <LogoName page={page ? "true" : ''}>READ JOURNEY</LogoName>
+    </LogoLink > 
   );
 };

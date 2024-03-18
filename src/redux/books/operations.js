@@ -87,7 +87,6 @@ export const readingDell = createAsyncThunk("/books/reading",
     }
 });
 
-
 export const bookReadingInf = createAsyncThunk("/books/id",
   async (id, thunkAPI) => {
     try {

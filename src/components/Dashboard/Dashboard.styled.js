@@ -8,8 +8,8 @@ export const DashboardBlock = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-
-  width: 335px;
+width: 100%;
+  max-width: 335px;
   height: 100%;
   border-radius: 30px;
   background: ${color.blackLight};
@@ -17,16 +17,13 @@ export const DashboardBlock = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    /* display: flex; */
-    /* gap: 32px; */
-    width: 704px;
+    max-width: 704px;
     height: 336px;
     padding: 32px;
   }
   @media (min-width: 1440px) {
     flex-direction: column;
-    /* display: block; */
-    width: 353px;
+    max-width: 353px;
     height: 651px;
     padding: 40px 20px 20px 20px;
   }
@@ -46,13 +43,12 @@ export const FormFields = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 8px;
-  width: 295px;
+  width: 100%;
+  max-width: 295px;
   margin-bottom: 20px; 
   
-  @media (min-width: 768px) {
-  }
   @media (min-width: 1440px) {
-    width: 313px;
+    max-width: 313px;
   }
 `;
 
@@ -66,6 +62,7 @@ export const FormFieldLabel = styled.label`
   left: 14px;
   font-size: 12px;
   color: ${color.gryeLight};
+
   @media (min-width: 768px) {
     top: 16px;
     font-size: 14px;
@@ -89,8 +86,6 @@ export const FormField = styled(Field)`
     height: 50px;
     font-size: 14px;
   }
-  @media (min-width: 1440px) {
-  }
 `;
 
 export const ErrorMessageStyled = styled(ErrorMessage)`
@@ -98,8 +93,6 @@ export const ErrorMessageStyled = styled(ErrorMessage)`
   color: ${color.focusColor};
   padding: 4px 0px 0px 14px;
 `;
-
-///////////////////////////////////
 
 export const LinkTo = styled(NavLink)`
   display: flex;
@@ -137,6 +130,7 @@ export const LinkTitlelTo = styled.p`
       background: ${color.whitePrimary};  
     }
   }  
+  
   @media (min-width: 768px) {
     font-size: 14px; 
   }
@@ -145,6 +139,13 @@ export const LinkTitlelTo = styled.p`
 export const LinkToSvg = styled.svg`
   width: 20px;
   height: 20px;
+  transition: transform 0.25s ease; 
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+
   @media (min-width: 768px) {
     width: 24px;
     height: 24px;

@@ -12,12 +12,11 @@ export const Conteiner = styled.div`
   background: ${color.blackLight};
   border-radius: 12px;
   padding: 40px ;
+
   @media (min-width: 768px) {
     width: 500px;
     height: 483px;
     padding: 50px ;
-  }
-  @media (min-width: 1440px) {
   }
 `;
 
@@ -30,6 +29,11 @@ export const ClosingSymbol = styled.button`
   align-items: center;
   stroke: ${color.blackPrimary};
   background: transparent;
+  transition: transform 0.25s linear; 
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 `;
 
 export const CoverBook = styled.img`
@@ -37,6 +41,7 @@ export const CoverBook = styled.img`
   height: 213px;
   border-radius: 8px;
   margin-bottom: 16px;
+
   @media (min-width: 768px) {
     width: 153px;
    height: 233px;
@@ -49,11 +54,10 @@ export const TitleBook = styled.h2`
   line-height: 1;
   margin-bottom: 2px;
 
-
   @media (min-width: 768px) {
     font-size: 20px;
     max-width: 400px;
-      /* Ограничиваем текст одной строкой */
+    
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -65,11 +69,10 @@ export const AuthorBook = styled.p`
   color: ${color.gryeLight};
   margin-bottom: 4px;
 
-
   @media (min-width: 768px) {
     font-size: 14px;
     max-width: 400px;
-      /* Ограничиваем текст одной строкой */
+    
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -79,6 +82,7 @@ export const AuthorBook = styled.p`
 export const PagesBook = styled.p`
   font-size: 10px;
   margin-bottom: 20px;
+  
   @media (min-width: 768px) {
     margin-bottom: 32px;
   }

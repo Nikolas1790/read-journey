@@ -6,10 +6,10 @@ import { Img } from './ImgAuthorization.styled';
 
 export default function ImgAutorization() {
   return (    
-      <picture>
-        <source srcSet={`${mobileImg} 1x, ${mobileImg2x} 2x`} media="(max-width: 767px)" />
-        <source srcSet={`${desctopImg} 1x, ${desctopImg2x} 2x`} media="(min-width: 1440px)" />
-        <Img src={desctopImg} alt="register img" />
-      </picture>  
+    <picture>
+      <source srcSet={`${mobileImg} 1x, ${mobileImg2x} 2x`} media="(max-width: 767px)" />
+      <source srcSet={`${desctopImg} 1x, ${desctopImg2x} 2x`} media="(min-width: 1440px)" />
+      <Img src={desctopImg} alt="register img" />
+    </picture>  
   );
 }

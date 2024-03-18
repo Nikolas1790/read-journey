@@ -13,7 +13,7 @@ export default function EmptyScreensaver({purt}) {
         <Img src={imgBooksDesc} alt="stack books" />
       </EmptyScreensaverPicture> 
 
-       {purt==="Recomended" && <EmptyScreensaverText>Oops <EmptyScreensaverSpan>unfortunately</EmptyScreensaverSpan> nothing was found</EmptyScreensaverText>}
+      {purt==="Recomended" && <EmptyScreensaverText>Oops <EmptyScreensaverSpan>unfortunately</EmptyScreensaverSpan> nothing was found</EmptyScreensaverText>}
       {purt === "MyLibraryBooks" && <EmptyScreensaverText>To start training, add <EmptyScreensaverSpan>some of your books</EmptyScreensaverSpan> or from the recommended ones</EmptyScreensaverText>}
     </EmptyScreensaverBlock>
   );

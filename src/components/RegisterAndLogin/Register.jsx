@@ -45,6 +45,7 @@ export default function Register() {
       }
     }
   }
+
   return (
     <Container>
       <FormBlock>        
@@ -138,14 +139,14 @@ export default function Register() {
                       </EyeSvg>
                     ) : showPassword ? (
                       <EyeSvg width={20} height={20} onMouseDown={(e) => {
-                        e.preventDefault(); // Предотвратить смену фокуса
+                        e.preventDefault();
                         togglePasswordVisibility();
                       }}>
                         <use href={`${sprite}#icon-eye`} />
                       </EyeSvg>
                     ) : (
                       <EyeSvg width={20} height={20} onMouseDown={(e) => {
-                        e.preventDefault(); // Предотвратить смену фокуса
+                        e.preventDefault(); 
                         togglePasswordVisibility();
                       }}>
                         <use href={`${sprite}#icon-eye-off`} />

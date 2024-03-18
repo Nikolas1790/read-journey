@@ -16,10 +16,6 @@ export default function DashboardProgress() {
            
           <Star src={star} alt="stack books" />
         </StarPicture> 
-        {/* <StarPicture>
-          <source srcSet={star2x} media="(min-resolution: 192dpi)" />        
-          <img src={star} alt="stack books" width={50} />
-        </StarPicture>  */}
       </div>
     </ProgressConteiner>
   );

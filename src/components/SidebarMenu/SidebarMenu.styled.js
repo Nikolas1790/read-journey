@@ -15,16 +15,19 @@ export const MenuContainer = styled.div`
   background: ${color.gryeBlack};
   transform: translateX(${props => props.open ? '0%' : '100%'});
   transition: transform 0.25s ease;
-  padding: 280px 4px 40px 4px;
-  
+  padding: 280px 4px 40px 4px;  
 `;
 
 export const BtnClose = styled.button`
   position: absolute;
   top: 34px;
-  right: 40px;
-  
+  right: 40px;  
   background: transparent;
+  transition: transform 0.25s linear; 
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 `
 export const NavBurgerMenu = styled.div`
   display: flex;

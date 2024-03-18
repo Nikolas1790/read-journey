@@ -45,15 +45,14 @@ export default function Header() {
           <Initials>{firstLetterAvatar}</Initials>
           <UserName>{name}</UserName>
           <BtnLogOut label="Log out" onClick={handleButtonClick} width="114px" />
-
           <BtnBurger onClick={toggleMenu}>
             <svg width={28} height={28}>
               <use href={`${sprite}#icon-menu`} />
             </svg>
           </BtnBurger>
         </UserBar>
-
       </BlockMainInf>
+
       <PortalModal active={isMenuOpen} setActive={setIsMenuOpen}>
         <SidebarMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </PortalModal>

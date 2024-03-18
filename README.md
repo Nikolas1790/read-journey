@@ -11,8 +11,8 @@ aBook Journey is a web application designed to enhance the reading experience of
 - **Custom Book Library:** Users have the ability to add books to their own library, making it easy to keep track of titles they’re interested in or currently reading.
 - **Favorites:** Users can mark books as favorites, allowing for quick access to beloved titles.
 - **Reading Status Filtering:**  Within the favorites section, books can be filtered based on their reading status - whether they are read, unread, or currently being read.
-![ step 1](./src//img/readme/register.jpg)
-![ step 2](./src//img/readme/desctop-home-page.jpg)
+![ img 1](./src//img/readme/register.jpg)
+![ img 2](./src//img/readme/desctop-home-page.jpg)
 
 ## Design and Implementation
 he application boasts an adaptive design, ensuring a seamless experience across various devices:
@@ -21,11 +21,11 @@ he application boasts an adaptive design, ensuring a seamless experience across 
 - **Tablet:** Support starting from 768px.
 - **Desktop:** Optimized for screens wider than 1440px.
 
-![ step 3](./src//img/readme/mobile-burger-menu.jpg)
-![ step 4](./src//img/readme/tablet-library-page.jpg)
-![ step 5](./src//img/readme/mobile-home-page.jpg)
-![ step 6](./src//img/readme/desctop-library-page.jpg)
-![ step 7](./src//img/readme/desctop-reading-page.jpg)
+![ img 3](./src//img/readme/mobile-burger-menu.jpg)
+![ img 5](./src//img/readme/mobile-home-page.jpg)
+![ img 4](./src//img/readme/tablet-library-page.jpg)
+![ img 6](./src//img/readme/desctop-library-page.jpg)
+![ img 7](./src//img/readme/desctop-reading-page.jpg)
 
 ## Technical Highlights
 - HTML5 semantics are followed to ensure standard-compliant markup.

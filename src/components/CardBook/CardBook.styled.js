@@ -13,7 +13,6 @@ export const BookCard = styled.li`
 export const BookImg = styled.img`
   width: 137px;
   height: 208px;
-
   border-radius: 8px; 
   margin-bottom: 8px;
   background: ${color.gryeBlack};
@@ -26,7 +25,6 @@ export const BookDataBlock = styled.div`
 `
 export const TitleAutorBlock = styled.div`
   max-width: ${({ page }) => ( page === 'true' ? '89px' : '137px')};
-  /* max-width: 89px; */
 `
 
 export const BookTitle = styled.h3`
@@ -36,7 +34,6 @@ export const BookTitle = styled.h3`
 
   /* Ограничиваем текст одной строкой */
   white-space: nowrap;
-  /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
   overflow: hidden;
   text-overflow: ellipsis;
 `
@@ -48,11 +45,16 @@ export const BookAutor = styled.p`
 
   /* Ограничиваем текст одной строкой */
   white-space: nowrap;
-  /* Если текст не помещается, обрезаем его и добавляем три точки в конце */
   overflow: hidden;
   text-overflow: ellipsis;
 `
 
 export const DellBtn = styled.button`
   background: transparent;
+  transition: transform 0.25s ease; /* Плавное увеличение */
+
+&:hover,
+&:focus {
+  transform: scale(1.1); /* Увеличение размера кнопки на 10% */
+}
 `

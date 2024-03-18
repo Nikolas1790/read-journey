@@ -9,7 +9,6 @@ export default function CardBook({book, openLoginModal, currentPage=false}) {
   const dispatch = useDispatch();
 
   const handleDeleteClick = () => {
-    // console.log(book._id)
     dispatch(deleteBook(book._id));
   };
 
@@ -23,12 +22,13 @@ export default function CardBook({book, openLoginModal, currentPage=false}) {
       return notFoundImg;
     }
   };
+
   const imageUrl = book.imageUrl || getImageUrl();
   return (
     <BookCard>
       <BookImg src={imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
-      <BookDataBlock>
-        
+      
+      <BookDataBlock>        
         <TitleAutorBlock page={currentPage === "MyLibrary" ? 'true' : '' }>
           <BookTitle>{book.title}</BookTitle>
           <BookAutor>{book.author}</BookAutor>
@@ -41,9 +41,7 @@ export default function CardBook({book, openLoginModal, currentPage=false}) {
             </svg> 
           </DellBtn>
         )}
-
       </BookDataBlock>
     </BookCard>
   );
-}
-  
+}  

@@ -8,6 +8,7 @@ export const EmptyScreensaverBlock = styled.div`
   flex-direction: column;
   margin-top: 63px;
   margin: 63px 0;
+
   @media (min-width: 768px) {
     margin: 86px 0 120px 0;
   }
@@ -24,6 +25,7 @@ export const EmptyScreensaverPicture = styled.picture`
   border-radius: 50%;
   background: ${color.blackWhite};
   margin-bottom: 10px;
+  
   @media (min-width: 768px) {
     width: 130px;
     height: 130px;

@@ -18,24 +18,24 @@ export const Container = styled.div`
   }
 `
 export const FormBlock = styled.div`
-  width:335px;
-  height: 411px; 
+  width: 100%;  
+  max-width:335px;
+  min-height: 411px; 
   background: ${color.blackLight};
   border-radius: 30px;
   padding: 20px 20px 40px 20px;
 
   @media (min-width: 768px) {
-    width:704px;
+    max-width:704px;
     height: 960px; 
     padding: 40px 64px;
   }
   @media (min-width: 1440px) {
-    width:600px;
+    max-width:600px;
     height: 736px; 
   }
 `
 
-///////////////////////////////////////////////////////////
 export const FormConteiner = styled.div`
   display:flex;
   flex-direction: column;
@@ -55,14 +55,14 @@ export const FormFields = styled.div`
   @media (min-width: 768px) {
     height: 308px;
   }
-
 `;
 
 export const FormFieldConteiner = styled.div`
   position:relative;
-  width: 295x;
+  max-width: 295px;
+
   @media (min-width: 768px) {
-    width: 472px;
+    max-width: 472px;
   }
 `;
 
@@ -71,14 +71,15 @@ export const FormFieldLabel = styled.label`
   top: 13px;
   left: 14px;
   color: ${color.gryeLight};
+
   @media (min-width: 768px) {
     top: 16px;
   }
 `;
 
 export const FormField = styled(Field)`
-  /* width: 100%; */
-  width: 295px;
+  width: 100%;
+  max-width: 295px;
 
   height: 44px;
   border: 1px solid	${(props) => (props.error === "true" ? "red" : "rgba(18, 20, 23, 0.1)")};
@@ -90,11 +91,10 @@ export const FormField = styled(Field)`
   background: ${color.gryeBlack};
 
   @media (min-width: 768px) {
-    width: 472px;
+    max-width: 472px;
     height: 50px;
     padding: 16px 14px 16px 65px;
   }
-
 `;
 
 export const EyeSvg = styled.svg`
@@ -111,7 +111,6 @@ export const EyeSvg = styled.svg`
   }
 `;
 
-//////////////////////////////////////////////////////////////////////
 export const ErrorMessageStyled = styled(ErrorMessage)`
   font-size: 10px;
   color: red;

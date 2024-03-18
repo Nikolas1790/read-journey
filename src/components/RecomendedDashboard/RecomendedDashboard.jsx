@@ -1,16 +1,15 @@
 import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import CustomButton from "components/CustomButton/CustomButton";
-import sprite from '../../img/sprite.svg';
-import { Arguments, ArgumentsBlock, ButtonConteiner, Filters, Quote, QuoteBlock, QuoteSpan, SeriaNumber, StartWorkoutBlock, StartWorkoutTitle, TextOne, TextSpan, TextTwo } from './RecomendedDashboard.styled';
-import imgBooksDesc from '../../img/stackBooksAndLike/books-desc.png';
-import imgBooksDesc2x from '../../img/stackBooksAndLike/books-desc@2.png';
+import { ButtonConteiner, Filters } from './RecomendedDashboard.styled';
 import Dashboard from 'components/Dashboard/Dashboard';
-import { FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields, LinkTitlelTo, LinkTo, LinkToSvg } from 'components/Dashboard/Dashboard.styled';
+import { FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields  } from 'components/Dashboard/Dashboard.styled';
 import { fetchBooks } from '../../redux/books/operations';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import StartWorkout from 'components/StartWorkout/StartWorkout';
+import Quote from 'components/Quote/Quote';
 
 const initialValues = {
   title: '',
@@ -34,8 +33,7 @@ export default function RecomendedDashboard() {
       dispatch(fetchBooks({ title, author  }))
     } else{
       toast.warn('Please fill out the form')
-    }
- 
+    } 
     e.target.blur();
   }
 
@@ -44,12 +42,12 @@ export default function RecomendedDashboard() {
     resetForm();
     dispatch(fetchBooks({ page: 1, limit: 10  }))
   };
+
   return (
     <Dashboard>      
       <Filters>
         <FilterTitle>Filters:</FilterTitle>
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
-
           {({ resetForm }) => (
             <Form>
               <FormFields>  
@@ -73,34 +71,8 @@ export default function RecomendedDashboard() {
         </Formik>
       </Filters>
 
-      <StartWorkoutBlock>
-        <StartWorkoutTitle>Start your workout</StartWorkoutTitle>
-        <ArgumentsBlock>
-        <Arguments>
-          <SeriaNumber>1</SeriaNumber>
-          <TextOne>Create a personal library: <TextSpan>add the books you intend to read to it.</TextSpan></TextOne>
-        </Arguments>
-        <Arguments>
-          <SeriaNumber>2</SeriaNumber>
-          <TextTwo>Create your first workout: <TextSpan>define a goal, choose a period, start training.</TextSpan></TextTwo>
-        </Arguments>
-        </ArgumentsBlock>
-
-        <LinkTo to="/library">
-          <LinkTitlelTo>My library </LinkTitlelTo>            
-          <LinkToSvg>
-            <use href={`${sprite}#icon-arrow-right`} />
-          </LinkToSvg>          
-        </LinkTo>
-      </StartWorkoutBlock>
-
-      <QuoteBlock>        
-      <picture>
-        <source srcSet={imgBooksDesc2x} media="(min-resolution: 192dpi)" />        
-        <img src={imgBooksDesc} alt="stack books" width={40} />
-      </picture>          
-        <Quote>"Books are <QuoteSpan>windows</QuoteSpan> to the world, and reading is a journey into the unknown."</Quote>
-      </QuoteBlock>
+      <StartWorkout />
+      <Quote />
     </Dashboard>
   );
 }  

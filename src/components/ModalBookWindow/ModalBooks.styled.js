@@ -16,8 +16,6 @@ export const Conteiner = styled.div`
   @media (min-width: 768px) {
     padding: 49px ;
   }
-  @media (min-width: 1440px) {
-  }
 `;
 
 export const ClosingSymbol = styled.button`
@@ -29,6 +27,12 @@ export const ClosingSymbol = styled.button`
   align-items: center;
   stroke: ${color.blackPrimary};
   background: transparent;
+  transition: transform 0.25s linear; 
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+
   @media (min-width: 768px) {
     right: 16px;
   }
@@ -38,24 +42,21 @@ export const Img = styled.img`
   width: 50px;
   height: 50px; 
   margin-bottom: 20px;
+
   @media (min-width: 768px) {
     width: 68px;
     height: 70px; 
     margin-bottom: 32px;
   }
-  /* @media (min-width: 1440px) {
-    margin: 0 auto 163px auto;
-  } */
 `
 export const Title = styled.h3`
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 10px;
+
   @media (min-width: 768px) {
     font-size: 20px;
     margin-bottom: 14px;
-  }
-  @media (min-width: 1440px) {
   }
 `
 export const Text = styled.p`

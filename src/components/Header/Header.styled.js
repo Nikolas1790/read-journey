@@ -8,6 +8,7 @@ export const HeaderContainer = styled.div`
   justify-content: center ;
   align-items: center;
   padding-top: 20px; 
+
   @media (min-width: 768px) {
     padding-top: 32px; 
   }
@@ -75,6 +76,7 @@ export const PagesNav = styled(NavLink)`
     }
   }
   &:not(:last-child) { 
+
     @media (min-width: 768px) { 
       font-size: 16px;  
       margin-right: 32px;  
@@ -85,13 +87,12 @@ export const PagesNav = styled(NavLink)`
     }
   }
 `
-///////////////////////////////////////////////////
+
 export const UserBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;  
-
+  margin-left: auto; 
 `
 
 export const Initials = styled.div`
@@ -141,6 +142,7 @@ export const BtnBurger = styled.button`
   &:focus {
     scale: 1.1;
   }
+
   @media (min-width: 768px) {
     display: none;
   }

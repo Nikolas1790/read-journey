@@ -30,6 +30,7 @@ export default function Login() {
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };  
+
   const handleSubmit = async (values) => {
     try {
       await dispatch(logIn(values)).unwrap();
@@ -38,44 +39,44 @@ export default function Login() {
       toast.error("Please check the Mail and Password.");
     }
   }
+
   return (
     <Container>
       <FormBlock>        
         <LogoTitleBlock />
 
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
-
           {({ errors, touched }) => (
             <Form>
               <FormFields>  
                 <FormConteiner>           
                   <FormFieldConteiner>
-                        <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
-                        <FormField 
-                          id="email"
-                          name="email" 
-                          type="email" 
-                          placeholder="nik@google.com" 
-                          error={errors.email && touched.email ? "true" : "false" } 
-                          paddingleft="53px"
-                          style={{
-                            borderColor: touched.email && errors.email ? "red" : 
-                                         touched.email && !errors.email ? "green" : "defaultColor",
-                          }}
-                        />
-                      {touched.email && (
-                        errors.email ? (
-                          <EyeSvg width={20} height={20}>
-                            <use href={`${sprite}#icon-pajamas_error`} />
-                          </EyeSvg>
-                        ) : (
-                          <EyeSvg width={20} height={20}>
-                            <use href={`${sprite}#icon-check-ok`} />
-                          </EyeSvg>
-                        )
-                      )}
-                        {touched.email && !errors.email && <SecureMessage>Email is secure</SecureMessage>}
-                        <ErrorMessageStyled name="email" component='div' />
+                    <FormFieldLabel htmlFor="email">Mail:</FormFieldLabel>
+                    <FormField 
+                      id="email"
+                      name="email" 
+                      type="email" 
+                      placeholder="nik@google.com" 
+                      error={errors.email && touched.email ? "true" : "false" } 
+                      paddingleft="53px"
+                      style={{
+                        borderColor: touched.email && errors.email ? "red" : 
+                                     touched.email && !errors.email ? "green" : "defaultColor",
+                      }}
+                    />
+                    {touched.email && (
+                      errors.email ? (
+                        <EyeSvg width={20} height={20}>
+                          <use href={`${sprite}#icon-pajamas_error`} />
+                        </EyeSvg>
+                      ) : (
+                        <EyeSvg width={20} height={20}>
+                          <use href={`${sprite}#icon-check-ok`} />
+                        </EyeSvg>
+                      )
+                    )}
+                    {touched.email && !errors.email && <SecureMessage>Email is secure</SecureMessage>}
+                    <ErrorMessageStyled name="email" component='div' />
                   </FormFieldConteiner>
           
                   <FormFieldConteiner>
@@ -102,14 +103,14 @@ export default function Login() {
                       </EyeSvg>
                     ) : showPassword ? (
                       <EyeSvg width={20} height={20} onMouseDown={(e) => {
-                        e.preventDefault(); // Предотвратить смену фокуса
+                        e.preventDefault(); 
                         togglePasswordVisibility();
                       }}>
                         <use href={`${sprite}#icon-eye`} />
                       </EyeSvg>
                     ) : (
                       <EyeSvg width={20} height={20} onMouseDown={(e) => {
-                        e.preventDefault(); // Предотвратить смену фокуса
+                        e.preventDefault(); 
                         togglePasswordVisibility();
                       }}>
                         <use href={`${sprite}#icon-eye-off`} />
@@ -128,6 +129,7 @@ export default function Login() {
           )}
         </Formik>
       </FormBlock>
+
       <ImgAutorization />
     </Container>
   );

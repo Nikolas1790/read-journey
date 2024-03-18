@@ -32,6 +32,7 @@ export default function SidebarMenu({ isOpen, onClose }) {
         <PagesNav to="/recommended" >Home</PagesNav>
         <PagesNav to="/library" >My library</PagesNav>   
       </NavBurgerMenu>
+      
       <div>
         <CustomButton label="Log out" onClick={handleButtonClick} />
       </div>
