@@ -96,7 +96,7 @@ export const refreshUser = createAsyncThunk(
   '/users/current',
   async (_, thunkAPI) => {
     const location = useLocation();
-    if(location.pathname === '/register' && location.pathname === '/login'){
+    if(location.pathname === '/register' || location.pathname === '/login'){
       return;
       }
     // Reading the token from the state via getState()
