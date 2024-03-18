@@ -55,6 +55,7 @@ export const CardImg = styled.img`
   height: 107px;
   border-radius: 8px;  
   margin-bottom: 8px;
+  cursor: pointer;
 `
 
 export const CardTitle = styled.h4`
