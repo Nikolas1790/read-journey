@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { useLocation } from 'react-router-dom';
 
 axios.defaults.baseURL = 'https://readjourney.b.goit.study/api';
 
@@ -94,6 +95,10 @@ export const logOut = createAsyncThunk('/users/signout', async (_, thunkAPI) => 
 export const refreshUser = createAsyncThunk(
   '/users/current',
   async (_, thunkAPI) => {
+    const location = useLocation();
+    if(location.pathname !== '/register' && location.pathname !== '/login'){
+      return;
+      }
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -103,7 +108,7 @@ export const refreshUser = createAsyncThunk(
       // explicitly return early to avoid making a call
       return thunkAPI.rejectWithValue('No token found, unauthorized to fetch user');
     }
-
+console.log(persistedToken)
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
