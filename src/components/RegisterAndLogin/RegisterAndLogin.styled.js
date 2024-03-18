@@ -98,7 +98,7 @@ export const FormField = styled(Field)`
   }
 `;
 
-export const EyeSvg = styled.svg`
+export const TopRightSvg = styled.svg`
   position: absolute;
   top: 13px;
   right: 13px;

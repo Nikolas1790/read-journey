@@ -2,7 +2,7 @@ import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import sprite from '../../img/sprite.svg';
-import { Container, ErrorMessageStyled, EyeSvg, FormBlock, FormConteiner, FormField, FormFieldConteiner, FormFieldLabel, FormFields, SecureMessage } from "./RegisterAndLogin.styled";
+import { Container, ErrorMessageStyled, TopRightSvg, FormBlock, FormConteiner, FormField, FormFieldConteiner, FormFieldLabel, FormFields, SecureMessage } from "./RegisterAndLogin.styled";
 import ImgAutorization from 'components/ImgAuthorization/ImgAuthorization';
 import LogoTitleBlock from 'components/LogoTitleBlock/LogoTitleBlock';
 import SubmitBlockRegister from 'components/SubmitBlockAutorization/SubmitBlockRegister';
@@ -73,13 +73,13 @@ export default function Register() {
                     />
                       {touched.name && (
                         errors.name ? (
-                          <EyeSvg width={20} height={20}>
+                          <TopRightSvg width={20} height={20}>
                             <use href={`${sprite}#icon-pajamas_error`} />
-                          </EyeSvg>
+                          </TopRightSvg>
                         ) : (
-                          <EyeSvg width={20} height={20}>
+                          <TopRightSvg width={20} height={20}>
                             <use href={`${sprite}#icon-check-ok`} />
-                          </EyeSvg>
+                          </TopRightSvg>
                         )
                       )}
                      {touched.name && !errors.name && <SecureMessage>Name is secure</SecureMessage>}
@@ -102,13 +102,13 @@ export default function Register() {
                     />
                       {touched.email && (
                         errors.email ? (
-                          <EyeSvg width={20} height={20}>
+                          <TopRightSvg width={20} height={20}>
                             <use href={`${sprite}#icon-pajamas_error`} />
-                          </EyeSvg>
+                          </TopRightSvg>
                         ) : (
-                          <EyeSvg width={20} height={20}>
+                          <TopRightSvg width={20} height={20}>
                             <use href={`${sprite}#icon-check-ok`} />
-                          </EyeSvg>
+                          </TopRightSvg>
                         )
                       )}
                      {touched.email && !errors.email && <SecureMessage>Email is secure</SecureMessage>}
@@ -130,27 +130,27 @@ export default function Register() {
                     />
                       
                     {errors.password && touched.password ? (
-                      <EyeSvg width={20} height={20}>
+                      <TopRightSvg width={20} height={20}>
                         <use href={`${sprite}#icon-pajamas_error`} />
-                      </EyeSvg>
+                      </TopRightSvg>
                     ) : !errors.password && touched.password ? (
-                      <EyeSvg width={20} height={20}>
+                      <TopRightSvg width={20} height={20}>
                         <use href={`${sprite}#icon-check-ok`} />
-                      </EyeSvg>
+                      </TopRightSvg>
                     ) : showPassword ? (
-                      <EyeSvg width={20} height={20} onMouseDown={(e) => {
+                      <TopRightSvg width={20} height={20} onMouseDown={(e) => {
                         e.preventDefault();
                         togglePasswordVisibility();
                       }}>
                         <use href={`${sprite}#icon-eye`} />
-                      </EyeSvg>
+                      </TopRightSvg>
                     ) : (
-                      <EyeSvg width={20} height={20} onMouseDown={(e) => {
+                      <TopRightSvg width={20} height={20} onMouseDown={(e) => {
                         e.preventDefault(); 
                         togglePasswordVisibility();
                       }}>
                         <use href={`${sprite}#icon-eye-off`} />
-                      </EyeSvg>
+                      </TopRightSvg>
                     )}
 
                      {touched.password && !errors.password && <SecureMessage>Password is secure</SecureMessage>}
