@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 export const Filters = styled.div`  
 `
-
 export const StartWorkoutBlock = styled.div`
   width: 100%;
   max-width: 295px;

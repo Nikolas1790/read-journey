@@ -51,10 +51,10 @@ export const BookAutor = styled.p`
 
 export const DellBtn = styled.button`
   background: transparent;
-  transition: transform 0.25s ease; /* Плавное увеличение */
+  transition: transform 0.25s linear; 
 
 &:hover,
 &:focus {
-  transform: scale(1.1); /* Увеличение размера кнопки на 10% */
+  transform: scale(1.1);
 }
 `

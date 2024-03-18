@@ -24,10 +24,10 @@ export default function DetailedInformationBook({ closeModals, bookData, btnLabe
       const bookExists = ownLibrary.find(item => item.title === bookData.title);
 
       if (bookExists === undefined) {
-        toast.success("Книга не найдена в библиотеке. Добавляем...")
+        toast.success("The book was added successfully")
         dispatch(addBookById(bookData._id));
       } else {
-        toast.error('Книга уже есть в библиотеке.')
+        toast.error('The book is already in the library.')
       }
     };  
 

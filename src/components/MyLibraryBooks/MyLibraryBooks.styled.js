@@ -1,4 +1,3 @@
-// import color from 'common/GlobalColers'
 import styled from 'styled-components'
 
 export const HeaderAndPaginationBlock = styled.div`
