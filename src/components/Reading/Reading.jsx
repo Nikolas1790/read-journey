@@ -9,8 +9,8 @@ import sprite from '../../img/sprite.svg';
 import ReadingDashboard from "components/ReadingDashboard/ReadingDashboard";
 import notFoundImgMobile2x from '../../img/notFoundImg/open-book@2x.jpg';
 import notFoundImgMobile from '../../img/notFoundImg/open-book.jpg';
-import notFoundImg2x from '../../img/notFoundImg/open-book-desct@2x.png';
-import notFoundImg from '../../img/notFoundImg/open-book-desct.png';
+import notFoundImg2x from '../../img/notFoundImg/open-book-desct@2x.jpg';
+import notFoundImg from '../../img/notFoundImg/open-book-desct.jpg';
 import { useState } from "react";
 
 export default function Reading() {

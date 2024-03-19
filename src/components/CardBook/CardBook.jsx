@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { deleteBook } from "../../redux/books/operations";
 import notFoundImgMobile2x from '../../img/notFoundImg/open-book@2x.jpg';
 import notFoundImgMobile from '../../img/notFoundImg/open-book.jpg';
-import notFoundImg2x from '../../img/notFoundImg/open-book-desct@2x.png';
-import notFoundImg from '../../img/notFoundImg/open-book-desct.png';
+import notFoundImg2x from '../../img/notFoundImg/open-book-desct@2x.jpg';
+import notFoundImg from '../../img/notFoundImg/open-book-desct.jpg';
 
 export default function CardBook({book, openLoginModal, currentPage=false}) {
   const dispatch = useDispatch();
