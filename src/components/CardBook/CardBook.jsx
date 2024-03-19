@@ -2,8 +2,10 @@ import { BookAutor, BookCard, BookDataBlock, BookImg, BookTitle, DellBtn, TitleA
 import sprite from '../../img/sprite.svg';
 import { useDispatch } from "react-redux";
 import { deleteBook } from "../../redux/books/operations";
-import notFoundImg2x from '../../img/notFoundImg/open-book@2x.jpg';
-import notFoundImg from '../../img/notFoundImg/open-book.jpg';
+import notFoundImgMobile2x from '../../img/notFoundImg/open-book@2x.jpg';
+import notFoundImgMobile from '../../img/notFoundImg/open-book.jpg';
+import notFoundImg2x from '../../img/notFoundImg/open-book-desct@2x.png';
+import notFoundImg from '../../img/notFoundImg/open-book-desct.png';
 
 export default function CardBook({book, openLoginModal, currentPage=false}) {
   const dispatch = useDispatch();
@@ -12,22 +14,17 @@ export default function CardBook({book, openLoginModal, currentPage=false}) {
     dispatch(deleteBook(book._id));
   };
 
-  const getImageUrl = () => {
-    const img = new Image();
-    img.src = notFoundImg;
-    // Check if the device has a higher pixel density (retina display)
-    if (window.devicePixelRatio && window.devicePixelRatio > 1) {
-      return notFoundImg2x;
-    } else {
-      return notFoundImg;
-    }
-  };
-
-  const imageUrl = book.imageUrl || getImageUrl();
   return (
-    <BookCard>
-      <BookImg src={imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
-      
+    <BookCard>      
+      {book.imageUrl ? (
+        <BookImg src={book.imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
+      ) : (
+        <picture>
+          <source srcSet={`${notFoundImgMobile} 1x, ${notFoundImgMobile2x} 2x`} media="(max-width: 767px)" />
+          <source srcSet={`${notFoundImg} 1x, ${notFoundImg2x} 2x`} media="(min-width: 768px)" />
+          <BookImg src={notFoundImg} alt="book title" onClick={() => openLoginModal(book)} /> 
+        </picture>
+      )}
       <BookDataBlock>        
         <TitleAutorBlock page={currentPage === "MyLibrary" ? 'true' : '' }>
           <BookTitle>{book.title}</BookTitle>

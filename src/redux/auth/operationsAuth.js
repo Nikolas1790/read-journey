@@ -77,10 +77,7 @@ export const logOut = createAsyncThunk('/users/signout', async (_, thunkAPI) => 
 //   }
 // );
 
-/*
- * GET @ /users/current
- * headers: Authorization: Bearer token
- */
+
 export const refreshUser = createAsyncThunk(
   '/users/current',
   async (_, thunkAPI) => {

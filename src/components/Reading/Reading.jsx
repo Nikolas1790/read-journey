@@ -7,8 +7,10 @@ import { selectOwnBooks } from "../../redux/books/selector";
 import { AuthorBook, BasicImg, BasicInfBook, SvgPlayStop, TitleBook } from "./Reading.styled";
 import sprite from '../../img/sprite.svg';
 import ReadingDashboard from "components/ReadingDashboard/ReadingDashboard";
-import notFoundImg2x from '../../img/notFoundImg/open-book@2x.jpg';
-import notFoundImg from '../../img/notFoundImg/open-book.jpg';
+import notFoundImgMobile2x from '../../img/notFoundImg/open-book@2x.jpg';
+import notFoundImgMobile from '../../img/notFoundImg/open-book.jpg';
+import notFoundImg2x from '../../img/notFoundImg/open-book-desct@2x.png';
+import notFoundImg from '../../img/notFoundImg/open-book-desct.png';
 import { useState } from "react";
 
 export default function Reading() {
@@ -18,18 +20,6 @@ export default function Reading() {
  
   const selectedBook = books.find(book => book._id === bookId);
 
-  const getImageUrl = () => {
-    const img = new Image();
-    img.src = notFoundImg;
-
-    if (window.devicePixelRatio && window.devicePixelRatio > 1) {
-      return notFoundImg2x;
-    } else {
-      return notFoundImg;
-    }
-  };
-  const imageUrl = selectedBook.imageUrl || getImageUrl();
-
   return (
     <UnivesalGeneralBlock >      
       <ReadingDashboard  selectedBook={selectedBook._id} onReadChange={(e) => setRead(!e)} />     
@@ -37,7 +27,16 @@ export default function Reading() {
       <UnivesalMainConteainer>
         <MainBlockTitle>My reading</MainBlockTitle>
         <BasicInfBook>
-          <BasicImg src={imageUrl} alt='title'/>
+          {selectedBook.imageUrl ? (
+            <BasicImg src={selectedBook.imageUrl} alt="title" />
+          ) : (
+            <picture>
+              <source srcSet={`${notFoundImgMobile} 1x, ${notFoundImgMobile2x} 2x`} media="(max-width: 767px)" />
+              <source srcSet={`${notFoundImg} 1x, ${notFoundImg2x} 2x`} media="(min-width: 768px)" />
+              <BasicImg src={notFoundImg} alt="title" />
+            </picture>
+          )}
+          
           <TitleBook>{selectedBook.title}</TitleBook>
           <AuthorBook>{selectedBook.author}</AuthorBook>
           {read ?(
