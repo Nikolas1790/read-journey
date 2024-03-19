@@ -1,14 +1,15 @@
-import {  Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import {  Navigate, Route, Routes } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import Layout from './Layout/Layout';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/auth/operationsAuth';
 import { useAuth } from 'hooks/useAyth';
 import Loader from './Loader/Loader';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { selectToken } from '../redux/auth/selectorAuth';
 
 const Register = lazy(() => import("../pages/RegisterPage"));
 const Login = lazy(() => import("../pages/LoginPage"));
@@ -20,13 +21,13 @@ const NotFoundPage = lazy(() => import('./NotFoundPage/NotFoundPage'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  const location = useLocation();
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    if(location.pathname !== '/register' && location.pathname !== '/login'){
-    dispatch(refreshUser());
-    }
-  }, [dispatch, location.pathname ]);
+      if (token) {
+        dispatch(refreshUser());
+      }
+  }, [dispatch, token ]);
 
   return isRefreshing ? (
     <Loader />

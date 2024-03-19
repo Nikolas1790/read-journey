@@ -1,15 +1,16 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import Loader from 'components/Loader/Loader';
 import Header from 'components/Header/Header';
+import { useSelector } from 'react-redux';
+import { selectToken } from '../../redux/auth/selectorAuth';
 
 export default function Layout() {
-  const location = useLocation();
-  const hideHeaderPaths = ['/register', '/login'];
+  const token = useSelector(selectToken);
 
   return (
     <div>
-     {hideHeaderPaths.includes(location.pathname) ? null : <Header />}
+     {token ? <Header /> : null }
       <main>
         <Suspense fallback={<Loader />}>
           <Outlet />  

@@ -120,7 +120,7 @@ export default function ReadingDashboard({selectedBook, onReadChange}) {
   return (  
     <Dashboard> 
       <Forma>
-        <FilterTitle>Start page:</FilterTitle>
+        <FilterTitle>{!read ? 'Start page' : 'Stop page'} :</FilterTitle>
         <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
 
           {({  errors,touched }) => (

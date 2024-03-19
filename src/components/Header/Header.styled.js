@@ -76,16 +76,18 @@ export const PagesNav = styled(NavLink)`
     }
   }
   &:not(:last-child) { 
-
     @media (min-width: 768px) { 
-      font-size: 16px;  
       margin-right: 32px;  
       padding: 20px 2px;
     }
     @media (min-width: 1440px) {
       margin-right: 40px;; 
     }
+
   }
+  @media (min-width: 768px) { 
+      font-size: 16px; 
+    }
 `
 
 export const UserBar = styled.div`
