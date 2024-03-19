@@ -15,7 +15,7 @@ export default function RecommendedBooks() {
   const dispatch = useDispatch();
 
   useEffect(()=> {
-    dispatch(fetchBooks({ page: 2, limit: 10  }))
+    dispatch(fetchBooks({ page: 1, limit: 10  }))
   }, [dispatch]);
 
   const openLoginModal = (book) => {

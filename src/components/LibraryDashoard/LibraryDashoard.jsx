@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectOwnBooks } from '../../redux/books/selector';
 import Dashboard from 'components/Dashboard/Dashboard';
 import { ErrorMessageStyled, FilterTitle, FormField, FormFieldConteiner, FormFieldLabel, FormFields } from 'components/Dashboard/Dashboard.styled';
-import { addNewBook, fetchBooks, ownBooks } from '../../redux/books/operations';
+import { addNewBook, ownBooks } from '../../redux/books/operations';
 import PortalModal from 'components/PortalModal/PortalModal';
 import ModalAddBookSuccessfully from 'components/ModalBookWindow/ModalAddBookSuccessfully';
 import { useEffect, useState } from 'react';
@@ -33,7 +33,6 @@ export default function LibraryDashboard() {
 
   useEffect(()=> {
     dispatch(ownBooks())  
-    dispatch(fetchBooks({ page: 2, limit: 10  }))
   }, [dispatch]);
 
   const handleSubmit = (e, { resetForm }) => {  
