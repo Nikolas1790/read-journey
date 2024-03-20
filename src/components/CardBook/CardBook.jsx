@@ -2,10 +2,8 @@ import { BookAutor, BookCard, BookDataBlock, BookImg, BookTitle, DellBtn, TitleA
 import sprite from '../../img/sprite.svg';
 import { useDispatch } from "react-redux";
 import { deleteBook } from "../../redux/books/operations";
-import notFoundImgMobile2x from '../../img/notFoundImg/open-book@2x.jpg';
-import notFoundImgMobile from '../../img/notFoundImg/open-book.jpg';
-import notFoundImg2x from '../../img/notFoundImg/open-book-desct@2x.jpg';
 import notFoundImg from '../../img/notFoundImg/open-book-desct.jpg';
+import PictureWithFallback from "components/BackupImage/BackupImage";
 
 export default function CardBook({book, openLoginModal, currentPage=false}) {
   const dispatch = useDispatch();
@@ -19,11 +17,9 @@ export default function CardBook({book, openLoginModal, currentPage=false}) {
       {book.imageUrl ? (
         <BookImg src={book.imageUrl} alt="book title"  onClick={() => openLoginModal(book)} />
       ) : (
-        <picture>
-          <source srcSet={`${notFoundImgMobile} 1x, ${notFoundImgMobile2x} 2x`} media="(max-width: 767px)" />
-          <source srcSet={`${notFoundImg} 1x, ${notFoundImg2x} 2x`} media="(min-width: 768px)" />
+        <PictureWithFallback>
           <BookImg src={notFoundImg} alt="book title" onClick={() => openLoginModal(book)} /> 
-        </picture>
+        </PictureWithFallback>
       )}
       <BookDataBlock>        
         <TitleAutorBlock page={currentPage === "MyLibrary" ? 'true' : '' }>

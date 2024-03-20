@@ -4,13 +4,11 @@ import sprite from '../../img/sprite.svg';
 import { useDispatch, useSelector } from "react-redux";
 import { addBookById, ownBooks } from "../../redux/books/operations";
 import { useNavigate } from 'react-router-dom';
-import notFoundImgMobile2x from '../../img/notFoundImg/open-book@2x.jpg';
-import notFoundImgMobile from '../../img/notFoundImg/open-book.jpg';
-import notFoundImg2x from '../../img/notFoundImg/open-book-desct@2x.jpg';
 import notFoundImg from '../../img/notFoundImg/open-book-desct.jpg';
 import { useEffect } from "react";
 import { selectOwnBooks } from "../../redux/books/selector";
 import { toast } from "react-toastify";
+import PictureWithFallback from "components/BackupImage/BackupImage";
 
 export default function DetailedInformationBook({ closeModals, bookData, btnLabel }) {
   const dispatch = useDispatch();
@@ -49,11 +47,9 @@ export default function DetailedInformationBook({ closeModals, bookData, btnLabe
       {bookData.imageUrl ? (
         <CoverBook src={bookData.imageUrl} alt="cover" />
       ) : (
-        <picture>
-          <source srcSet={`${notFoundImgMobile} 1x, ${notFoundImgMobile2x} 2x`} media="(max-width: 767px)" />
-          <source srcSet={`${notFoundImg} 1x, ${notFoundImg2x} 2x`} media="(min-width: 768px)" />
+        <PictureWithFallback>
           <CoverBook src={notFoundImg} alt="cover fallback" />
-        </picture>
+        </PictureWithFallback>
       )}
       <TitleBook>{bookData.title}</TitleBook>
       <AuthorBook>{bookData.author}</AuthorBook>

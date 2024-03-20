@@ -7,11 +7,9 @@ import { selectOwnBooks } from "../../redux/books/selector";
 import { AuthorBook, BasicImg, BasicInfBook, SvgPlayStop, TitleBook } from "./Reading.styled";
 import sprite from '../../img/sprite.svg';
 import ReadingDashboard from "components/ReadingDashboard/ReadingDashboard";
-import notFoundImgMobile2x from '../../img/notFoundImg/open-book@2x.jpg';
-import notFoundImgMobile from '../../img/notFoundImg/open-book.jpg';
-import notFoundImg2x from '../../img/notFoundImg/open-book-desct@2x.jpg';
 import notFoundImg from '../../img/notFoundImg/open-book-desct.jpg';
 import { useState } from "react";
+import PictureWithFallback from "components/BackupImage/BackupImage";
 
 export default function Reading() {
   const { bookId } = useParams();
@@ -30,11 +28,9 @@ export default function Reading() {
           {selectedBook.imageUrl ? (
             <BasicImg src={selectedBook.imageUrl} alt="title" />
           ) : (
-            <picture>
-              <source srcSet={`${notFoundImgMobile} 1x, ${notFoundImgMobile2x} 2x`} media="(max-width: 767px)" />
-              <source srcSet={`${notFoundImg} 1x, ${notFoundImg2x} 2x`} media="(min-width: 768px)" />
+            <PictureWithFallback>
               <BasicImg src={notFoundImg} alt="title" />
-            </picture>
+            </PictureWithFallback>
           )}
           
           <TitleBook>{selectedBook.title}</TitleBook>
