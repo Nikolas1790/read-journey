@@ -82,7 +82,7 @@ export const readingDell = createAsyncThunk("/books/reading",
       const response = await axios.delete(`/books/reading?bookId=${data.bookId}&readingId=${data.readingId}` );
       return response.data;
     } catch (e) {
-      toast.error("Oops, try deleting again")
+      toast.error("Oops something happened... Books that have been read to completion cannot be deleted.")
       return thunkAPI.rejectWithValue(e.message);
     }
 });

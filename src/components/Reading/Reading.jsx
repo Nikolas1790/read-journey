@@ -40,9 +40,9 @@ export default function Reading() {
               <use href={`${sprite}#icon-block-start`} />
             </SvgPlayStop> 
           ) : (
-          <SvgPlayStop>
-            <use href={`${sprite}#icon-block-pause`} />
-          </SvgPlayStop> 
+            <SvgPlayStop>
+              <use href={`${sprite}#icon-block-pause`} />
+            </SvgPlayStop> 
           )}
 
         </BasicInfBook>
