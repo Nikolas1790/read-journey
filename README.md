@@ -50,6 +50,10 @@ he application boasts an adaptive design, ensuring a seamless experience across 
 Book Journey is the ideal web app for readers looking to improve their reading experience. With a user-friendly interface, comprehensive book filtering and personalized reading statistics, it provides a unique platform for book lovers to track, manage and enjoy their reading journey. Sign up today and embark on your own book journey!
 
 
+Technical task: [https://docs.google.com/spreadsheets/d/1_f4IZzXDs6QhQq3mOCOMktYasPW1XphdTO82rdrkyW8/edit#gid=1060862504](https://docs.google.com/spreadsheets/d/1_f4IZzXDs6QhQq3mOCOMktYasPW1XphdTO82rdrkyW8/edit#gid=1060862504)
+
+Layout: [https://www.figma.com/file/z3m0rdBcEfLTJUBDkAKhWQ/ReadJourney?type=design&node-id=18743-4973&mode=design&t=svoEDue2auPpuDi9-0](https://www.figma.com/file/z3m0rdBcEfLTJUBDkAKhWQ/ReadJourney?type=design&node-id=18743-4973&mode=design&t=svoEDue2auPpuDi9-0)
+
 Performance criteria
 
 For any inquiries or assistance, please contact us at [ovsyannikovnikolai1790@gmail.com](ovsyannikovnikolai1790@gmail.com).
