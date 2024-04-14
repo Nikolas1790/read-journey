@@ -3,8 +3,9 @@ import { useAuth } from '../hooks/useAyth';
 
 
 export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
-  const { isLoggedIn, isRefreshing } = useAuth();
+  const { isLoggedIn, isRefreshing, token  } = useAuth();
   const shouldRedirect = !isLoggedIn && !isRefreshing;
 
-  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+  return !token ? <Navigate to='//register'/> :
+          (shouldRedirect ? <Navigate to={redirectTo} /> : Component);
 };
