@@ -2,14 +2,14 @@
 
 ## Introduction
 
-aBook Journey is a web application designed to enhance the reading experience of users by allowing them to read a variety of books online. It aims to provide a seamless and interactive platform for book lovers, where they can register, track their reading statistics by days and pages read, and enjoy a personalized reading journey.
+Read Journey is a web application designed to enhance the reading experience of users by allowing them to read a variety of books online. It aims to provide a seamless and interactive platform for book lovers, where they can register, track their reading statistics by days and pages read, and enjoy a personalized reading journey.(There is no direct text in the application, an imitation is used, so you read the book in parallel with the application and make notes in it and look at statistics)
 
 ## Features
 - **User Registration:** Users can sign up to access personalized features and save their reading progress.
 - **Reading Statistics:** Track your reading progress with detailed statistics, including daily reading habits and the number of pages read.
 - **Book Filtering:**  Easily find books by title using the search and filter functionality.
 - **Custom Book Library:** Users have the ability to add books to their own library, making it easy to keep track of titles they’re interested in or currently reading.
-- **Favorites:** Users can mark books as favorites, allowing for quick access to beloved titles.
+- **Favorites:** Users can mark books as favorites, allowing for quick access to beloved titles.(from this section you can directly read the book by clicking on the cover)
 - **Reading Status Filtering:**  Within the favorites section, books can be filtered based on their reading status - whether they are read, unread, or currently being read.
 
 ![ img 1](./src//img/readme/register.jpg)
